@@ -1,6 +1,8 @@
-const axios = require("axios");
+const axios = require("axios").default;
+const BASE_URL = "https://fitnesstrackr-rafa.herokuapp.com/api/activities";
 
-const activitiesInstance = axios.create({
-  baseURL: "https://fitnesstrackr-rafa.herokuapp.com/api/activities",
-  // import headers from index later
-});
+async function getAllActivities() {
+  const response = await axios.get(`${BASE_URL}`);
+  const activities = response.data;
+  return activities;
+}
