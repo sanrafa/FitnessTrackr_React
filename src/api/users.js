@@ -15,9 +15,8 @@ export async function registerUser({ username, password }) {
     return data;
   } catch (err) {
     console.error(err);
-    const message = err.response.data;
-    console.log("Error is:", message);
-    return message;
+    const error = err.response.data;
+    throw error.message;
   }
 }
 

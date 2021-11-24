@@ -26643,9 +26643,8 @@ async function registerUser({ username , password  }) {
         return data;
     } catch (err) {
         console.error(err);
-        const message = err.response.data;
-        console.log("Error is:", message);
-        return message;
+        const error = err.response.data;
+        throw error.message;
     }
 }
 async function loginUser({ username , password  }) {
@@ -26955,12 +26954,54 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
+var _api = require("../api");
+var _app = require("../App");
+var _s = $RefreshSig$();
 const Register = ()=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+    _s();
+    let navigate = _reactRouterDom.useNavigate();
+    const [username, setUsername] = _react.useState("");
+    const [password, setPassword] = _react.useState("");
+    const [error, setError] = _react.useState("");
+    const { setUser , user  } = _react.useContext(_app.UserContext);
+    _react.useEffect(()=>{
+        if (user && error === null) navigate("/profile");
+    }, [
+        error,
+        user
+    ]);
+    const createAccount = async ()=>{
+        try {
+            const newUser = await _api.registerUser({
+                username,
+                password
+            });
+            setUser(newUser);
+            setError(null);
+        } catch (err) {
+            console.error(err);
+            setError(err);
+        } finally{
+            setUsername("");
+            setPassword("");
+        }
+    };
+    const handleSubmit = async ()=>{
+        await createAccount();
+    };
+    return(/* 
+        CREATE FORM WITH USERNAME, PASSWORD FIELDS
+        ON CHANGE, UPDATE STATE
+        ON SUBMIT, CALL registerUser
+        IF SUCCESS:
+          SAVE USER TO GLOBAL CONTEXT
+          REDIRECT TO /PROFILE
+      */ /*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/Register.jsx",
-            lineNumber: 5,
+            lineNumber: 49,
             columnNumber: 5
         },
         __self: undefined,
@@ -26968,25 +27009,117 @@ const Register = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/Register.jsx",
-                    lineNumber: 6,
+                    lineNumber: 50,
                     columnNumber: 7
                 },
                 __self: undefined,
-                children: "Register Here"
+                children: "Create a new account"
             }),
             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                 to: "/login",
                 __source: {
                     fileName: "src/components/Register.jsx",
-                    lineNumber: 7,
+                    lineNumber: 51,
                     columnNumber: 7
                 },
                 __self: undefined,
-                children: "Existing User?"
-            })
+                children: "Existing user?"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                onSubmit: (e)=>{
+                    e.preventDefault();
+                    handleSubmit();
+                },
+                __source: {
+                    fileName: "src/components/Register.jsx",
+                    lineNumber: 52,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/Register.jsx",
+                            lineNumber: 58,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: [
+                            "Username:",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "text",
+                                name: "username",
+                                required: true,
+                                value: username,
+                                onChange: (e)=>{
+                                    setUsername(e.target.value);
+                                },
+                                minLength: "5",
+                                __source: {
+                                    fileName: "src/components/Register.jsx",
+                                    lineNumber: 60,
+                                    columnNumber: 11
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/Register.jsx",
+                            lineNumber: 71,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: [
+                            "Password:",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "password",
+                                name: "password",
+                                required: true,
+                                value: password,
+                                onChange: (e)=>{
+                                    setPassword(e.target.value);
+                                },
+                                minLength: "8",
+                                __source: {
+                                    fileName: "src/components/Register.jsx",
+                                    lineNumber: 73,
+                                    columnNumber: 11
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "submit",
+                        __source: {
+                            fileName: "src/components/Register.jsx",
+                            lineNumber: 85,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: "REGISTER"
+                    })
+                ]
+            }),
+            error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                __source: {
+                    fileName: "src/components/Register.jsx",
+                    lineNumber: 87,
+                    columnNumber: 16
+                },
+                __self: undefined,
+                children: error
+            }) : null
         ]
     }));
 };
+_s(Register, "gWoiCLvIfm06oKL+WvfiuvkF5po=", false, function() {
+    return [
+        _reactRouterDom.useNavigate
+    ];
+});
 _c = Register;
 exports.default = Register;
 var _c;
@@ -26997,6 +27130,6 @@ $RefreshReg$(_c, "Register");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP"}]},["emU3S","lBB98","hD4hw"], "hD4hw", "parcelRequirecf92")
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP","react":"4mchR","../api":"l6gwE","../App":"lL5iC"}]},["emU3S","lBB98","hD4hw"], "hD4hw", "parcelRequirecf92")
 
 //# sourceMappingURL=index.379dd93c.js.map
