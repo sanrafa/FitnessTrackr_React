@@ -967,7 +967,7 @@ _reactDomDefault.default.render(/*#__PURE__*/ _jsxRuntime.jsx(_appJsx.App, {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-dom":"afyCw","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","./App.jsx":"lL5iC"}],"6Ds2u":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-dom":"afyCw","./App.jsx":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"6Ds2u":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react-jsx-runtime.development.js');
 
@@ -22725,157 +22725,7 @@ module.exports = require('./cjs/scheduler-tracing.development.js');
     exports.unstable_wrap = unstable_wrap;
 })();
 
-},{}],"ciiiV":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"9pz13":[function(require,module,exports) {
-"use strict";
-var Refresh = require('react-refresh/runtime');
-function debounce(func, delay) {
-    var args1;
-    var timeout = undefined;
-    return function(args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(function() {
-            timeout = undefined;
-            func.call(null, args);
-        }, delay);
-    };
-}
-var enqueueUpdate = debounce(function() {
-    Refresh.performReactRefresh();
-}, 30); // Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function(module) {
-    window.$RefreshReg$ = function(type, id) {
-        Refresh.register(type, module.id + ' ' + id);
-    };
-    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function(module) {
-    if (isReactRefreshBoundary(module.exports)) {
-        registerExportsForReactRefresh(module);
-        if (module.hot) {
-            module.hot.dispose(function(data) {
-                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
-                data.prevExports = module.exports;
-            });
-            module.hot.accept(function(getParents) {
-                var prevExports = module.hot.data.prevExports;
-                var nextExports = module.exports; // Since we just executed the code for it, it's possible
-                // that the new exports make it ineligible for being a boundary.
-                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports); // It can also become ineligible if its exports are incompatible
-                // with the previous exports.
-                // For example, if you add/remove/change exports, we'll want
-                // to re-execute the importing modules, and force those components
-                // to re-render. Similarly, if you convert a class component
-                // to a function, we want to invalidate the boundary.
-                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-                if (isNoLongerABoundary || didInvalidate) {
-                    // We'll be conservative. The only case in which we won't do a full
-                    // reload is if all parent modules are also refresh boundaries.
-                    // In that case we'll add them to the current queue.
-                    var parents = getParents();
-                    if (parents.length === 0) {
-                        // Looks like we bubbled to the root. Can't recover from that.
-                        window.location.reload();
-                        return;
-                    }
-                    return parents;
-                }
-                enqueueUpdate();
-            });
-        }
-    }
-};
-function isReactRefreshBoundary(exports) {
-    if (Refresh.isLikelyComponentType(exports)) return true;
-    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
-    return false;
-    var hasExports = false;
-    var areAllExportsComponents = true;
-    let isESM = '__esModule' in exports;
-    for(var key in exports){
-        hasExports = true;
-        if (key === '__esModule') continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
-        return false;
-        var exportValue = exports[key];
-        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
-    }
-    return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-    var prevSignature = getRefreshBoundarySignature(prevExports);
-    var nextSignature = getRefreshBoundarySignature(nextExports);
-    if (prevSignature.length !== nextSignature.length) return true;
-    for(var i = 0; i < nextSignature.length; i++){
-        if (prevSignature[i] !== nextSignature[i]) return true;
-    }
-    return false;
-} // When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-    var signature = [];
-    signature.push(Refresh.getFamilyByType(exports));
-    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-    let isESM = '__esModule' in exports;
-    for(var key in exports){
-        if (key === '__esModule') continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        signature.push(key);
-        signature.push(Refresh.getFamilyByType(exportValue));
-    }
-    return signature;
-}
-function registerExportsForReactRefresh(module) {
-    var exports = module.exports, id = module.id;
-    Refresh.register(exports, id + ' %exports%');
-    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-    let isESM = '__esModule' in exports;
-    for(var key in exports){
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        Refresh.register(exportValue, id + ' %exports% ' + key);
-    }
-}
-
-},{"react-refresh/runtime":"aeH4U"}],"lL5iC":[function(require,module,exports) {
+},{}],"lL5iC":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$a46b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -22912,21 +22762,21 @@ const App = ()=>{
         },
         __source: {
             fileName: "src/App.jsx",
-            lineNumber: 26,
+            lineNumber: 27,
             columnNumber: 5
         },
         __self: undefined,
         children: /*#__PURE__*/ _jsxRuntime.jsx(_react.Fragment, {
             __source: {
                 fileName: "src/App.jsx",
-                lineNumber: 27,
+                lineNumber: 28,
                 columnNumber: 7
             },
             __self: undefined,
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
                 __source: {
                     fileName: "src/App.jsx",
-                    lineNumber: 28,
+                    lineNumber: 29,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -22934,7 +22784,7 @@ const App = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx(_components.Header, {
                         __source: {
                             fileName: "src/App.jsx",
-                            lineNumber: 29,
+                            lineNumber: 30,
                             columnNumber: 11
                         },
                         __self: undefined
@@ -22942,7 +22792,7 @@ const App = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Routes, {
                         __source: {
                             fileName: "src/App.jsx",
-                            lineNumber: 30,
+                            lineNumber: 31,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -22953,29 +22803,29 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 31,
-                                    columnNumber: 13
-                                },
-                                __self: undefined
-                            }),
-                            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                                path: "/register",
-                                element: /*#__PURE__*/ _jsxRuntime.jsx(_components.User, {
-                                }),
-                                __source: {
-                                    fileName: "src/App.jsx",
                                     lineNumber: 32,
                                     columnNumber: 13
                                 },
                                 __self: undefined
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                                path: "/login",
-                                element: /*#__PURE__*/ _jsxRuntime.jsx(_components.User, {
+                                path: "/register",
+                                element: /*#__PURE__*/ _jsxRuntime.jsx(_components.Register, {
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
                                     lineNumber: 33,
+                                    columnNumber: 13
+                                },
+                                __self: undefined
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                                path: "/login",
+                                element: /*#__PURE__*/ _jsxRuntime.jsx(_components.Login, {
+                                }),
+                                __source: {
+                                    fileName: "src/App.jsx",
+                                    lineNumber: 34,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22986,7 +22836,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 34,
+                                    lineNumber: 35,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22997,7 +22847,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 35,
+                                    lineNumber: 36,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -23008,7 +22858,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 36,
+                                    lineNumber: 37,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -23030,7 +22880,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react-router-dom":"16kZP","react":"4mchR","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","./components":"iKUBW"}],"16kZP":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react-router-dom":"16kZP","react":"4mchR","./components":"iKUBW","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"16kZP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MemoryRouter", ()=>_reactRouter.MemoryRouter
@@ -23877,7 +23727,37 @@ function _extends() {
 }
 exports.default = _extends;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"g791w":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"ciiiV":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"g791w":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MemoryRouter", ()=>MemoryRouter
@@ -24679,7 +24559,9 @@ parcelHelpers.export(exports, "MyRoutines", ()=>_myRoutinesDefault.default
 );
 parcelHelpers.export(exports, "Routines", ()=>_routinesDefault.default
 );
-parcelHelpers.export(exports, "User", ()=>_userDefault.default
+parcelHelpers.export(exports, "Login", ()=>_loginDefault.default
+);
+parcelHelpers.export(exports, "Register", ()=>_registerDefault.default
 );
 var _header = require("./Header");
 var _headerDefault = parcelHelpers.interopDefault(_header);
@@ -24691,10 +24573,263 @@ var _myRoutines = require("./MyRoutines");
 var _myRoutinesDefault = parcelHelpers.interopDefault(_myRoutines);
 var _routines = require("./Routines");
 var _routinesDefault = parcelHelpers.interopDefault(_routines);
-var _user = require("./User");
-var _userDefault = parcelHelpers.interopDefault(_user);
+var _login = require("./Login");
+var _loginDefault = parcelHelpers.interopDefault(_login);
+var _register = require("./Register");
+var _registerDefault = parcelHelpers.interopDefault(_register);
 
-},{"./Home":"1tdUA","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./Header":"a7Do7","./Activities":"imhX8","./MyRoutines":"gF4vd","./Routines":"4kpDy","./User":"f2gfn"}],"1tdUA":[function(require,module,exports) {
+},{"./Header":"a7Do7","./Home":"1tdUA","./Activities":"imhX8","./MyRoutines":"gF4vd","./Routines":"4kpDy","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./Login":"2yGwA","./Register":"lPbZt"}],"a7Do7":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$d49a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$d49a.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxRuntime = require("react/jsx-runtime");
+var _reactRouterDom = require("react-router-dom");
+const Header = ()=>{
+    return(/*#__PURE__*/ _jsxRuntime.jsx("nav", {
+        __source: {
+            fileName: "src/components/Header.jsx",
+            lineNumber: 5,
+            columnNumber: 5
+        },
+        __self: undefined,
+        children: /*#__PURE__*/ _jsxRuntime.jsxs("ul", {
+            __source: {
+                fileName: "src/components/Header.jsx",
+                lineNumber: 6,
+                columnNumber: 7
+            },
+            __self: undefined,
+            children: [
+                /*#__PURE__*/ _jsxRuntime.jsx("li", {
+                    __source: {
+                        fileName: "src/components/Header.jsx",
+                        lineNumber: 7,
+                        columnNumber: 9
+                    },
+                    __self: undefined,
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: "/home",
+                        __source: {
+                            fileName: "src/components/Header.jsx",
+                            lineNumber: 8,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "Home"
+                    })
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsx("li", {
+                    __source: {
+                        fileName: "src/components/Header.jsx",
+                        lineNumber: 10,
+                        columnNumber: 9
+                    },
+                    __self: undefined,
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: "/routines",
+                        __source: {
+                            fileName: "src/components/Header.jsx",
+                            lineNumber: 11,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "Routines"
+                    })
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsx("li", {
+                    __source: {
+                        fileName: "src/components/Header.jsx",
+                        lineNumber: 13,
+                        columnNumber: 9
+                    },
+                    __self: undefined,
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: "/profile",
+                        __source: {
+                            fileName: "src/components/Header.jsx",
+                            lineNumber: 14,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "My Routines"
+                    })
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsx("li", {
+                    __source: {
+                        fileName: "src/components/Header.jsx",
+                        lineNumber: 16,
+                        columnNumber: 9
+                    },
+                    __self: undefined,
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: "/activities",
+                        __source: {
+                            fileName: "src/components/Header.jsx",
+                            lineNumber: 17,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "Activities"
+                    })
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsx("li", {
+                    __source: {
+                        fileName: "src/components/Header.jsx",
+                        lineNumber: 19,
+                        columnNumber: 9
+                    },
+                    __self: undefined,
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: "/register",
+                        __source: {
+                            fileName: "src/components/Header.jsx",
+                            lineNumber: 20,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "Register"
+                    })
+                })
+            ]
+        })
+    }));
+};
+_c = Header;
+exports.default = Header;
+var _c;
+$RefreshReg$(_c, "Header");
+
+  $parcel$ReactRefreshHelpers$d49a.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"6Ds2u","react-router-dom":"16kZP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"9pz13":[function(require,module,exports) {
+"use strict";
+var Refresh = require('react-refresh/runtime');
+function debounce(func, delay) {
+    var args1;
+    var timeout = undefined;
+    return function(args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(function() {
+            timeout = undefined;
+            func.call(null, args);
+        }, delay);
+    };
+}
+var enqueueUpdate = debounce(function() {
+    Refresh.performReactRefresh();
+}, 30); // Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function(module) {
+    window.$RefreshReg$ = function(type, id) {
+        Refresh.register(type, module.id + ' ' + id);
+    };
+    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function(module) {
+    if (isReactRefreshBoundary(module.exports)) {
+        registerExportsForReactRefresh(module);
+        if (module.hot) {
+            module.hot.dispose(function(data) {
+                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
+                data.prevExports = module.exports;
+            });
+            module.hot.accept(function(getParents) {
+                var prevExports = module.hot.data.prevExports;
+                var nextExports = module.exports; // Since we just executed the code for it, it's possible
+                // that the new exports make it ineligible for being a boundary.
+                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports); // It can also become ineligible if its exports are incompatible
+                // with the previous exports.
+                // For example, if you add/remove/change exports, we'll want
+                // to re-execute the importing modules, and force those components
+                // to re-render. Similarly, if you convert a class component
+                // to a function, we want to invalidate the boundary.
+                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+                if (isNoLongerABoundary || didInvalidate) {
+                    // We'll be conservative. The only case in which we won't do a full
+                    // reload is if all parent modules are also refresh boundaries.
+                    // In that case we'll add them to the current queue.
+                    var parents = getParents();
+                    if (parents.length === 0) {
+                        // Looks like we bubbled to the root. Can't recover from that.
+                        window.location.reload();
+                        return;
+                    }
+                    return parents;
+                }
+                enqueueUpdate();
+            });
+        }
+    }
+};
+function isReactRefreshBoundary(exports) {
+    if (Refresh.isLikelyComponentType(exports)) return true;
+    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
+    return false;
+    var hasExports = false;
+    var areAllExportsComponents = true;
+    let isESM = '__esModule' in exports;
+    for(var key in exports){
+        hasExports = true;
+        if (key === '__esModule') continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
+        return false;
+        var exportValue = exports[key];
+        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
+    }
+    return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+    var prevSignature = getRefreshBoundarySignature(prevExports);
+    var nextSignature = getRefreshBoundarySignature(nextExports);
+    if (prevSignature.length !== nextSignature.length) return true;
+    for(var i = 0; i < nextSignature.length; i++){
+        if (prevSignature[i] !== nextSignature[i]) return true;
+    }
+    return false;
+} // When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+    var signature = [];
+    signature.push(Refresh.getFamilyByType(exports));
+    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+    let isESM = '__esModule' in exports;
+    for(var key in exports){
+        if (key === '__esModule') continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        signature.push(key);
+        signature.push(Refresh.getFamilyByType(exportValue));
+    }
+    return signature;
+}
+function registerExportsForReactRefresh(module) {
+    var exports = module.exports, id = module.id;
+    Refresh.register(exports, id + ' %exports%');
+    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+    let isESM = '__esModule' in exports;
+    for(var key in exports){
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        Refresh.register(exportValue, id + ' %exports% ' + key);
+    }
+}
+
+},{"react-refresh/runtime":"aeH4U"}],"1tdUA":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$b222 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -24733,139 +24868,7 @@ $RefreshReg$(_c, "Home");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"a7Do7":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$d49a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$d49a.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxRuntime = require("react/jsx-runtime");
-var _react = require("react");
-var _reactRouterDom = require("react-router-dom");
-const Header = ()=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsx("nav", {
-        __source: {
-            fileName: "src/components/Header.jsx",
-            lineNumber: 6,
-            columnNumber: 5
-        },
-        __self: undefined,
-        children: /*#__PURE__*/ _jsxRuntime.jsxs("ul", {
-            __source: {
-                fileName: "src/components/Header.jsx",
-                lineNumber: 7,
-                columnNumber: 7
-            },
-            __self: undefined,
-            children: [
-                /*#__PURE__*/ _jsxRuntime.jsx("li", {
-                    __source: {
-                        fileName: "src/components/Header.jsx",
-                        lineNumber: 8,
-                        columnNumber: 9
-                    },
-                    __self: undefined,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                        to: "/home",
-                        __source: {
-                            fileName: "src/components/Header.jsx",
-                            lineNumber: 9,
-                            columnNumber: 11
-                        },
-                        __self: undefined,
-                        children: "Home"
-                    })
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx("li", {
-                    __source: {
-                        fileName: "src/components/Header.jsx",
-                        lineNumber: 11,
-                        columnNumber: 9
-                    },
-                    __self: undefined,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                        to: "/routines",
-                        __source: {
-                            fileName: "src/components/Header.jsx",
-                            lineNumber: 12,
-                            columnNumber: 11
-                        },
-                        __self: undefined,
-                        children: "Routines"
-                    })
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx("li", {
-                    __source: {
-                        fileName: "src/components/Header.jsx",
-                        lineNumber: 14,
-                        columnNumber: 9
-                    },
-                    __self: undefined,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                        to: "/profile",
-                        __source: {
-                            fileName: "src/components/Header.jsx",
-                            lineNumber: 15,
-                            columnNumber: 11
-                        },
-                        __self: undefined,
-                        children: "My Routines"
-                    })
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx("li", {
-                    __source: {
-                        fileName: "src/components/Header.jsx",
-                        lineNumber: 17,
-                        columnNumber: 9
-                    },
-                    __self: undefined,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                        to: "/activities",
-                        __source: {
-                            fileName: "src/components/Header.jsx",
-                            lineNumber: 18,
-                            columnNumber: 11
-                        },
-                        __self: undefined,
-                        children: "Activities"
-                    })
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx("li", {
-                    __source: {
-                        fileName: "src/components/Header.jsx",
-                        lineNumber: 20,
-                        columnNumber: 9
-                    },
-                    __self: undefined,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                        to: "/register",
-                        __source: {
-                            fileName: "src/components/Header.jsx",
-                            lineNumber: 21,
-                            columnNumber: 11
-                        },
-                        __self: undefined,
-                        children: "Register/Login"
-                    })
-                })
-            ]
-        })
-    }));
-};
-_c = Header;
-exports.default = Header;
-var _c;
-$RefreshReg$(_c, "Header");
-
-  $parcel$ReactRefreshHelpers$d49a.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"imhX8":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"imhX8":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$5193 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -24968,7 +24971,7 @@ $RefreshReg$(_c, "Activities");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","./Loader":"etnLa","../api":"l6gwE"}],"etnLa":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","./Loader":"etnLa","../api":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"etnLa":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$7240 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -25009,18 +25012,18 @@ var _routines = require("./routines");
 parcelHelpers.exportAll(_routines, exports);
 var _activities = require("./activities");
 parcelHelpers.exportAll(_activities, exports);
+var _users = require("./users");
+parcelHelpers.exportAll(_users, exports);
 function setHeaders() {
     let localToken = localStorage.getItem("token");
-    if (token) return {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-    };
+    let sessionToken = sessionStorage.getItem("token");
+    if (localToken || sessionToken) ;
     else return {
         "Content-Type": "application/json"
     };
 }
 
-},{"./routines":"b0BJ3","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./activities":"6DQLS"}],"b0BJ3":[function(require,module,exports) {
+},{"./routines":"b0BJ3","./activities":"6DQLS","./users":"kFmvG","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"b0BJ3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getAllRoutines", ()=>getAllRoutines
@@ -26616,7 +26619,65 @@ async function getAllActivities() {
     }
 }
 
-},{"axios":"1IeuP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"gF4vd":[function(require,module,exports) {
+},{"axios":"1IeuP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"kFmvG":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "registerUser", ()=>registerUser
+);
+parcelHelpers.export(exports, "loginUser", ()=>loginUser
+);
+parcelHelpers.export(exports, "getUser", ()=>getUser
+);
+var _ = require(".");
+const axios = require("axios").default;
+const BASE_URL = "https://fitnesstrackr-rafa.herokuapp.com/api/users";
+async function registerUser({ username , password  }) {
+    try {
+        const response = await axios.post(`${BASE_URL}/register`, {
+            username: username,
+            password: password
+        });
+        const data = response.data;
+        console.log(data);
+        console.log(response);
+        return data;
+    } catch (err) {
+        console.error(err);
+        const message = err.response.data;
+        console.log("Error is:", message);
+        return message;
+    }
+}
+async function loginUser({ username , password  }) {
+    try {
+        const response = await axios.post(`${BASE_URL}/login`, {
+            username: username,
+            password: password
+        });
+        const data = response.data;
+        return data;
+    } catch (err) {
+        const message = err.response.data;
+        console.log("Error is:", message);
+        return message;
+    }
+}
+async function getUser() {
+    try {
+        let headers = _.setHeaders();
+        const response = await axios.get(`${BASE_URL}/me`, {
+            headers: headers
+        });
+        const data = response.data;
+        return data;
+    } catch (err) {
+        const message = err.response.data;
+        console.log("Error is:", message);
+        return message;
+    }
+}
+
+},{"axios":"1IeuP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV",".":"l6gwE"}],"gF4vd":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8bac = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26832,55 +26893,110 @@ $RefreshReg$(_c, "Routines");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","./Loader":"etnLa","../api":"l6gwE"}],"f2gfn":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$4210 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","./Loader":"etnLa","../api":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"2yGwA":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$c0cb = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$4210.prelude(module);
+$parcel$ReactRefreshHelpers$c0cb.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
-// for both login and register
-// retrieves user token, stores it, and adds it to global context
-const Register = ()=>{
-/* Include link to switch to login form instead */ };
-_c = Register;
+var _reactRouterDom = require("react-router-dom");
 const Login = ()=>{
-/* Include link to switch to register form instead */ };
-_c1 = Login;
-const User = ()=>{
-    /* render either of the above components depending on what user selects */ return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
         __source: {
-            fileName: "src/components/User.jsx",
-            lineNumber: 15,
+            fileName: "src/components/Login.jsx",
+            lineNumber: 5,
             columnNumber: 5
         },
         __self: undefined,
-        children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
-            __source: {
-                fileName: "src/components/User.jsx",
-                lineNumber: 16,
-                columnNumber: 7
-            },
-            __self: undefined,
-            children: "Register or login here!"
-        })
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                __source: {
+                    fileName: "src/components/Login.jsx",
+                    lineNumber: 6,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "Login Here"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                to: "/register",
+                __source: {
+                    fileName: "src/components/Login.jsx",
+                    lineNumber: 7,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "New User?"
+            })
+        ]
     }));
 };
-_c2 = User;
-exports.default = User;
-var _c, _c1, _c2;
-$RefreshReg$(_c, "Register");
-$RefreshReg$(_c1, "Login");
-$RefreshReg$(_c2, "User");
+_c = Login;
+exports.default = Login;
+var _c;
+$RefreshReg$(_c, "Login");
 
-  $parcel$ReactRefreshHelpers$4210.postlude(module);
+  $parcel$ReactRefreshHelpers$c0cb.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}]},["emU3S","lBB98","hD4hw"], "hD4hw", "parcelRequirecf92")
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP"}],"lPbZt":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$2761 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$2761.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxRuntime = require("react/jsx-runtime");
+var _reactRouterDom = require("react-router-dom");
+const Register = ()=>{
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+        __source: {
+            fileName: "src/components/Register.jsx",
+            lineNumber: 5,
+            columnNumber: 5
+        },
+        __self: undefined,
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                __source: {
+                    fileName: "src/components/Register.jsx",
+                    lineNumber: 6,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "Register Here"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                to: "/login",
+                __source: {
+                    fileName: "src/components/Register.jsx",
+                    lineNumber: 7,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "Existing User?"
+            })
+        ]
+    }));
+};
+_c = Register;
+exports.default = Register;
+var _c;
+$RefreshReg$(_c, "Register");
+
+  $parcel$ReactRefreshHelpers$2761.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP"}]},["emU3S","lBB98","hD4hw"], "hD4hw", "parcelRequirecf92")
 
 //# sourceMappingURL=index.379dd93c.js.map

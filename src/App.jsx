@@ -8,7 +8,8 @@ import { useState, useEffect, createContext, Fragment } from "react";
 import {
   Header,
   Home,
-  User,
+  Register,
+  Login,
   Routines,
   Activities,
   MyRoutines,
@@ -29,8 +30,8 @@ export const App = () => {
           <Header />
           <Routes>
             <Route path="/home" element={<Home />} />
-            <Route path="/register" element={<User />} />
-            <Route path="/login" element={<User />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/routines" element={<Routines />} />
             <Route path="/activities" element={<Activities />} />
             <Route path="/profile" element={<MyRoutines />} />

@@ -3,14 +3,14 @@ export function setHeaders() {
   let sessionToken = sessionStorage.getItem("token");
   if (localToken || sessionToken) {
     localToken
-      ? {
+      ? `{
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localToken}`,
-        }
-      : {
+          Authorization: Bearer ${localToken},
+        }`
+      : `{
           "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionToken}`,
-        };
+          Authorization: Bearer ${sessionToken},
+        }`;
   } else {
     return {
       "Content-Type": "application/json",
