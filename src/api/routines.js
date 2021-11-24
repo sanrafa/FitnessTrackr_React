@@ -1,7 +1,7 @@
 const axios = require("axios").default;
 const BASE_URL = "https://fitnesstrackr-rafa.herokuapp.com/api/routines";
 
-async function getAllRoutines() {
+export async function getAllRoutines() {
   try {
     const response = await axios.get(`${BASE_URL}`);
     const routines = response.data;
