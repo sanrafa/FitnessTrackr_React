@@ -7,6 +7,8 @@ export async function getAllActivities() {
     const activities = response.data;
     return activities;
   } catch (err) {
-    console.err(err);
+    const message = err.response.data;
+    console.log("Error is:", message);
+    return message;
   }
 }

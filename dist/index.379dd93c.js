@@ -25002,11 +25002,23 @@ $RefreshReg$(_c, "Loader");
 },{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"l6gwE":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "setHeaders", ()=>setHeaders
+);
 // Use to re-export api files
 var _routines = require("./routines");
 parcelHelpers.exportAll(_routines, exports);
 var _activities = require("./activities");
 parcelHelpers.exportAll(_activities, exports);
+function setHeaders() {
+    let localToken = localStorage.getItem("token");
+    if (token) return {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+    };
+    else return {
+        "Content-Type": "application/json"
+    };
+}
 
 },{"./routines":"b0BJ3","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./activities":"6DQLS"}],"b0BJ3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -25021,7 +25033,9 @@ async function getAllRoutines() {
         const routines = response.data;
         return routines;
     } catch (err) {
-        console.error(error);
+        const message = err.response.data;
+        console.log("Error is:", message);
+        return message;
     }
 }
 
@@ -26596,7 +26610,9 @@ async function getAllActivities() {
         const activities = response.data;
         return activities;
     } catch (err) {
-        console.err(err);
+        const message = err.response.data;
+        console.log("Error is:", message);
+        return message;
     }
 }
 
