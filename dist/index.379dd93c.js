@@ -22902,8 +22902,7 @@ const App = ()=>{
     // Global state
     const [user, setUser] = _react.useState({
     });
-    const [token, setToken] = _react.useState({
-    });
+    const [token, setToken] = _react.useState("");
     return(/*#__PURE__*/ _jsxRuntime.jsx(UserContext.Provider, {
         value: {
             user,
@@ -23021,7 +23020,7 @@ const App = ()=>{
         })
     }));
 };
-_s(App, "R2fnbGKMmZ91Wq6/YachOjoNdDc=");
+_s(App, "q1tLMdKoDiiVTL//pgiTjwAGYzc=");
 _c = App;
 var _c;
 $RefreshReg$(_c, "App");
@@ -24876,247 +24875,95 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
-const Activities = ()=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-        __source: {
-            fileName: "src/components/Activities.jsx",
-            lineNumber: 3,
-            columnNumber: 5
-        },
-        __self: undefined,
-        children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
-            __source: {
-                fileName: "src/components/Activities.jsx",
-                lineNumber: 4,
-                columnNumber: 7
-            },
-            __self: undefined,
-            children: "Activities"
-        })
-    }));
-};
-_c = Activities;
-exports.default = Activities;
-var _c;
-$RefreshReg$(_c, "Activities");
-
-  $parcel$ReactRefreshHelpers$5193.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"gF4vd":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$8bac = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$8bac.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxRuntime = require("react/jsx-runtime");
-const MyRoutines = ()=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-        __source: {
-            fileName: "src/components/MyRoutines.jsx",
-            lineNumber: 3,
-            columnNumber: 5
-        },
-        __self: undefined,
-        children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
-            __source: {
-                fileName: "src/components/MyRoutines.jsx",
-                lineNumber: 4,
-                columnNumber: 7
-            },
-            __self: undefined,
-            children: "My Routines"
-        })
-    }));
-};
-_c = MyRoutines;
-exports.default = MyRoutines;
-var _c;
-$RefreshReg$(_c, "MyRoutines");
-
-  $parcel$ReactRefreshHelpers$8bac.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"4kpDy":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$0755 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$0755.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _loader = require("./Loader");
 var _loaderDefault = parcelHelpers.interopDefault(_loader);
 var _api = require("../api");
 var _s = $RefreshSig$();
-const Routines = ()=>{
+const Activities = ()=>{
     _s();
     const [isLoading, setIsLoading] = _react.useState(true);
-    const [routines, setRoutines] = _react.useState([]);
+    const [activities, setActivities] = _react.useState([]);
     _react.useEffect(()=>{
-        const fetchRoutines = async ()=>{
-            const allRoutines = await _api.getAllRoutines();
-            setRoutines(allRoutines);
+        const fetchActivities = async ()=>{
+            const allActivities = await _api.getAllActivities();
+            setActivities(allActivities);
         };
-        fetchRoutines().then(()=>setIsLoading(false)
+        fetchActivities().then(()=>setIsLoading(false)
         );
     }, []);
     return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
         __source: {
-            fileName: "src/components/Routines.jsx",
-            lineNumber: 19,
+            fileName: "src/components/Activities.jsx",
+            lineNumber: 18,
             columnNumber: 5
         },
         __self: undefined,
         children: [
             isLoading ? /*#__PURE__*/ _jsxRuntime.jsx(_loaderDefault.default, {
                 __source: {
-                    fileName: "src/components/Routines.jsx",
-                    lineNumber: 20,
+                    fileName: "src/components/Activities.jsx",
+                    lineNumber: 19,
                     columnNumber: 20
                 },
                 __self: undefined
             }) : null,
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
-                    fileName: "src/components/Routines.jsx",
-                    lineNumber: 21,
+                    fileName: "src/components/Activities.jsx",
+                    lineNumber: 20,
                     columnNumber: 7
                 },
                 __self: undefined,
-                children: "All Routines"
+                children: "Activities"
             }),
-            routines.length > 0 ? /*#__PURE__*/ _jsxRuntime.jsx("section", {
+            activities.length > 0 ? /*#__PURE__*/ _jsxRuntime.jsx("section", {
                 __source: {
-                    fileName: "src/components/Routines.jsx",
-                    lineNumber: 23,
+                    fileName: "src/components/Activities.jsx",
+                    lineNumber: 22,
                     columnNumber: 9
                 },
                 __self: undefined,
-                children: routines.map((routine)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                children: activities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
                         __source: {
-                            fileName: "src/components/Routines.jsx",
-                            lineNumber: 25,
+                            fileName: "src/components/Activities.jsx",
+                            lineNumber: 24,
                             columnNumber: 13
                         },
                         __self: undefined,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx("h2", {
                                 __source: {
-                                    fileName: "src/components/Routines.jsx",
+                                    fileName: "src/components/Activities.jsx",
+                                    lineNumber: 25,
+                                    columnNumber: 15
+                                },
+                                __self: undefined,
+                                children: activity.name
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                                __source: {
+                                    fileName: "src/components/Activities.jsx",
                                     lineNumber: 26,
                                     columnNumber: 15
                                 },
                                 __self: undefined,
-                                children: routine.name
-                            }),
-                            /*#__PURE__*/ _jsxRuntime.jsx("h3", {
-                                __source: {
-                                    fileName: "src/components/Routines.jsx",
-                                    lineNumber: 27,
-                                    columnNumber: 15
-                                },
-                                __self: undefined,
-                                children: routine.goal
-                            }),
-                            /*#__PURE__*/ _jsxRuntime.jsxs("p", {
-                                __source: {
-                                    fileName: "src/components/Routines.jsx",
-                                    lineNumber: 28,
-                                    columnNumber: 15
-                                },
-                                __self: undefined,
-                                children: [
-                                    "Created by: ",
-                                    routine.creatorName
-                                ]
-                            }),
-                            /*#__PURE__*/ _jsxRuntime.jsx("h4", {
-                                __source: {
-                                    fileName: "src/components/Routines.jsx",
-                                    lineNumber: 29,
-                                    columnNumber: 15
-                                },
-                                __self: undefined,
-                                children: "Activities"
-                            }),
-                            routine.activities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
-                                    __source: {
-                                        fileName: "src/components/Routines.jsx",
-                                        lineNumber: 31,
-                                        columnNumber: 17
-                                    },
-                                    __self: undefined,
-                                    children: [
-                                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
-                                            __source: {
-                                                fileName: "src/components/Routines.jsx",
-                                                lineNumber: 32,
-                                                columnNumber: 19
-                                            },
-                                            __self: undefined,
-                                            children: /*#__PURE__*/ _jsxRuntime.jsx("strong", {
-                                                __source: {
-                                                    fileName: "src/components/Routines.jsx",
-                                                    lineNumber: 33,
-                                                    columnNumber: 21
-                                                },
-                                                __self: undefined,
-                                                children: activity.name
-                                            })
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsxs("span", {
-                                            __source: {
-                                                fileName: "src/components/Routines.jsx",
-                                                lineNumber: 35,
-                                                columnNumber: 19
-                                            },
-                                            __self: undefined,
-                                            children: [
-                                                "Duration: ",
-                                                activity.duration
-                                            ]
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsxs("span", {
-                                            __source: {
-                                                fileName: "src/components/Routines.jsx",
-                                                lineNumber: 36,
-                                                columnNumber: 19
-                                            },
-                                            __self: undefined,
-                                            children: [
-                                                "Count: ",
-                                                activity.count,
-                                                " minutes"
-                                            ]
-                                        })
-                                    ]
-                                }, activity.id)
-                            )
+                                children: activity.description
+                            })
                         ]
-                    }, routine.id)
+                    }, activity.id)
                 )
             }) : null
         ]
     }));
 };
-_s(Routines, "cTvPQjjuuRvzkCh/PWa+A+hmDB4=");
-_c = Routines;
-exports.default = Routines;
+_s(Activities, "P63vf+G8QeM/1ygqIv2FCwXM/0c=");
+_c = Activities;
+exports.default = Activities;
 var _c;
-$RefreshReg$(_c, "Routines");
+$RefreshReg$(_c, "Activities");
 
-  $parcel$ReactRefreshHelpers$0755.postlude(module);
+  $parcel$ReactRefreshHelpers$5193.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
@@ -25158,8 +25005,10 @@ parcelHelpers.defineInteropFlag(exports);
 // Use to re-export api files
 var _routines = require("./routines");
 parcelHelpers.exportAll(_routines, exports);
+var _activities = require("./activities");
+parcelHelpers.exportAll(_activities, exports);
 
-},{"./routines":"b0BJ3","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"b0BJ3":[function(require,module,exports) {
+},{"./routines":"b0BJ3","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./activities":"6DQLS"}],"b0BJ3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getAllRoutines", ()=>getAllRoutines
@@ -26734,7 +26583,240 @@ module.exports = CancelToken;
     return typeof payload === 'object' && payload.isAxiosError === true;
 };
 
-},{}],"f2gfn":[function(require,module,exports) {
+},{}],"6DQLS":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getAllActivities", ()=>getAllActivities
+);
+const axios = require("axios").default;
+const BASE_URL = "https://fitnesstrackr-rafa.herokuapp.com/api/activities";
+async function getAllActivities() {
+    try {
+        const response = await axios.get(`${BASE_URL}`);
+        const activities = response.data;
+        return activities;
+    } catch (err) {
+        console.err(err);
+    }
+}
+
+},{"axios":"1IeuP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"gF4vd":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$8bac = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$8bac.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxRuntime = require("react/jsx-runtime");
+const MyRoutines = ()=>{
+    return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+        __source: {
+            fileName: "src/components/MyRoutines.jsx",
+            lineNumber: 3,
+            columnNumber: 5
+        },
+        __self: undefined,
+        children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+            __source: {
+                fileName: "src/components/MyRoutines.jsx",
+                lineNumber: 4,
+                columnNumber: 7
+            },
+            __self: undefined,
+            children: "My Routines"
+        })
+    }));
+};
+_c = MyRoutines;
+exports.default = MyRoutines;
+var _c;
+$RefreshReg$(_c, "MyRoutines");
+
+  $parcel$ReactRefreshHelpers$8bac.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"4kpDy":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$0755 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$0755.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _loader = require("./Loader");
+var _loaderDefault = parcelHelpers.interopDefault(_loader);
+var _api = require("../api");
+var _s = $RefreshSig$();
+const Routines = ()=>{
+    _s();
+    const [isLoading, setIsLoading] = _react.useState(true);
+    const [routines, setRoutines] = _react.useState([]);
+    _react.useEffect(()=>{
+        const fetchRoutines = async ()=>{
+            const allRoutines = await _api.getAllRoutines();
+            setRoutines(allRoutines);
+        };
+        fetchRoutines().then(()=>setIsLoading(false)
+        );
+    }, []);
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+        __source: {
+            fileName: "src/components/Routines.jsx",
+            lineNumber: 19,
+            columnNumber: 5
+        },
+        __self: undefined,
+        children: [
+            isLoading ? /*#__PURE__*/ _jsxRuntime.jsx(_loaderDefault.default, {
+                __source: {
+                    fileName: "src/components/Routines.jsx",
+                    lineNumber: 20,
+                    columnNumber: 20
+                },
+                __self: undefined
+            }) : null,
+            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                __source: {
+                    fileName: "src/components/Routines.jsx",
+                    lineNumber: 21,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "All Routines"
+            }),
+            routines.length > 0 ? /*#__PURE__*/ _jsxRuntime.jsx("section", {
+                __source: {
+                    fileName: "src/components/Routines.jsx",
+                    lineNumber: 23,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: routines.map((routine)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                        __source: {
+                            fileName: "src/components/Routines.jsx",
+                            lineNumber: 25,
+                            columnNumber: 13
+                        },
+                        __self: undefined,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx("h2", {
+                                __source: {
+                                    fileName: "src/components/Routines.jsx",
+                                    lineNumber: 26,
+                                    columnNumber: 15
+                                },
+                                __self: undefined,
+                                children: routine.name
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx("h3", {
+                                __source: {
+                                    fileName: "src/components/Routines.jsx",
+                                    lineNumber: 27,
+                                    columnNumber: 15
+                                },
+                                __self: undefined,
+                                children: routine.goal
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsxs("p", {
+                                __source: {
+                                    fileName: "src/components/Routines.jsx",
+                                    lineNumber: 28,
+                                    columnNumber: 15
+                                },
+                                __self: undefined,
+                                children: [
+                                    "Created by: ",
+                                    routine.creatorName
+                                ]
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx("h4", {
+                                __source: {
+                                    fileName: "src/components/Routines.jsx",
+                                    lineNumber: 29,
+                                    columnNumber: 15
+                                },
+                                __self: undefined,
+                                children: "Activities"
+                            }),
+                            routine.activities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                                    __source: {
+                                        fileName: "src/components/Routines.jsx",
+                                        lineNumber: 31,
+                                        columnNumber: 17
+                                    },
+                                    __self: undefined,
+                                    children: [
+                                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                                            __source: {
+                                                fileName: "src/components/Routines.jsx",
+                                                lineNumber: 32,
+                                                columnNumber: 19
+                                            },
+                                            __self: undefined,
+                                            children: /*#__PURE__*/ _jsxRuntime.jsx("strong", {
+                                                __source: {
+                                                    fileName: "src/components/Routines.jsx",
+                                                    lineNumber: 33,
+                                                    columnNumber: 21
+                                                },
+                                                __self: undefined,
+                                                children: activity.name
+                                            })
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsxs("span", {
+                                            __source: {
+                                                fileName: "src/components/Routines.jsx",
+                                                lineNumber: 35,
+                                                columnNumber: 19
+                                            },
+                                            __self: undefined,
+                                            children: [
+                                                "Duration: ",
+                                                activity.duration
+                                            ]
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsxs("span", {
+                                            __source: {
+                                                fileName: "src/components/Routines.jsx",
+                                                lineNumber: 36,
+                                                columnNumber: 19
+                                            },
+                                            __self: undefined,
+                                            children: [
+                                                "Count: ",
+                                                activity.count,
+                                                " minutes"
+                                            ]
+                                        })
+                                    ]
+                                }, activity.id)
+                            )
+                        ]
+                    }, routine.id)
+                )
+            }) : null
+        ]
+    }));
+};
+_s(Routines, "cTvPQjjuuRvzkCh/PWa+A+hmDB4=");
+_c = Routines;
+exports.default = Routines;
+var _c;
+$RefreshReg$(_c, "Routines");
+
+  $parcel$ReactRefreshHelpers$0755.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","./Loader":"etnLa","../api":"l6gwE"}],"f2gfn":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4210 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

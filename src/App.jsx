@@ -20,7 +20,7 @@ export const UserContext = createContext("");
 export const App = () => {
   // Global state
   const [user, setUser] = useState({});
-  const [token, setToken] = useState({});
+  const [token, setToken] = useState("");
 
   return (
     <UserContext.Provider value={{ user, setUser, token, setToken }}>
