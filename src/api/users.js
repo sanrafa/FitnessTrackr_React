@@ -29,9 +29,9 @@ export async function loginUser({ username, password }) {
     const data = response.data;
     return data;
   } catch (err) {
-    const message = err.response.data;
-    console.log("Error is:", message);
-    return message;
+    console.error(err);
+    const error = err.response.data;
+    throw error.message;
   }
 }
 

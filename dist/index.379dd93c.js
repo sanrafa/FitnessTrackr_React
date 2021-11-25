@@ -22798,7 +22798,8 @@ const App = ()=>{
                         __self: undefined,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                                path: "/home",
+                                exact: true,
+                                path: "/",
                                 element: /*#__PURE__*/ _jsxRuntime.jsx(_components.Home, {
                                 }),
                                 __source: {
@@ -24613,7 +24614,7 @@ const Header = ()=>{
                     },
                     __self: undefined,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                        to: "/home",
+                        to: "/",
                         __source: {
                             fileName: "src/components/Header.jsx",
                             lineNumber: 8,
@@ -26656,9 +26657,9 @@ async function loginUser({ username , password  }) {
         const data = response.data;
         return data;
     } catch (err) {
-        const message = err.response.data;
-        console.log("Error is:", message);
-        return message;
+        console.error(err);
+        const error = err.response.data;
+        throw error.message;
     }
 }
 async function getUser() {
@@ -26902,12 +26903,48 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
+var _api = require("../api");
+var _app = require("../App");
+var _s = $RefreshSig$();
 const Login = ()=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+    _s();
+    let navigate = _reactRouterDom.useNavigate();
+    const [username, setUsername] = _react.useState("");
+    const [password, setPassword] = _react.useState("");
+    const [error, setError] = _react.useState("");
+    const { user , token , setUser , setToken  } = _react.useContext(_app.UserContext);
+    _react.useEffect(()=>{
+        if (user && error === null) navigate("/profile");
+    }, [
+        error,
+        user
+    ]);
+    const loginAccount = async ()=>{
+        // THIS NEEDS TO BE EDITED TO ACCOMMODATE LOGIN RESPONSE OBJECT
+        try {
+            const thisUser = await _api.loginUser({
+                username,
+                password
+            });
+            setUser(thisUser);
+            setError(null);
+        } catch (err) {
+            console.error(err);
+            setError(err);
+        } finally{
+            setUsername("");
+            setPassword("");
+        }
+    };
+    const handleSubmit = async ()=>{
+        await loginAccount();
+    };
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/Login.jsx",
-            lineNumber: 5,
+            lineNumber: 42,
             columnNumber: 5
         },
         __self: undefined,
@@ -26915,25 +26952,117 @@ const Login = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 6,
+                    lineNumber: 43,
                     columnNumber: 7
                 },
                 __self: undefined,
-                children: "Login Here"
+                children: "Create a new account"
             }),
             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                 to: "/register",
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 7,
+                    lineNumber: 44,
                     columnNumber: 7
                 },
                 __self: undefined,
-                children: "New User?"
-            })
+                children: "New user?"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                onSubmit: (e)=>{
+                    e.preventDefault();
+                    handleSubmit();
+                },
+                __source: {
+                    fileName: "src/components/Login.jsx",
+                    lineNumber: 45,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/Login.jsx",
+                            lineNumber: 51,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: [
+                            "Username:",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "text",
+                                name: "username",
+                                required: true,
+                                value: username,
+                                onChange: (e)=>{
+                                    setUsername(e.target.value);
+                                },
+                                minLength: "5",
+                                __source: {
+                                    fileName: "src/components/Login.jsx",
+                                    lineNumber: 53,
+                                    columnNumber: 11
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/Login.jsx",
+                            lineNumber: 64,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: [
+                            "Password:",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "password",
+                                name: "password",
+                                required: true,
+                                value: password,
+                                onChange: (e)=>{
+                                    setPassword(e.target.value);
+                                },
+                                minLength: "8",
+                                __source: {
+                                    fileName: "src/components/Login.jsx",
+                                    lineNumber: 66,
+                                    columnNumber: 11
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "submit",
+                        __source: {
+                            fileName: "src/components/Login.jsx",
+                            lineNumber: 78,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: "LOGIN"
+                    })
+                ]
+            }),
+            error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                __source: {
+                    fileName: "src/components/Login.jsx",
+                    lineNumber: 80,
+                    columnNumber: 16
+                },
+                __self: undefined,
+                children: error
+            }) : null
         ]
     }));
 };
+_s(Login, "qAwWyOMR1/Jce2QOnWC0bGWTtfM=", false, function() {
+    return [
+        _reactRouterDom.useNavigate
+    ];
+});
 _c = Login;
 exports.default = Login;
 var _c;
@@ -26944,7 +27073,7 @@ $RefreshReg$(_c, "Login");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP"}],"lPbZt":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP","react":"4mchR","../api":"l6gwE","../App":"lL5iC"}],"lPbZt":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2761 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26967,7 +27096,7 @@ const Register = ()=>{
     const [error, setError] = _react.useState("");
     const { setUser , user  } = _react.useContext(_app.UserContext);
     _react.useEffect(()=>{
-        if (user && error === null) navigate("/profile");
+        if (user && error === null) navigate("/login");
     }, [
         error,
         user

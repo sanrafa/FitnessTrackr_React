@@ -15,7 +15,7 @@ const Register = () => {
 
   useEffect(() => {
     if (user && error === null) {
-      navigate("/profile");
+      navigate("/login");
     }
   }, [error, user]);
 
