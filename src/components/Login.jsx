@@ -5,13 +5,13 @@ import { loginUser, getUser } from "../api";
 import { UserContext } from "../App";
 
 const Login = () => {
+  let { user, setUser, setToken } = useContext(UserContext);
   let navigate = useNavigate();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [saveToken, setSaveToken] = useState(false);
   const [error, setError] = useState("");
-
-  const { user, setUser, setToken } = useContext(UserContext);
 
   useEffect(() => {
     if (user && error === null) {
@@ -27,6 +27,11 @@ const Login = () => {
       const thisUser = await getUser(newToken);
       if (thisUser) setError(null);
       setUser(thisUser);
+      if (saveToken) {
+        localStorage.setItem("token", newToken);
+      } else {
+        sessionStorage.setItem("token", newToken);
+      }
     } catch (err) {
       console.error(err);
       setError(err);
@@ -74,6 +79,16 @@ const Login = () => {
               setPassword(e.target.value);
             }}
             minLength="8"
+          ></input>
+        </label>
+        <label>
+          Remember this browser:
+          <input
+            type="checkbox"
+            value={saveToken}
+            onChange={(e) => {
+              setSaveToken(!saveToken);
+            }}
           ></input>
         </label>
 

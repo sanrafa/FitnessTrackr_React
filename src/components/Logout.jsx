@@ -9,6 +9,8 @@ const Logout = () => {
   useEffect(() => {
     setUser("");
     setToken("");
+    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
   }, []);
 
   return (

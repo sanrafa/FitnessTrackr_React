@@ -22743,6 +22743,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 var _reactRouterDom = require("react-router-dom");
 var _react = require("react");
 // API here
+var _api = require("./api");
 // components here
 var _components = require("./components");
 var _s = $RefreshSig$();
@@ -22753,6 +22754,22 @@ const App = ()=>{
     const [user, setUser] = _react.useState({
     });
     const [token, setToken] = _react.useState("");
+    _react.useEffect(()=>{
+        async function recognizeUser() {
+            if (localStorage.getItem("token")) {
+                const myJWT = localStorage.getItem("token");
+                setToken(myJWT);
+                const me = await _api.getUser(myJWT);
+                setUser(me);
+            } else if (sessionStorage.getItem("token")) {
+                const myJWT = sessionStorage.getItem("token");
+                setToken(myJWT);
+                const me = await _api.getUser(myJWT);
+                setUser(me);
+            }
+        }
+        recognizeUser();
+    }, []);
     return(/*#__PURE__*/ _jsxRuntime.jsx(UserContext.Provider, {
         value: {
             user,
@@ -22762,21 +22779,21 @@ const App = ()=>{
         },
         __source: {
             fileName: "src/App.jsx",
-            lineNumber: 28,
+            lineNumber: 47,
             columnNumber: 5
         },
         __self: undefined,
         children: /*#__PURE__*/ _jsxRuntime.jsx(_react.Fragment, {
             __source: {
                 fileName: "src/App.jsx",
-                lineNumber: 29,
+                lineNumber: 48,
                 columnNumber: 7
             },
             __self: undefined,
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
                 __source: {
                     fileName: "src/App.jsx",
-                    lineNumber: 30,
+                    lineNumber: 49,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -22784,7 +22801,7 @@ const App = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx(_components.Header, {
                         __source: {
                             fileName: "src/App.jsx",
-                            lineNumber: 31,
+                            lineNumber: 50,
                             columnNumber: 11
                         },
                         __self: undefined
@@ -22792,7 +22809,7 @@ const App = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Routes, {
                         __source: {
                             fileName: "src/App.jsx",
-                            lineNumber: 32,
+                            lineNumber: 51,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -22804,7 +22821,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 33,
+                                    lineNumber: 52,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22815,7 +22832,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 34,
+                                    lineNumber: 53,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22826,7 +22843,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 35,
+                                    lineNumber: 54,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22837,7 +22854,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 36,
+                                    lineNumber: 55,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22848,7 +22865,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 37,
+                                    lineNumber: 56,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22859,7 +22876,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 38,
+                                    lineNumber: 57,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22870,7 +22887,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 39,
+                                    lineNumber: 58,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22882,7 +22899,7 @@ const App = ()=>{
         })
     }));
 };
-_s(App, "q1tLMdKoDiiVTL//pgiTjwAGYzc=");
+_s(App, "ZbSdN2JUe2f48hNdQ/AU0GQ2F5o=");
 _c = App;
 var _c;
 $RefreshReg$(_c, "App");
@@ -22892,7 +22909,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react-router-dom":"16kZP","react":"4mchR","./components":"iKUBW","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"16kZP":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react-router-dom":"16kZP","react":"4mchR","./components":"iKUBW","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","./api":"l6gwE"}],"16kZP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MemoryRouter", ()=>_reactRouter.MemoryRouter
@@ -26957,11 +26974,12 @@ var _app = require("../App");
 var _s = $RefreshSig$();
 const Login = ()=>{
     _s();
+    let { user , setUser , setToken  } = _react.useContext(_app.UserContext);
     let navigate = _reactRouterDom.useNavigate();
     const [username, setUsername] = _react.useState("");
     const [password, setPassword] = _react.useState("");
+    const [saveToken, setSaveToken] = _react.useState(false);
     const [error, setError] = _react.useState("");
-    const { user , setUser , setToken  } = _react.useContext(_app.UserContext);
     _react.useEffect(()=>{
         if (user && error === null) navigate("/profile");
     }, [
@@ -26979,6 +26997,8 @@ const Login = ()=>{
             const thisUser = await _api.getUser(newToken);
             if (thisUser) setError(null);
             setUser(thisUser);
+            if (saveToken) localStorage.setItem("token", newToken);
+            else sessionStorage.setItem("token", newToken);
         } catch (err) {
             console.error(err);
             setError(err);
@@ -26993,7 +27013,7 @@ const Login = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/Login.jsx",
-            lineNumber: 44,
+            lineNumber: 49,
             columnNumber: 5
         },
         __self: undefined,
@@ -27001,7 +27021,7 @@ const Login = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 45,
+                    lineNumber: 50,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27011,7 +27031,7 @@ const Login = ()=>{
                 to: "/register",
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 46,
+                    lineNumber: 51,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27024,7 +27044,7 @@ const Login = ()=>{
                 },
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 47,
+                    lineNumber: 52,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27032,7 +27052,7 @@ const Login = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 53,
+                            lineNumber: 58,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27049,7 +27069,7 @@ const Login = ()=>{
                                 minLength: "5",
                                 __source: {
                                     fileName: "src/components/Login.jsx",
-                                    lineNumber: 55,
+                                    lineNumber: 60,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -27059,7 +27079,7 @@ const Login = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 66,
+                            lineNumber: 71,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27076,7 +27096,31 @@ const Login = ()=>{
                                 minLength: "8",
                                 __source: {
                                     fileName: "src/components/Login.jsx",
-                                    lineNumber: 68,
+                                    lineNumber: 73,
+                                    columnNumber: 11
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/Login.jsx",
+                            lineNumber: 84,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: [
+                            "Remember this browser:",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "checkbox",
+                                value: saveToken,
+                                onChange: (e)=>{
+                                    setSaveToken(!saveToken);
+                                },
+                                __source: {
+                                    fileName: "src/components/Login.jsx",
+                                    lineNumber: 86,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -27087,7 +27131,7 @@ const Login = ()=>{
                         type: "submit",
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 80,
+                            lineNumber: 95,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27098,7 +27142,7 @@ const Login = ()=>{
             error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 82,
+                    lineNumber: 97,
                     columnNumber: 16
                 },
                 __self: undefined,
@@ -27107,7 +27151,7 @@ const Login = ()=>{
         ]
     }));
 };
-_s(Login, "JyaxvweUuHYIvhA9VJ9o2Zomruk=", false, function() {
+_s(Login, "Koplvz7D24yY3K55EotYwI4Ijs0=", false, function() {
     return [
         _reactRouterDom.useNavigate
     ];
@@ -27328,11 +27372,13 @@ const Logout = ()=>{
     _react.useEffect(()=>{
         setUser("");
         setToken("");
+        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
     }, []);
     return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
         __source: {
             fileName: "src/components/Logout.jsx",
-            lineNumber: 15,
+            lineNumber: 17,
             columnNumber: 5
         },
         __self: undefined,
@@ -27340,7 +27386,7 @@ const Logout = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/Logout.jsx",
-                    lineNumber: 16,
+                    lineNumber: 18,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27350,7 +27396,7 @@ const Logout = ()=>{
                 to: "/",
                 __source: {
                     fileName: "src/components/Logout.jsx",
-                    lineNumber: 17,
+                    lineNumber: 19,
                     columnNumber: 7
                 },
                 __self: undefined,

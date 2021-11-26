@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState, useEffect, createContext, Fragment } from "react";
 
 // API here
+import { getUser } from "./api";
 
 // components here
 import {
@@ -23,6 +24,24 @@ export const App = () => {
   // Global state
   const [user, setUser] = useState({});
   const [token, setToken] = useState("");
+
+  useEffect(() => {
+    async function recognizeUser() {
+      if (localStorage.getItem("token")) {
+        const myJWT = localStorage.getItem("token");
+        setToken(myJWT);
+        const me = await getUser(myJWT);
+        setUser(me);
+      } else if (sessionStorage.getItem("token")) {
+        const myJWT = sessionStorage.getItem("token");
+        setToken(myJWT);
+        const me = await getUser(myJWT);
+        setUser(me);
+      }
+    }
+
+    recognizeUser();
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, setUser, token, setToken }}>
