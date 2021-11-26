@@ -25,9 +25,11 @@ const Header = () => {
         <li>
           <Link to="/routines">Routines</Link>
         </li>
-        <li>
-          <Link to="/profile">My Routines</Link>
-        </li>
+        {isLoggedIn ? (
+          <li>
+            <Link to="/profile">My Routines</Link>
+          </li>
+        ) : null}
         <li>
           <Link to="/activities">Activities</Link>
         </li>
@@ -41,6 +43,11 @@ const Header = () => {
           </li>
         )}
       </ul>
+      {isLoggedIn ? (
+        <p>
+          Hello, <Link to="/profile">{user.username}</Link>
+        </p>
+      ) : null}
     </nav>
   );
 };

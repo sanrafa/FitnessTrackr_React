@@ -1,34 +1,33 @@
-import { useEffect, useState } from "react";
-import Loader from "./Loader";
+import { useEffect, useState, Fragment } from "react";
+import { Routes, Route } from "react-router";
 
 import { getAllActivities } from "../api";
 
-const Activities = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [activities, setActivities] = useState([]);
+//COMPONENTS
+import ActivitiesAll from "./ActivitiesAll";
+import ActivitiesNew from "./ActivitiesNew";
+import ActivitySingleView from "./ActivitySingleView";
 
-  useEffect(() => {
-    const fetchActivities = async () => {
-      const allActivities = await getAllActivities();
-      setActivities(allActivities);
-    };
-    fetchActivities().then(() => setIsLoading(false));
-  }, []);
+/* 
+* TODO:
+* Turn this into main activity route page,
+* split page functions into separate components.
+* Nest each option in routes, i.e.:
+    - activities/    (index, all activities)
+    - activities/new (new activity form)
+    - activities/:id (single activity view)
+      - activities/:id/edit (edit an activity)
+*/
+
+const Activities = () => {
   return (
-    <div>
-      {isLoading ? <Loader /> : null}
-      <h1>Activities</h1>
-      {activities.length > 0 ? (
-        <section>
-          {activities.map((activity) => (
-            <div key={activity.id}>
-              <h2>{activity.name}</h2>
-              <p>{activity.description}</p>
-            </div>
-          ))}
-        </section>
-      ) : null}
-    </div>
+    <Fragment>
+      <Routes>
+        <Route path="/" element={<ActivitiesAll />} />
+        <Route path="/new" element={<ActivitiesNew />} />
+        <Route path="/:activityId" element={<ActivitySingleView />} />
+      </Routes>
+    </Fragment>
   );
 };
 

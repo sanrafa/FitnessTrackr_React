@@ -54,7 +54,7 @@ export const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/routines" element={<Routines />} />
-            <Route path="/activities" element={<Activities />} />
+            <Route path="/activities/*" element={<Activities />} />
             <Route path="/profile" element={<MyRoutines />} />
           </Routes>
         </Router>
