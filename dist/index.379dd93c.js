@@ -26974,7 +26974,7 @@ var _app = require("../App");
 var _s = $RefreshSig$();
 const Login = ()=>{
     _s();
-    let { user , setUser , setToken  } = _react.useContext(_app.UserContext);
+    let { user , setUser , setToken , token  } = _react.useContext(_app.UserContext);
     let navigate = _reactRouterDom.useNavigate();
     const [username, setUsername] = _react.useState("");
     const [password, setPassword] = _react.useState("");
@@ -27005,18 +27005,19 @@ const Login = ()=>{
         } catch (err) {
             console.error(err);
             setError(err);
-        } finally{
-            setUsername("");
-            setPassword("");
         }
     };
     const handleSubmit = async ()=>{
         await loginAccount();
+        if (user && token) {
+            setUsername("");
+            setPassword("");
+        }
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/Login.jsx",
-            lineNumber: 51,
+            lineNumber: 52,
             columnNumber: 5
         },
         __self: undefined,
@@ -27024,7 +27025,7 @@ const Login = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 52,
+                    lineNumber: 53,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27034,7 +27035,7 @@ const Login = ()=>{
                 to: "/register",
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 53,
+                    lineNumber: 54,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27047,7 +27048,7 @@ const Login = ()=>{
                 },
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 54,
+                    lineNumber: 55,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27055,7 +27056,7 @@ const Login = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 60,
+                            lineNumber: 61,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27072,7 +27073,7 @@ const Login = ()=>{
                                 minLength: "5",
                                 __source: {
                                     fileName: "src/components/Login.jsx",
-                                    lineNumber: 62,
+                                    lineNumber: 63,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -27082,7 +27083,7 @@ const Login = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 73,
+                            lineNumber: 74,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27099,7 +27100,7 @@ const Login = ()=>{
                                 minLength: "8",
                                 __source: {
                                     fileName: "src/components/Login.jsx",
-                                    lineNumber: 75,
+                                    lineNumber: 76,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -27109,7 +27110,7 @@ const Login = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 86,
+                            lineNumber: 87,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27123,7 +27124,7 @@ const Login = ()=>{
                                 },
                                 __source: {
                                     fileName: "src/components/Login.jsx",
-                                    lineNumber: 88,
+                                    lineNumber: 89,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -27134,7 +27135,7 @@ const Login = ()=>{
                         type: "submit",
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 97,
+                            lineNumber: 98,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27145,7 +27146,7 @@ const Login = ()=>{
             error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 99,
+                    lineNumber: 100,
                     columnNumber: 16
                 },
                 __self: undefined,
@@ -27154,7 +27155,7 @@ const Login = ()=>{
         ]
     }));
 };
-_s(Login, "Koplvz7D24yY3K55EotYwI4Ijs0=", false, function() {
+_s(Login, "YNDOw3FMEIlmdXsQOtypz4m+xXs=", false, function() {
     return [
         _reactRouterDom.useNavigate
     ];

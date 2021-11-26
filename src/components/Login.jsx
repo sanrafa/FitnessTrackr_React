@@ -5,7 +5,7 @@ import { loginUser, getUser } from "../api";
 import { UserContext } from "../App";
 
 const Login = () => {
-  let { user, setUser, setToken } = useContext(UserContext);
+  let { user, setUser, setToken, token } = useContext(UserContext);
   let navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -37,14 +37,15 @@ const Login = () => {
     } catch (err) {
       console.error(err);
       setError(err);
-    } finally {
-      setUsername("");
-      setPassword("");
     }
   };
 
   const handleSubmit = async () => {
     await loginAccount();
+    if (user && token) {
+      setUsername("");
+      setPassword("");
+    }
   };
 
   return (
