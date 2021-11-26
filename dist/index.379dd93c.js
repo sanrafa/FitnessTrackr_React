@@ -25015,10 +25015,11 @@ var _activities = require("./activities");
 parcelHelpers.exportAll(_activities, exports);
 var _users = require("./users");
 parcelHelpers.exportAll(_users, exports);
-function setHeaders() {
-    let localToken = localStorage.getItem("token");
-    let sessionToken = sessionStorage.getItem("token");
-    if (localToken || sessionToken) ;
+function setHeaders(token) {
+    if (token) return {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+    };
     else return {
         "Content-Type": "application/json"
     };
@@ -26662,9 +26663,9 @@ async function loginUser({ username , password  }) {
         throw error.message;
     }
 }
-async function getUser() {
+async function getUser(token) {
     try {
-        let headers = _.setHeaders();
+        let headers = _.setHeaders(token);
         const response = await axios.get(`${BASE_URL}/me`, {
             headers: headers
         });
@@ -26922,12 +26923,14 @@ const Login = ()=>{
         user
     ]);
     const loginAccount = async ()=>{
-        // THIS NEEDS TO BE EDITED TO ACCOMMODATE LOGIN RESPONSE OBJECT
         try {
-            const thisUser = await _api.loginUser({
+            const login = await _api.loginUser({
                 username,
                 password
-            });
+            }); // returns {message, token}
+            const newToken = login.token;
+            setToken(newToken);
+            const thisUser = await _api.getUser(newToken);
             setUser(thisUser);
             setError(null);
         } catch (err) {
@@ -26944,7 +26947,7 @@ const Login = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/Login.jsx",
-            lineNumber: 42,
+            lineNumber: 44,
             columnNumber: 5
         },
         __self: undefined,
@@ -26952,7 +26955,7 @@ const Login = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 43,
+                    lineNumber: 45,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -26962,7 +26965,7 @@ const Login = ()=>{
                 to: "/register",
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 44,
+                    lineNumber: 46,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -26975,7 +26978,7 @@ const Login = ()=>{
                 },
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 45,
+                    lineNumber: 47,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -26983,7 +26986,7 @@ const Login = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 51,
+                            lineNumber: 53,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27000,7 +27003,7 @@ const Login = ()=>{
                                 minLength: "5",
                                 __source: {
                                     fileName: "src/components/Login.jsx",
-                                    lineNumber: 53,
+                                    lineNumber: 55,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -27010,7 +27013,7 @@ const Login = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 64,
+                            lineNumber: 66,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27027,7 +27030,7 @@ const Login = ()=>{
                                 minLength: "8",
                                 __source: {
                                     fileName: "src/components/Login.jsx",
-                                    lineNumber: 66,
+                                    lineNumber: 68,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -27038,7 +27041,7 @@ const Login = ()=>{
                         type: "submit",
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 78,
+                            lineNumber: 80,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27049,7 +27052,7 @@ const Login = ()=>{
             error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 80,
+                    lineNumber: 82,
                     columnNumber: 16
                 },
                 __self: undefined,

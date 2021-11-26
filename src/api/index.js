@@ -1,16 +1,9 @@
-export function setHeaders() {
-  let localToken = localStorage.getItem("token");
-  let sessionToken = sessionStorage.getItem("token");
-  if (localToken || sessionToken) {
-    localToken
-      ? `{
-          "Content-Type": "application/json",
-          Authorization: Bearer ${localToken},
-        }`
-      : `{
-          "Content-Type": "application/json",
-          Authorization: Bearer ${sessionToken},
-        }`;
+export function setHeaders(token) {
+  if (token) {
+    return {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
   } else {
     return {
       "Content-Type": "application/json",

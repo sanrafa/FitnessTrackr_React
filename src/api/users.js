@@ -35,9 +35,9 @@ export async function loginUser({ username, password }) {
   }
 }
 
-export async function getUser() {
+export async function getUser(token) {
   try {
-    let headers = setHeaders();
+    let headers = setHeaders(token);
     const response = await axios.get(`${BASE_URL}/me`, {
       headers: headers,
     });

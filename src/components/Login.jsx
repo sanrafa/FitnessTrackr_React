@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { loginUser } from "../api";
+import { loginUser, getUser } from "../api";
 import { UserContext } from "../App";
 
 const Login = () => {
@@ -20,9 +20,11 @@ const Login = () => {
   }, [error, user]);
 
   const loginAccount = async () => {
-    // THIS NEEDS TO BE EDITED TO ACCOMMODATE LOGIN RESPONSE OBJECT
     try {
-      const thisUser = await loginUser({ username, password });
+      const login = await loginUser({ username, password }); // returns {message, token}
+      const newToken = login.token;
+      setToken(newToken);
+      const thisUser = await getUser(newToken);
       setUser(thisUser);
       setError(null);
     } catch (err) {
