@@ -11,7 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const { user, token, setUser, setToken } = useContext(UserContext);
+  const { user, setUser, setToken } = useContext(UserContext);
 
   useEffect(() => {
     if (user && error === null) {
@@ -25,8 +25,8 @@ const Login = () => {
       const newToken = login.token;
       setToken(newToken);
       const thisUser = await getUser(newToken);
+      if (thisUser) setError(null);
       setUser(thisUser);
-      setError(null);
     } catch (err) {
       console.error(err);
       setError(err);
@@ -42,7 +42,7 @@ const Login = () => {
 
   return (
     <main>
-      <h1>Create a new account</h1>
+      <h1>Login</h1>
       <Link to="/register">New user?</Link>
       <form
         onSubmit={(e) => {

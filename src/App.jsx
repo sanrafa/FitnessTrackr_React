@@ -13,6 +13,7 @@ import {
   Routines,
   Activities,
   MyRoutines,
+  Logout,
 } from "./components";
 
 // Global context
@@ -32,6 +33,7 @@ export const App = () => {
             <Route exact path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/routines" element={<Routines />} />
             <Route path="/activities" element={<Activities />} />
             <Route path="/profile" element={<MyRoutines />} />

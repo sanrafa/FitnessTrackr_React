@@ -22762,21 +22762,21 @@ const App = ()=>{
         },
         __source: {
             fileName: "src/App.jsx",
-            lineNumber: 27,
+            lineNumber: 28,
             columnNumber: 5
         },
         __self: undefined,
         children: /*#__PURE__*/ _jsxRuntime.jsx(_react.Fragment, {
             __source: {
                 fileName: "src/App.jsx",
-                lineNumber: 28,
+                lineNumber: 29,
                 columnNumber: 7
             },
             __self: undefined,
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
                 __source: {
                     fileName: "src/App.jsx",
-                    lineNumber: 29,
+                    lineNumber: 30,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -22784,7 +22784,7 @@ const App = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx(_components.Header, {
                         __source: {
                             fileName: "src/App.jsx",
-                            lineNumber: 30,
+                            lineNumber: 31,
                             columnNumber: 11
                         },
                         __self: undefined
@@ -22792,7 +22792,7 @@ const App = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Routes, {
                         __source: {
                             fileName: "src/App.jsx",
-                            lineNumber: 31,
+                            lineNumber: 32,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -22804,7 +22804,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 32,
+                                    lineNumber: 33,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22815,7 +22815,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 33,
+                                    lineNumber: 34,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22826,7 +22826,18 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 34,
+                                    lineNumber: 35,
+                                    columnNumber: 13
+                                },
+                                __self: undefined
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                                path: "/logout",
+                                element: /*#__PURE__*/ _jsxRuntime.jsx(_components.Logout, {
+                                }),
+                                __source: {
+                                    fileName: "src/App.jsx",
+                                    lineNumber: 36,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22837,7 +22848,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 35,
+                                    lineNumber: 37,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22848,7 +22859,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 36,
+                                    lineNumber: 38,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22859,7 +22870,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 37,
+                                    lineNumber: 39,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -24564,6 +24575,8 @@ parcelHelpers.export(exports, "Login", ()=>_loginDefault.default
 );
 parcelHelpers.export(exports, "Register", ()=>_registerDefault.default
 );
+parcelHelpers.export(exports, "Logout", ()=>_logoutDefault.default
+);
 var _header = require("./Header");
 var _headerDefault = parcelHelpers.interopDefault(_header);
 var _home = require("./Home");
@@ -24578,8 +24591,10 @@ var _login = require("./Login");
 var _loginDefault = parcelHelpers.interopDefault(_login);
 var _register = require("./Register");
 var _registerDefault = parcelHelpers.interopDefault(_register);
+var _logout = require("./Logout");
+var _logoutDefault = parcelHelpers.interopDefault(_logout);
 
-},{"./Header":"a7Do7","./Home":"1tdUA","./Activities":"imhX8","./MyRoutines":"gF4vd","./Routines":"4kpDy","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./Login":"2yGwA","./Register":"lPbZt"}],"a7Do7":[function(require,module,exports) {
+},{"./Header":"a7Do7","./Home":"1tdUA","./Activities":"imhX8","./MyRoutines":"gF4vd","./Routines":"4kpDy","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./Login":"2yGwA","./Register":"lPbZt","./Logout":"fhizP"}],"a7Do7":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$d49a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -24589,19 +24604,32 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
+var _app = require("../App");
+var _s = $RefreshSig$();
 const Header = ()=>{
+    _s();
+    const { user , token  } = _react.useContext(_app.UserContext);
+    const [isLoggedIn, setIsLoggedIn] = _react.useState(false);
+    _react.useEffect(()=>{
+        if (user && token) setIsLoggedIn(true);
+        else setIsLoggedIn(false);
+    }, [
+        user,
+        token
+    ]);
     return(/*#__PURE__*/ _jsxRuntime.jsx("nav", {
         __source: {
             fileName: "src/components/Header.jsx",
-            lineNumber: 5,
+            lineNumber: 20,
             columnNumber: 5
         },
         __self: undefined,
         children: /*#__PURE__*/ _jsxRuntime.jsxs("ul", {
             __source: {
                 fileName: "src/components/Header.jsx",
-                lineNumber: 6,
+                lineNumber: 21,
                 columnNumber: 7
             },
             __self: undefined,
@@ -24609,7 +24637,7 @@ const Header = ()=>{
                 /*#__PURE__*/ _jsxRuntime.jsx("li", {
                     __source: {
                         fileName: "src/components/Header.jsx",
-                        lineNumber: 7,
+                        lineNumber: 22,
                         columnNumber: 9
                     },
                     __self: undefined,
@@ -24617,7 +24645,7 @@ const Header = ()=>{
                         to: "/",
                         __source: {
                             fileName: "src/components/Header.jsx",
-                            lineNumber: 8,
+                            lineNumber: 23,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -24627,7 +24655,7 @@ const Header = ()=>{
                 /*#__PURE__*/ _jsxRuntime.jsx("li", {
                     __source: {
                         fileName: "src/components/Header.jsx",
-                        lineNumber: 10,
+                        lineNumber: 25,
                         columnNumber: 9
                     },
                     __self: undefined,
@@ -24635,7 +24663,7 @@ const Header = ()=>{
                         to: "/routines",
                         __source: {
                             fileName: "src/components/Header.jsx",
-                            lineNumber: 11,
+                            lineNumber: 26,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -24645,7 +24673,7 @@ const Header = ()=>{
                 /*#__PURE__*/ _jsxRuntime.jsx("li", {
                     __source: {
                         fileName: "src/components/Header.jsx",
-                        lineNumber: 13,
+                        lineNumber: 28,
                         columnNumber: 9
                     },
                     __self: undefined,
@@ -24653,7 +24681,7 @@ const Header = ()=>{
                         to: "/profile",
                         __source: {
                             fileName: "src/components/Header.jsx",
-                            lineNumber: 14,
+                            lineNumber: 29,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -24663,7 +24691,7 @@ const Header = ()=>{
                 /*#__PURE__*/ _jsxRuntime.jsx("li", {
                     __source: {
                         fileName: "src/components/Header.jsx",
-                        lineNumber: 16,
+                        lineNumber: 31,
                         columnNumber: 9
                     },
                     __self: undefined,
@@ -24671,26 +24699,43 @@ const Header = ()=>{
                         to: "/activities",
                         __source: {
                             fileName: "src/components/Header.jsx",
-                            lineNumber: 17,
+                            lineNumber: 32,
                             columnNumber: 11
                         },
                         __self: undefined,
                         children: "Activities"
                     })
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsx("li", {
+                isLoggedIn ? /*#__PURE__*/ _jsxRuntime.jsx("li", {
                     __source: {
                         fileName: "src/components/Header.jsx",
-                        lineNumber: 19,
-                        columnNumber: 9
+                        lineNumber: 35,
+                        columnNumber: 11
+                    },
+                    __self: undefined,
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: "/logout",
+                        __source: {
+                            fileName: "src/components/Header.jsx",
+                            lineNumber: 36,
+                            columnNumber: 13
+                        },
+                        __self: undefined,
+                        children: "Logout"
+                    })
+                }) : /*#__PURE__*/ _jsxRuntime.jsx("li", {
+                    __source: {
+                        fileName: "src/components/Header.jsx",
+                        lineNumber: 39,
+                        columnNumber: 11
                     },
                     __self: undefined,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                         to: "/register",
                         __source: {
                             fileName: "src/components/Header.jsx",
-                            lineNumber: 20,
-                            columnNumber: 11
+                            lineNumber: 40,
+                            columnNumber: 13
                         },
                         __self: undefined,
                         children: "Register"
@@ -24700,6 +24745,7 @@ const Header = ()=>{
         })
     }));
 };
+_s(Header, "TqDxn4xIK2Pqp7VVaIteIG8MBac=");
 _c = Header;
 exports.default = Header;
 var _c;
@@ -24710,7 +24756,7 @@ $RefreshReg$(_c, "Header");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react-router-dom":"16kZP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"9pz13":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react-router-dom":"16kZP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","../App":"lL5iC"}],"9pz13":[function(require,module,exports) {
 "use strict";
 var Refresh = require('react-refresh/runtime');
 function debounce(func, delay) {
@@ -26915,7 +26961,7 @@ const Login = ()=>{
     const [username, setUsername] = _react.useState("");
     const [password, setPassword] = _react.useState("");
     const [error, setError] = _react.useState("");
-    const { user , token , setUser , setToken  } = _react.useContext(_app.UserContext);
+    const { user , setUser , setToken  } = _react.useContext(_app.UserContext);
     _react.useEffect(()=>{
         if (user && error === null) navigate("/profile");
     }, [
@@ -26931,8 +26977,8 @@ const Login = ()=>{
             const newToken = login.token;
             setToken(newToken);
             const thisUser = await _api.getUser(newToken);
+            if (thisUser) setError(null);
             setUser(thisUser);
-            setError(null);
         } catch (err) {
             console.error(err);
             setError(err);
@@ -26959,7 +27005,7 @@ const Login = ()=>{
                     columnNumber: 7
                 },
                 __self: undefined,
-                children: "Create a new account"
+                children: "Login"
             }),
             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                 to: "/register",
@@ -27061,7 +27107,7 @@ const Login = ()=>{
         ]
     }));
 };
-_s(Login, "qAwWyOMR1/Jce2QOnWC0bGWTtfM=", false, function() {
+_s(Login, "JyaxvweUuHYIvhA9VJ9o2Zomruk=", false, function() {
     return [
         _reactRouterDom.useNavigate
     ];
@@ -27262,6 +27308,68 @@ $RefreshReg$(_c, "Register");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP","react":"4mchR","../api":"l6gwE","../App":"lL5iC"}]},["emU3S","lBB98","hD4hw"], "hD4hw", "parcelRequirecf92")
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP","react":"4mchR","../api":"l6gwE","../App":"lL5iC"}],"fhizP":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$b749 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$b749.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactRouterDom = require("react-router-dom");
+var _app = require("../App");
+var _s = $RefreshSig$();
+const Logout = ()=>{
+    _s();
+    const { setUser , setToken  } = _react.useContext(_app.UserContext);
+    _react.useEffect(()=>{
+        setUser("");
+        setToken("");
+    }, []);
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+        __source: {
+            fileName: "src/components/Logout.jsx",
+            lineNumber: 15,
+            columnNumber: 5
+        },
+        __self: undefined,
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                __source: {
+                    fileName: "src/components/Logout.jsx",
+                    lineNumber: 16,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "You are now logged out"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                to: "/",
+                __source: {
+                    fileName: "src/components/Logout.jsx",
+                    lineNumber: 17,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "Return Home"
+            })
+        ]
+    }));
+};
+_s(Logout, "98p5nw2Udfjt/iW4UH0dZSac+Ko=");
+_c = Logout;
+exports.default = Logout;
+var _c;
+$RefreshReg$(_c, "Logout");
+
+  $parcel$ReactRefreshHelpers$b749.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../App":"lL5iC"}]},["emU3S","lBB98","hD4hw"], "hD4hw", "parcelRequirecf92")
 
 //# sourceMappingURL=index.379dd93c.js.map
