@@ -15,8 +15,10 @@ const Login = () => {
 
   useEffect(() => {
     if (user && error === null) {
-      navigate("/profile");
-    }
+      setTimeout(() => {
+        navigate("/profile");
+      }, 100);
+    } // prevent memory leak when setting user?
   }, [error, user]);
 
   const loginAccount = async () => {

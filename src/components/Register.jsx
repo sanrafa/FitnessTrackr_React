@@ -15,8 +15,10 @@ const Register = () => {
 
   useEffect(() => {
     if (user && error === null) {
-      navigate("/login");
-    }
+      setTimeout(() => {
+        navigate("/login");
+      }, 100);
+    } // prevent memory leak?
   }, [error, user]);
 
   const createAccount = async () => {

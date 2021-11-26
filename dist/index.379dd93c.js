@@ -26981,7 +26981,10 @@ const Login = ()=>{
     const [saveToken, setSaveToken] = _react.useState(false);
     const [error, setError] = _react.useState("");
     _react.useEffect(()=>{
-        if (user && error === null) navigate("/profile");
+        if (user && error === null) setTimeout(()=>{
+            navigate("/profile");
+        }, 100);
+         // prevent memory leak when setting user?
     }, [
         error,
         user
@@ -27013,7 +27016,7 @@ const Login = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/Login.jsx",
-            lineNumber: 49,
+            lineNumber: 51,
             columnNumber: 5
         },
         __self: undefined,
@@ -27021,7 +27024,7 @@ const Login = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 50,
+                    lineNumber: 52,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27031,7 +27034,7 @@ const Login = ()=>{
                 to: "/register",
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 51,
+                    lineNumber: 53,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27044,7 +27047,7 @@ const Login = ()=>{
                 },
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 52,
+                    lineNumber: 54,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27052,7 +27055,7 @@ const Login = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 58,
+                            lineNumber: 60,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27069,7 +27072,7 @@ const Login = ()=>{
                                 minLength: "5",
                                 __source: {
                                     fileName: "src/components/Login.jsx",
-                                    lineNumber: 60,
+                                    lineNumber: 62,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -27079,7 +27082,7 @@ const Login = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 71,
+                            lineNumber: 73,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27096,7 +27099,7 @@ const Login = ()=>{
                                 minLength: "8",
                                 __source: {
                                     fileName: "src/components/Login.jsx",
-                                    lineNumber: 73,
+                                    lineNumber: 75,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -27106,7 +27109,7 @@ const Login = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 84,
+                            lineNumber: 86,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27120,7 +27123,7 @@ const Login = ()=>{
                                 },
                                 __source: {
                                     fileName: "src/components/Login.jsx",
-                                    lineNumber: 86,
+                                    lineNumber: 88,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -27131,7 +27134,7 @@ const Login = ()=>{
                         type: "submit",
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 95,
+                            lineNumber: 97,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27142,7 +27145,7 @@ const Login = ()=>{
             error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 97,
+                    lineNumber: 99,
                     columnNumber: 16
                 },
                 __self: undefined,
@@ -27189,7 +27192,10 @@ const Register = ()=>{
     const [error, setError] = _react.useState("");
     const { setUser , user  } = _react.useContext(_app.UserContext);
     _react.useEffect(()=>{
-        if (user && error === null) navigate("/login");
+        if (user && error === null) setTimeout(()=>{
+            navigate("/login");
+        }, 100);
+         // prevent memory leak?
     }, [
         error,
         user
@@ -27223,7 +27229,7 @@ const Register = ()=>{
       */ /*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/Register.jsx",
-            lineNumber: 49,
+            lineNumber: 51,
             columnNumber: 5
         },
         __self: undefined,
@@ -27231,7 +27237,7 @@ const Register = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/Register.jsx",
-                    lineNumber: 50,
+                    lineNumber: 52,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27241,7 +27247,7 @@ const Register = ()=>{
                 to: "/login",
                 __source: {
                     fileName: "src/components/Register.jsx",
-                    lineNumber: 51,
+                    lineNumber: 53,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27254,7 +27260,7 @@ const Register = ()=>{
                 },
                 __source: {
                     fileName: "src/components/Register.jsx",
-                    lineNumber: 52,
+                    lineNumber: 54,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27262,7 +27268,7 @@ const Register = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/Register.jsx",
-                            lineNumber: 58,
+                            lineNumber: 60,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27279,7 +27285,7 @@ const Register = ()=>{
                                 minLength: "5",
                                 __source: {
                                     fileName: "src/components/Register.jsx",
-                                    lineNumber: 60,
+                                    lineNumber: 62,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -27289,7 +27295,7 @@ const Register = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/Register.jsx",
-                            lineNumber: 71,
+                            lineNumber: 73,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27306,7 +27312,7 @@ const Register = ()=>{
                                 minLength: "8",
                                 __source: {
                                     fileName: "src/components/Register.jsx",
-                                    lineNumber: 73,
+                                    lineNumber: 75,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -27317,7 +27323,7 @@ const Register = ()=>{
                         type: "submit",
                         __source: {
                             fileName: "src/components/Register.jsx",
-                            lineNumber: 85,
+                            lineNumber: 87,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -27328,7 +27334,7 @@ const Register = ()=>{
             error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/Register.jsx",
-                    lineNumber: 87,
+                    lineNumber: 89,
                     columnNumber: 16
                 },
                 __self: undefined,
