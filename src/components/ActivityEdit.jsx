@@ -50,7 +50,9 @@ const ActivityEdit = () => {
 
   const handleSubmit = async () => {
     const editedActivity = {};
-    name ? (editedActivity.name = name) : (editedActivity.name = toEdit.name);
+    name
+      ? (editedActivity.name = name.toLowerCase())
+      : (editedActivity.name = toEdit.name);
     description
       ? (editedActivity.description = description)
       : (editedActivity.description = toEdit.description);

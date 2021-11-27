@@ -26922,10 +26922,35 @@ var _s = $RefreshSig$();
 const ActivitiesNew = ()=>{
     _s();
     let navigate = _reactRouterDom.useNavigate();
+    const { user , token  } = _react.useContext(_app.UserContext);
+    const [name, setName] = _react.useState("");
+    const [description, setDescription] = _react.useState("");
+    const [newActivity, setNewActivity] = _react.useState({
+    }); // store return activity object
+    const [error, setError] = _react.useState("");
+    _react.useEffect(()=>{
+        setName("");
+        setDescription("");
+    }, [
+        error
+    ]);
+    const handleSubmit = async ()=>{
+        const constrainedName = name.toLowerCase(); // set names to lowercase to prevent duplicates
+        try {
+            if (user && token) {
+                const activity = await _api.createActivity(token, constrainedName, description);
+                setNewActivity(activity);
+            } else throw Error("You are not authorized to perform this action; please log in.");
+        } catch (err) {
+            console.error(err);
+            if (typeof err === "object") err = err.message;
+            setError(err);
+        }
+    };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("section", {
         __source: {
             fileName: "src/components/ActivitiesNew.jsx",
-            lineNumber: 10,
+            lineNumber: 44,
             columnNumber: 5
         },
         __self: undefined,
@@ -26933,88 +26958,154 @@ const ActivitiesNew = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h3", {
                 __source: {
                     fileName: "src/components/ActivitiesNew.jsx",
-                    lineNumber: 11,
+                    lineNumber: 45,
                     columnNumber: 7
                 },
                 __self: undefined,
                 children: "Create a new activity"
             }),
-            /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                type: "button",
-                onClick: ()=>navigate(-1)
-                ,
+            Object.keys(newActivity).length > 0 ? /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 __source: {
                     fileName: "src/components/ActivitiesNew.jsx",
-                    lineNumber: 12,
-                    columnNumber: 7
-                },
-                __self: undefined,
-                children: "CANCEL"
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsxs("form", {
-                __source: {
-                    fileName: "src/components/ActivitiesNew.jsx",
-                    lineNumber: 15,
-                    columnNumber: 7
+                    lineNumber: 47,
+                    columnNumber: 9
                 },
                 __self: undefined,
                 children: [
-                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/ActivitiesNew.jsx",
-                            lineNumber: 16,
-                            columnNumber: 9
+                            lineNumber: 48,
+                            columnNumber: 11
                         },
                         __self: undefined,
-                        children: [
-                            "Name:",
-                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
-                                type: "text",
-                                __source: {
-                                    fileName: "src/components/ActivitiesNew.jsx",
-                                    lineNumber: 18,
-                                    columnNumber: 11
-                                },
-                                __self: undefined
-                            })
-                        ]
-                    }),
-                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
-                        __source: {
-                            fileName: "src/components/ActivitiesNew.jsx",
-                            lineNumber: 20,
-                            columnNumber: 9
-                        },
-                        __self: undefined,
-                        children: [
-                            "Description:",
-                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
-                                type: "text",
-                                __source: {
-                                    fileName: "src/components/ActivitiesNew.jsx",
-                                    lineNumber: 22,
-                                    columnNumber: 11
-                                },
-                                __self: undefined
-                            })
-                        ]
+                        children: "Your activity has been created."
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                        type: "submit",
+                        type: "button",
+                        onClick: ()=>navigate(`/activities/${newActivity.id}`)
+                        ,
                         __source: {
                             fileName: "src/components/ActivitiesNew.jsx",
-                            lineNumber: 24,
-                            columnNumber: 9
+                            lineNumber: 49,
+                            columnNumber: 11
                         },
                         __self: undefined,
-                        children: "SUBMIT"
+                        children: "VIEW"
+                    })
+                ]
+            }) : error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                __source: {
+                    fileName: "src/components/ActivitiesNew.jsx",
+                    lineNumber: 57,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: error
+            }) : /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                __source: {
+                    fileName: "src/components/ActivitiesNew.jsx",
+                    lineNumber: 59,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "button",
+                        onClick: ()=>navigate(-1)
+                        ,
+                        __source: {
+                            fileName: "src/components/ActivitiesNew.jsx",
+                            lineNumber: 60,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "CANCEL"
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                        onSubmit: (e)=>{
+                            e.preventDefault();
+                            handleSubmit();
+                            setName("");
+                            setDescription("");
+                        },
+                        __source: {
+                            fileName: "src/components/ActivitiesNew.jsx",
+                            lineNumber: 63,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                                __source: {
+                                    fileName: "src/components/ActivitiesNew.jsx",
+                                    lineNumber: 71,
+                                    columnNumber: 13
+                                },
+                                __self: undefined,
+                                children: [
+                                    "Name:",
+                                    /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                        type: "text",
+                                        required: true,
+                                        size: "60",
+                                        value: name,
+                                        placeholder: "What is this activity called?",
+                                        onChange: (e)=>setName(e.target.value)
+                                        ,
+                                        __source: {
+                                            fileName: "src/components/ActivitiesNew.jsx",
+                                            lineNumber: 73,
+                                            columnNumber: 15
+                                        },
+                                        __self: undefined
+                                    })
+                                ]
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                                __source: {
+                                    fileName: "src/components/ActivitiesNew.jsx",
+                                    lineNumber: 82,
+                                    columnNumber: 13
+                                },
+                                __self: undefined,
+                                children: [
+                                    "Description:",
+                                    /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                        type: "text",
+                                        required: true,
+                                        size: "60",
+                                        value: description,
+                                        placeholder: "How do you do it?",
+                                        onChange: (e)=>setDescription(e.target.value)
+                                        ,
+                                        __source: {
+                                            fileName: "src/components/ActivitiesNew.jsx",
+                                            lineNumber: 84,
+                                            columnNumber: 15
+                                        },
+                                        __self: undefined
+                                    })
+                                ]
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                                type: "submit",
+                                __source: {
+                                    fileName: "src/components/ActivitiesNew.jsx",
+                                    lineNumber: 93,
+                                    columnNumber: 13
+                                },
+                                __self: undefined,
+                                children: "SUBMIT"
+                            })
+                        ]
                     })
                 ]
             })
         ]
     }));
 };
-_s(ActivitiesNew, "CzcTeTziyjMsSrAVmHuCCb6+Bfg=", false, function() {
+_s(ActivitiesNew, "SELPT+FvEA29yz4GM+pVz/PCP0Y=", false, function() {
     return [
         _reactRouterDom.useNavigate
     ];
@@ -27198,7 +27289,7 @@ const ActivityEdit = ()=>{
     const handleSubmit = async ()=>{
         const editedActivity = {
         };
-        name ? editedActivity.name = name : editedActivity.name = toEdit.name;
+        name ? editedActivity.name = name.toLowerCase() : editedActivity.name = toEdit.name;
         description ? editedActivity.description = description : editedActivity.description = toEdit.description;
         editedActivity.id = activityId;
         await sendEdit(editedActivity);
@@ -27206,7 +27297,7 @@ const ActivityEdit = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("section", {
         __source: {
             fileName: "src/components/ActivityEdit.jsx",
-            lineNumber: 63,
+            lineNumber: 65,
             columnNumber: 5
         },
         __self: undefined,
@@ -27214,7 +27305,7 @@ const ActivityEdit = ()=>{
             !edited ? /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/ActivityEdit.jsx",
-                    lineNumber: 64,
+                    lineNumber: 66,
                     columnNumber: 18
                 },
                 __self: undefined,
@@ -27223,7 +27314,7 @@ const ActivityEdit = ()=>{
             error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/ActivityEdit.jsx",
-                    lineNumber: 67,
+                    lineNumber: 69,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -27235,7 +27326,7 @@ const ActivityEdit = ()=>{
                 },
                 __source: {
                     fileName: "src/components/ActivityEdit.jsx",
-                    lineNumber: 69,
+                    lineNumber: 71,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -27243,7 +27334,7 @@ const ActivityEdit = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 75,
+                            lineNumber: 77,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27257,7 +27348,7 @@ const ActivityEdit = ()=>{
                                 ,
                                 __source: {
                                     fileName: "src/components/ActivityEdit.jsx",
-                                    lineNumber: 77,
+                                    lineNumber: 79,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -27267,7 +27358,7 @@ const ActivityEdit = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 84,
+                            lineNumber: 86,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27281,7 +27372,7 @@ const ActivityEdit = ()=>{
                                 ,
                                 __source: {
                                     fileName: "src/components/ActivityEdit.jsx",
-                                    lineNumber: 86,
+                                    lineNumber: 88,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -27292,7 +27383,7 @@ const ActivityEdit = ()=>{
                         type: "submit",
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 93,
+                            lineNumber: 95,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27304,7 +27395,7 @@ const ActivityEdit = ()=>{
                         ,
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 94,
+                            lineNumber: 96,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27314,7 +27405,7 @@ const ActivityEdit = ()=>{
             }) : /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 __source: {
                     fileName: "src/components/ActivityEdit.jsx",
-                    lineNumber: 99,
+                    lineNumber: 101,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -27322,14 +27413,14 @@ const ActivityEdit = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 100,
+                            lineNumber: 102,
                             columnNumber: 11
                         },
                         __self: undefined,
                         children: /*#__PURE__*/ _jsxRuntime.jsx("em", {
                             __source: {
                                 fileName: "src/components/ActivityEdit.jsx",
-                                lineNumber: 101,
+                                lineNumber: 103,
                                 columnNumber: 13
                             },
                             __self: undefined,
@@ -27339,7 +27430,7 @@ const ActivityEdit = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 103,
+                            lineNumber: 105,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27348,7 +27439,7 @@ const ActivityEdit = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 104,
+                            lineNumber: 106,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27360,7 +27451,7 @@ const ActivityEdit = ()=>{
                         ,
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 105,
+                            lineNumber: 107,
                             columnNumber: 11
                         },
                         __self: undefined,
