@@ -23,8 +23,10 @@ const Activities = () => {
   return (
     <Fragment>
       <Routes>
-        <Route path="/" element={<ActivitiesAll />} />
-        <Route path="/new" element={<ActivitiesNew />} />
+        <Route path="/" element={<ActivitiesAll />}>
+          <Route path="new" element={<ActivitiesNew />} />
+        </Route>
+
         <Route path="/:activityId" element={<ActivitySingleView />}>
           <Route path="edit" element={<ActivityEdit />} />
         </Route>

@@ -5,7 +5,26 @@ import { createActivity } from "../api";
 import { UserContext } from "../App";
 
 const ActivitiesNew = () => {
-  return <h1>Create new activity</h1>;
+  let navigate = useNavigate();
+  return (
+    <section>
+      <h3>Create a new activity</h3>
+      <button type="button" onClick={() => navigate(-1)}>
+        CANCEL
+      </button>
+      <form>
+        <label>
+          Name:
+          <input type="text"></input>
+        </label>
+        <label>
+          Description:
+          <input type="text"></input>
+        </label>
+        <button type="submit">SUBMIT</button>
+      </form>
+    </section>
+  );
 };
 
 export default ActivitiesNew;

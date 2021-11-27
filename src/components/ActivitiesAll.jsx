@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 //API
 import { getAllActivities } from "../api";
@@ -21,6 +21,8 @@ const ActivitiesAll = () => {
     <main>
       {isLoading ? <p>Loading...</p> : null}
       <h1>Activities</h1>
+      <Link to="new">Add an activity</Link>
+      <Outlet />
       {activities
         ? activities.map((activity) => (
             <div key={activity.id}>

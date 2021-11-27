@@ -26719,18 +26719,18 @@ var _activityEditDefault = parcelHelpers.interopDefault(_activityEdit);
                         lineNumber: 26,
                         columnNumber: 9
                     },
-                    __self: undefined
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouter.Route, {
-                    path: "/new",
-                    element: /*#__PURE__*/ _jsxRuntime.jsx(_activitiesNewDefault.default, {
-                    }),
-                    __source: {
-                        fileName: "src/components/Activities.jsx",
-                        lineNumber: 27,
-                        columnNumber: 9
-                    },
-                    __self: undefined
+                    __self: undefined,
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouter.Route, {
+                        path: "new",
+                        element: /*#__PURE__*/ _jsxRuntime.jsx(_activitiesNewDefault.default, {
+                        }),
+                        __source: {
+                            fileName: "src/components/Activities.jsx",
+                            lineNumber: 27,
+                            columnNumber: 11
+                        },
+                        __self: undefined
+                    })
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactRouter.Route, {
                     path: "/:activityId",
@@ -26738,7 +26738,7 @@ var _activityEditDefault = parcelHelpers.interopDefault(_activityEdit);
                     }),
                     __source: {
                         fileName: "src/components/Activities.jsx",
-                        lineNumber: 28,
+                        lineNumber: 30,
                         columnNumber: 9
                     },
                     __self: undefined,
@@ -26748,7 +26748,7 @@ var _activityEditDefault = parcelHelpers.interopDefault(_activityEdit);
                         }),
                         __source: {
                             fileName: "src/components/Activities.jsx",
-                            lineNumber: 29,
+                            lineNumber: 31,
                             columnNumber: 11
                         },
                         __self: undefined
@@ -26822,10 +26822,28 @@ const ActivitiesAll = ()=>{
                 __self: undefined,
                 children: "Activities"
             }),
+            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                to: "new",
+                __source: {
+                    fileName: "src/components/ActivitiesAll.jsx",
+                    lineNumber: 24,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "Add an activity"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Outlet, {
+                __source: {
+                    fileName: "src/components/ActivitiesAll.jsx",
+                    lineNumber: 25,
+                    columnNumber: 7
+                },
+                __self: undefined
+            }),
             activities ? activities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
                     __source: {
                         fileName: "src/components/ActivitiesAll.jsx",
-                        lineNumber: 26,
+                        lineNumber: 28,
                         columnNumber: 13
                     },
                     __self: undefined,
@@ -26834,7 +26852,7 @@ const ActivitiesAll = ()=>{
                             to: `${activity.id}`,
                             __source: {
                                 fileName: "src/components/ActivitiesAll.jsx",
-                                lineNumber: 27,
+                                lineNumber: 29,
                                 columnNumber: 15
                             },
                             __self: undefined,
@@ -26843,7 +26861,7 @@ const ActivitiesAll = ()=>{
                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                             __source: {
                                 fileName: "src/components/ActivitiesAll.jsx",
-                                lineNumber: 28,
+                                lineNumber: 30,
                                 columnNumber: 15
                             },
                             __self: undefined,
@@ -26880,17 +26898,107 @@ var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
 var _api = require("../api");
 var _app = require("../App");
+var _s = $RefreshSig$();
 const ActivitiesNew = ()=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsx("h1", {
+    _s();
+    let navigate = _reactRouterDom.useNavigate();
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("section", {
         __source: {
             fileName: "src/components/ActivitiesNew.jsx",
-            lineNumber: 8,
-            columnNumber: 10
+            lineNumber: 10,
+            columnNumber: 5
         },
         __self: undefined,
-        children: "Create new activity"
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("h3", {
+                __source: {
+                    fileName: "src/components/ActivitiesNew.jsx",
+                    lineNumber: 11,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "Create a new activity"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                type: "button",
+                onClick: ()=>navigate(-1)
+                ,
+                __source: {
+                    fileName: "src/components/ActivitiesNew.jsx",
+                    lineNumber: 12,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "CANCEL"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                __source: {
+                    fileName: "src/components/ActivitiesNew.jsx",
+                    lineNumber: 15,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/ActivitiesNew.jsx",
+                            lineNumber: 16,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: [
+                            "Name:",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "text",
+                                __source: {
+                                    fileName: "src/components/ActivitiesNew.jsx",
+                                    lineNumber: 18,
+                                    columnNumber: 11
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/ActivitiesNew.jsx",
+                            lineNumber: 20,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: [
+                            "Description:",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "text",
+                                __source: {
+                                    fileName: "src/components/ActivitiesNew.jsx",
+                                    lineNumber: 22,
+                                    columnNumber: 11
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "submit",
+                        __source: {
+                            fileName: "src/components/ActivitiesNew.jsx",
+                            lineNumber: 24,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: "SUBMIT"
+                    })
+                ]
+            })
+        ]
     }));
 };
+_s(ActivitiesNew, "CzcTeTziyjMsSrAVmHuCCb6+Bfg=", false, function() {
+    return [
+        _reactRouterDom.useNavigate
+    ];
+});
 _c = ActivitiesNew;
 exports.default = ActivitiesNew;
 var _c;
@@ -27023,15 +27131,30 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
+//API
+var _api = require("../api");
 var _s = $RefreshSig$();
 const ActivityEdit = ()=>{
     _s();
     let navigate = _reactRouterDom.useNavigate();
+    const { activityId  } = _reactRouterDom.useParams();
+    const [toEdit, setToEdit] = _react.useState({
+    });
+    const [name, setName] = _react.useState("");
+    const [description, setDescription] = _react.useState("");
+    _react.useEffect(()=>{
+        async function thisActivity() {
+            const activity = await _api.getActivityById(activityId);
+            setToEdit(activity);
+        }
+        thisActivity();
+    }, []);
     return(/*#__PURE__*/ _jsxRuntime.jsxs("section", {
         __source: {
             fileName: "src/components/ActivityEdit.jsx",
-            lineNumber: 7,
+            lineNumber: 24,
             columnNumber: 5
         },
         __self: undefined,
@@ -27039,11 +27162,75 @@ const ActivityEdit = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/ActivityEdit.jsx",
-                    lineNumber: 8,
+                    lineNumber: 25,
                     columnNumber: 7
                 },
                 __self: undefined,
                 children: "Edit Activity"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                __source: {
+                    fileName: "src/components/ActivityEdit.jsx",
+                    lineNumber: 26,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/ActivityEdit.jsx",
+                            lineNumber: 27,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: [
+                            "Activity name:",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "text",
+                                defaultValue: toEdit ? toEdit.name : null,
+                                size: "60",
+                                __source: {
+                                    fileName: "src/components/ActivityEdit.jsx",
+                                    lineNumber: 29,
+                                    columnNumber: 11
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/ActivityEdit.jsx",
+                            lineNumber: 35,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: [
+                            "Activity description:",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "text",
+                                defaultValue: toEdit ? toEdit.description : null,
+                                size: "60",
+                                __source: {
+                                    fileName: "src/components/ActivityEdit.jsx",
+                                    lineNumber: 37,
+                                    columnNumber: 11
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "submit",
+                        __source: {
+                            fileName: "src/components/ActivityEdit.jsx",
+                            lineNumber: 43,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: "EDIT"
+                    })
+                ]
             }),
             /*#__PURE__*/ _jsxRuntime.jsx("button", {
                 type: "button",
@@ -27051,7 +27238,7 @@ const ActivityEdit = ()=>{
                 ,
                 __source: {
                     fileName: "src/components/ActivityEdit.jsx",
-                    lineNumber: 9,
+                    lineNumber: 45,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27060,9 +27247,10 @@ const ActivityEdit = ()=>{
         ]
     }));
 };
-_s(ActivityEdit, "CzcTeTziyjMsSrAVmHuCCb6+Bfg=", false, function() {
+_s(ActivityEdit, "BYXMM2j+0wgBQrDoPjJy9SK5mQI=", false, function() {
     return [
-        _reactRouterDom.useNavigate
+        _reactRouterDom.useNavigate,
+        _reactRouterDom.useParams
     ];
 });
 _c = ActivityEdit;
@@ -27075,7 +27263,7 @@ $RefreshReg$(_c, "ActivityEdit");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP"}],"gF4vd":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP","../api":"l6gwE","react":"4mchR"}],"gF4vd":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8bac = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
