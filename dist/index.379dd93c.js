@@ -951,9 +951,9 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactDom = require("react-dom");
 var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
-var _appJsx = require("./App.jsx");
+var _app = require("./App");
 const app = document.getElementById("app");
-_reactDomDefault.default.render(/*#__PURE__*/ _jsxRuntime.jsx(_appJsx.App, {
+_reactDomDefault.default.render(/*#__PURE__*/ _jsxRuntime.jsx(_app.App, {
     __source: {
         fileName: "src/index.js",
         lineNumber: 10,
@@ -967,7 +967,7 @@ _reactDomDefault.default.render(/*#__PURE__*/ _jsxRuntime.jsx(_appJsx.App, {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-dom":"afyCw","./App.jsx":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"6Ds2u":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-dom":"afyCw","./App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"6Ds2u":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react-jsx-runtime.development.js');
 
@@ -26182,6 +26182,8 @@ parcelHelpers.export(exports, "getActivityById", ()=>getActivityById
 );
 parcelHelpers.export(exports, "createActivity", ()=>createActivity
 );
+parcelHelpers.export(exports, "editActivity", ()=>editActivity
+);
 var _ = require(".");
 const axios = require("axios").default;
 const BASE_URL = "https://fitnesstrackr-rafa.herokuapp.com/api/activities";
@@ -26213,6 +26215,24 @@ async function createActivity(token, name, description) {
         const response = await axios.post(`${BASE_URL}`, {
             name: name,
             description: description
+        }, {
+            headers: headers
+        });
+        const data = response.data;
+        return data;
+    } catch (err) {
+        console.error(err);
+        const error = err.response.data;
+        throw error.message;
+    }
+}
+async function editActivity(token, activityObj) {
+    //activityObj contains id, name, description
+    try {
+        let headers = _.setHeaders(token);
+        const response = await axios.patch(`${BASE_URL}/${activityObj.id}`, {
+            name: activityObj.name,
+            description: activityObj.description
         }, {
             headers: headers
         });
@@ -26768,7 +26788,7 @@ $RefreshReg$(_c, "Activities");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router":"g791w","../api":"l6gwE","./ActivitiesAll":"127vg","./ActivitiesNew":"6gSof","./ActivitySingleView":"5QGTD","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","./ActivityEdit":"7dEKC"}],"127vg":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router":"g791w","../api":"l6gwE","./ActivitiesAll":"127vg","./ActivitiesNew":"6gSof","./ActivitySingleView":"5QGTD","./ActivityEdit":"7dEKC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"127vg":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$ca3f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26884,7 +26904,7 @@ $RefreshReg$(_c, "ActivitiesAll");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","../api":"l6gwE","react-router-dom":"16kZP"}],"6gSof":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"6gSof":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e1cc = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27121,7 +27141,7 @@ $RefreshReg$(_c, "ActivitySingleView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP","react":"4mchR","../api":"l6gwE"}],"7dEKC":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"7dEKC":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$de28 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27135,15 +27155,21 @@ var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
 //API
 var _api = require("../api");
+var _app = require("../App");
 var _s = $RefreshSig$();
 const ActivityEdit = ()=>{
     _s();
     let navigate = _reactRouterDom.useNavigate();
     const { activityId  } = _reactRouterDom.useParams();
+    const { user , token  } = _react.useContext(_app.UserContext);
     const [toEdit, setToEdit] = _react.useState({
-    });
+    }); // default values
+    const [edited, setEdited] = _react.useState(false);
     const [name, setName] = _react.useState("");
     const [description, setDescription] = _react.useState("");
+    const [activity1, setActivity] = _react.useState({
+    }); // returned edited activity after successful call
+    const [error, setError] = _react.useState("");
     _react.useEffect(()=>{
         async function thisActivity() {
             const activity = await _api.getActivityById(activityId);
@@ -27151,36 +27177,74 @@ const ActivityEdit = ()=>{
         }
         thisActivity();
     }, []);
+    _react.useEffect(()=>{
+        if (Object.keys(activity1).length > 0) setEdited(true);
+    }, [
+        activity1
+    ]);
+    const sendEdit = async (activity)=>{
+        try {
+            if (user && token) {
+                const updated = await _api.editActivity(token, activity);
+                console.log(updated);
+                setActivity(updated);
+            } else throw Error("You are not authorized to perform this action; please log in again.");
+        } catch (err) {
+            console.error(err);
+            if (typeof err === "object") err = err.message;
+            setError(err);
+        }
+    };
+    const handleSubmit = async ()=>{
+        const editedActivity = {
+        };
+        name ? editedActivity.name = name : editedActivity.name = toEdit.name;
+        description ? editedActivity.description = description : editedActivity.description = toEdit.description;
+        editedActivity.id = activityId;
+        await sendEdit(editedActivity);
+    };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("section", {
         __source: {
             fileName: "src/components/ActivityEdit.jsx",
-            lineNumber: 24,
+            lineNumber: 63,
             columnNumber: 5
         },
         __self: undefined,
         children: [
-            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+            !edited ? /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/ActivityEdit.jsx",
-                    lineNumber: 25,
-                    columnNumber: 7
+                    lineNumber: 64,
+                    columnNumber: 18
                 },
                 __self: undefined,
                 children: "Edit Activity"
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+            }) : null,
+            error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/ActivityEdit.jsx",
-                    lineNumber: 26,
-                    columnNumber: 7
+                    lineNumber: 67,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: error
+            }) : !edited ? /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                onSubmit: (e)=>{
+                    e.preventDefault();
+                    handleSubmit();
+                },
+                __source: {
+                    fileName: "src/components/ActivityEdit.jsx",
+                    lineNumber: 69,
+                    columnNumber: 9
                 },
                 __self: undefined,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 27,
-                            columnNumber: 9
+                            lineNumber: 75,
+                            columnNumber: 11
                         },
                         __self: undefined,
                         children: [
@@ -27189,10 +27253,12 @@ const ActivityEdit = ()=>{
                                 type: "text",
                                 defaultValue: toEdit ? toEdit.name : null,
                                 size: "60",
+                                onChange: (e)=>setName(e.target.value)
+                                ,
                                 __source: {
                                     fileName: "src/components/ActivityEdit.jsx",
-                                    lineNumber: 29,
-                                    columnNumber: 11
+                                    lineNumber: 77,
+                                    columnNumber: 13
                                 },
                                 __self: undefined
                             })
@@ -27201,20 +27267,22 @@ const ActivityEdit = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 35,
-                            columnNumber: 9
+                            lineNumber: 84,
+                            columnNumber: 11
                         },
                         __self: undefined,
                         children: [
-                            "Activity description:",
+                            "Description:",
                             /*#__PURE__*/ _jsxRuntime.jsx("input", {
                                 type: "text",
                                 defaultValue: toEdit ? toEdit.description : null,
                                 size: "60",
+                                onChange: (e)=>setDescription(e.target.value)
+                                ,
                                 __source: {
                                     fileName: "src/components/ActivityEdit.jsx",
-                                    lineNumber: 37,
-                                    columnNumber: 11
+                                    lineNumber: 86,
+                                    columnNumber: 13
                                 },
                                 __self: undefined
                             })
@@ -27224,30 +27292,86 @@ const ActivityEdit = ()=>{
                         type: "submit",
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 43,
-                            columnNumber: 9
+                            lineNumber: 93,
+                            columnNumber: 11
                         },
                         __self: undefined,
                         children: "EDIT"
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "button",
+                        onClick: ()=>navigate(-1)
+                        ,
+                        __source: {
+                            fileName: "src/components/ActivityEdit.jsx",
+                            lineNumber: 94,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "CANCEL"
                     })
                 ]
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                type: "button",
-                onClick: ()=>navigate(-1)
-                ,
+            }) : /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 __source: {
                     fileName: "src/components/ActivityEdit.jsx",
-                    lineNumber: 45,
-                    columnNumber: 7
+                    lineNumber: 99,
+                    columnNumber: 9
                 },
                 __self: undefined,
-                children: "CANCEL"
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        __source: {
+                            fileName: "src/components/ActivityEdit.jsx",
+                            lineNumber: 100,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: /*#__PURE__*/ _jsxRuntime.jsx("em", {
+                            __source: {
+                                fileName: "src/components/ActivityEdit.jsx",
+                                lineNumber: 101,
+                                columnNumber: 13
+                            },
+                            __self: undefined,
+                            children: "This activity has been edited"
+                        })
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        __source: {
+                            fileName: "src/components/ActivityEdit.jsx",
+                            lineNumber: 103,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: activity1.name
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        __source: {
+                            fileName: "src/components/ActivityEdit.jsx",
+                            lineNumber: 104,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: activity1.description
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "button",
+                        onClick: ()=>navigate("/activities")
+                        ,
+                        __source: {
+                            fileName: "src/components/ActivityEdit.jsx",
+                            lineNumber: 105,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "EXIT"
+                    })
+                ]
             })
         ]
     }));
 };
-_s(ActivityEdit, "BYXMM2j+0wgBQrDoPjJy9SK5mQI=", false, function() {
+_s(ActivityEdit, "4B1KkTtjx6DPLRWMNwP0qRWP3x0=", false, function() {
     return [
         _reactRouterDom.useNavigate,
         _reactRouterDom.useParams
@@ -27263,7 +27387,7 @@ $RefreshReg$(_c, "ActivityEdit");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP","../api":"l6gwE","react":"4mchR"}],"gF4vd":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"gF4vd":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8bac = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

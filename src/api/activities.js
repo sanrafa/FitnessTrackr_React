@@ -48,3 +48,26 @@ export async function createActivity(token, name, description) {
     throw error.message;
   }
 }
+
+export async function editActivity(token, activityObj) {
+  //activityObj contains id, name, description
+  try {
+    let headers = setHeaders(token);
+    const response = await axios.patch(
+      `${BASE_URL}/${activityObj.id}`,
+      {
+        name: activityObj.name,
+        description: activityObj.description,
+      },
+      {
+        headers: headers,
+      }
+    );
+    const data = response.data;
+    return data;
+  } catch (err) {
+    console.error(err);
+    const error = err.response.data;
+    throw error.message;
+  }
+}
