@@ -7,7 +7,7 @@ import { getAllActivities } from "../api";
 import ActivitiesAll from "./ActivitiesAll";
 import ActivitiesNew from "./ActivitiesNew";
 import ActivitySingleView from "./ActivitySingleView";
-
+import ActivityEdit from "./ActivityEdit";
 /* 
 * TODO:
 * Turn this into main activity route page,
@@ -25,7 +25,9 @@ const Activities = () => {
       <Routes>
         <Route path="/" element={<ActivitiesAll />} />
         <Route path="/new" element={<ActivitiesNew />} />
-        <Route path="/:activityId" element={<ActivitySingleView />} />
+        <Route path="/:activityId" element={<ActivitySingleView />}>
+          <Route path="edit" element={<ActivityEdit />} />
+        </Route>
       </Routes>
     </Fragment>
   );

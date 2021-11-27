@@ -1,5 +1,14 @@
+import { Outlet, useParams } from "react-router-dom";
+
 const ActivitySingleView = () => {
-  return <h1>This Activity</h1>;
+  const { activityId } = useParams();
+
+  return (
+    <main>
+      <h1>This Activity</h1>
+      <Outlet />
+    </main>
+  );
 };
 
 export default ActivitySingleView;
