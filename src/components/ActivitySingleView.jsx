@@ -1,14 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Outlet, useParams, Link, generatePath } from "react-router-dom";
 
 //API
 import { getActivityById } from "../api";
+
+import { UserContext } from "../App";
 
 const ActivitySingleView = () => {
   const { activityId } = useParams();
   const editPath = generatePath("/activities/:activityId/edit", {
     activityId: activityId,
   });
+  const { user, token } = useContext(UserContext);
 
   const [activity, setActivity] = useState({});
 
@@ -27,7 +30,7 @@ const ActivitySingleView = () => {
           <Link to="/activities">Back to all activities</Link>
           <h1>{activity.name}</h1>
           <p>{activity.description}</p>
-          <Link to={editPath}>Edit this activity</Link>
+          {user && token ? <Link to={editPath}>Edit this activity</Link> : null}
         </article>
       ) : null}
       <Outlet />

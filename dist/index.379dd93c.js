@@ -26802,9 +26802,11 @@ var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
 //API
 var _api = require("../api");
+var _app = require("../App");
 var _s = $RefreshSig$();
 const ActivitiesAll = ()=>{
     _s();
+    const { user , token  } = _react.useContext(_app.UserContext);
     const [activities, setActivities] = _react.useState([]);
     const [isLoading, setIsLoading] = _react.useState(false);
     _react.useEffect(()=>{
@@ -26819,7 +26821,7 @@ const ActivitiesAll = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/ActivitiesAll.jsx",
-            lineNumber: 21,
+            lineNumber: 25,
             columnNumber: 5
         },
         __self: undefined,
@@ -26827,7 +26829,7 @@ const ActivitiesAll = ()=>{
             isLoading ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/ActivitiesAll.jsx",
-                    lineNumber: 22,
+                    lineNumber: 26,
                     columnNumber: 20
                 },
                 __self: undefined,
@@ -26836,26 +26838,26 @@ const ActivitiesAll = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/ActivitiesAll.jsx",
-                    lineNumber: 23,
+                    lineNumber: 27,
                     columnNumber: 7
                 },
                 __self: undefined,
                 children: "Activities"
             }),
-            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+            user && token ? /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                 to: "new",
                 __source: {
                     fileName: "src/components/ActivitiesAll.jsx",
-                    lineNumber: 24,
-                    columnNumber: 7
+                    lineNumber: 28,
+                    columnNumber: 24
                 },
                 __self: undefined,
                 children: "Add an activity"
-            }),
+            }) : null,
             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Outlet, {
                 __source: {
                     fileName: "src/components/ActivitiesAll.jsx",
-                    lineNumber: 25,
+                    lineNumber: 29,
                     columnNumber: 7
                 },
                 __self: undefined
@@ -26863,7 +26865,7 @@ const ActivitiesAll = ()=>{
             activities ? activities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
                     __source: {
                         fileName: "src/components/ActivitiesAll.jsx",
-                        lineNumber: 28,
+                        lineNumber: 32,
                         columnNumber: 13
                     },
                     __self: undefined,
@@ -26872,7 +26874,7 @@ const ActivitiesAll = ()=>{
                             to: `${activity.id}`,
                             __source: {
                                 fileName: "src/components/ActivitiesAll.jsx",
-                                lineNumber: 29,
+                                lineNumber: 33,
                                 columnNumber: 15
                             },
                             __self: undefined,
@@ -26881,7 +26883,7 @@ const ActivitiesAll = ()=>{
                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                             __source: {
                                 fileName: "src/components/ActivitiesAll.jsx",
-                                lineNumber: 30,
+                                lineNumber: 34,
                                 columnNumber: 15
                             },
                             __self: undefined,
@@ -26893,7 +26895,7 @@ const ActivitiesAll = ()=>{
         ]
     }));
 };
-_s(ActivitiesAll, "MlN6d7SpN9mx2PVpNDVXUggI7ic=");
+_s(ActivitiesAll, "8UdXC4mrLW7x2cj9Uc8xwZLOPuU=");
 _c = ActivitiesAll;
 exports.default = ActivitiesAll;
 var _c;
@@ -26904,7 +26906,7 @@ $RefreshReg$(_c, "ActivitiesAll");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"6gSof":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","../App":"lL5iC"}],"6gSof":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e1cc = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27134,6 +27136,7 @@ var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
 //API
 var _api = require("../api");
+var _app = require("../App");
 var _s = $RefreshSig$();
 const ActivitySingleView = ()=>{
     _s();
@@ -27141,6 +27144,7 @@ const ActivitySingleView = ()=>{
     const editPath = _reactRouterDom.generatePath("/activities/:activityId/edit", {
         activityId: activityId
     });
+    const { user , token  } = _react.useContext(_app.UserContext);
     const [activity, setActivity] = _react.useState({
     });
     _react.useEffect(()=>{
@@ -27153,7 +27157,7 @@ const ActivitySingleView = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/ActivitySingleView.jsx",
-            lineNumber: 24,
+            lineNumber: 27,
             columnNumber: 5
         },
         __self: undefined,
@@ -27161,7 +27165,7 @@ const ActivitySingleView = ()=>{
             activity ? /*#__PURE__*/ _jsxRuntime.jsxs("article", {
                 __source: {
                     fileName: "src/components/ActivitySingleView.jsx",
-                    lineNumber: 26,
+                    lineNumber: 29,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -27170,7 +27174,7 @@ const ActivitySingleView = ()=>{
                         to: "/activities",
                         __source: {
                             fileName: "src/components/ActivitySingleView.jsx",
-                            lineNumber: 27,
+                            lineNumber: 30,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27179,7 +27183,7 @@ const ActivitySingleView = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                         __source: {
                             fileName: "src/components/ActivitySingleView.jsx",
-                            lineNumber: 28,
+                            lineNumber: 31,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27188,28 +27192,28 @@ const ActivitySingleView = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/ActivitySingleView.jsx",
-                            lineNumber: 29,
+                            lineNumber: 32,
                             columnNumber: 11
                         },
                         __self: undefined,
                         children: activity.description
                     }),
-                    /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                    user && token ? /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                         to: editPath,
                         __source: {
                             fileName: "src/components/ActivitySingleView.jsx",
-                            lineNumber: 30,
-                            columnNumber: 11
+                            lineNumber: 33,
+                            columnNumber: 28
                         },
                         __self: undefined,
                         children: "Edit this activity"
-                    })
+                    }) : null
                 ]
             }) : null,
             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Outlet, {
                 __source: {
                     fileName: "src/components/ActivitySingleView.jsx",
-                    lineNumber: 33,
+                    lineNumber: 36,
                     columnNumber: 7
                 },
                 __self: undefined
@@ -27217,7 +27221,7 @@ const ActivitySingleView = ()=>{
         ]
     }));
 };
-_s(ActivitySingleView, "qYox9J5TT70OaKTXl+I/HgGnHvA=", false, function() {
+_s(ActivitySingleView, "IK51ljRCRtY5Dtxy5ynjiuxD3wM=", false, function() {
     return [
         _reactRouterDom.useParams
     ];
@@ -27232,7 +27236,7 @@ $RefreshReg$(_c, "ActivitySingleView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"7dEKC":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","../App":"lL5iC"}],"7dEKC":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$de28 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

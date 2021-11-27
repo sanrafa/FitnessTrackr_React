@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 //API
 import { getAllActivities } from "../api";
 
+import { UserContext } from "../App";
+
 const ActivitiesAll = () => {
+  const { user, token } = useContext(UserContext);
+
   const [activities, setActivities] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,7 +25,7 @@ const ActivitiesAll = () => {
     <main>
       {isLoading ? <p>Loading...</p> : null}
       <h1>Activities</h1>
-      <Link to="new">Add an activity</Link>
+      {user && token ? <Link to="new">Add an activity</Link> : null}
       <Outlet />
       {activities
         ? activities.map((activity) => (
