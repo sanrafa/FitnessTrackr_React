@@ -28,6 +28,11 @@ const ActivitiesNew = () => {
           description
         );
         setNewActivity(activity);
+        if (!newActivity) {
+          throw Error(
+            "There was an error adding your activity. Note: duplicates are not permitted."
+          );
+        }
       } else {
         throw Error(
           "You are not authorized to perform this action; please log in."
@@ -35,7 +40,11 @@ const ActivitiesNew = () => {
       }
     } catch (err) {
       console.error(err);
-      if (typeof err === "object") err = err.message;
+      if (typeof err === "object") {
+        err = err.message;
+        setError(err);
+        return;
+      }
       setError(err);
     }
   };
@@ -53,8 +62,30 @@ const ActivitiesNew = () => {
             VIEW
           </button>
         </div>
+      ) : error && user && token ? (
+        <div>
+          <p>{error}</p>
+          <button
+            type="button"
+            onClick={() => {
+              setError(null);
+            }}
+          >
+            Try again
+          </button>
+        </div>
       ) : error ? (
-        <p>{error}</p>
+        <div>
+          <p>{error}</p>
+          <button
+            type="button"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Go to Login
+          </button>
+        </div>
       ) : (
         <div>
           <button type="button" onClick={() => navigate(-1)}>

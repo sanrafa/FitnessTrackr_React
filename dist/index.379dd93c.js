@@ -26942,17 +26942,22 @@ const ActivitiesNew = ()=>{
             if (user && token) {
                 const activity = await _api.createActivity(token, constrainedName, description);
                 setNewActivity(activity);
+                if (!newActivity) throw Error("There was an error adding your activity. Note: duplicates are not permitted.");
             } else throw Error("You are not authorized to perform this action; please log in.");
         } catch (err) {
             console.error(err);
-            if (typeof err === "object") err = err.message;
+            if (typeof err === "object") {
+                err = err.message;
+                setError(err);
+                return;
+            }
             setError(err);
         }
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("section", {
         __source: {
             fileName: "src/components/ActivitiesNew.jsx",
-            lineNumber: 44,
+            lineNumber: 53,
             columnNumber: 5
         },
         __self: undefined,
@@ -26960,7 +26965,7 @@ const ActivitiesNew = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h3", {
                 __source: {
                     fileName: "src/components/ActivitiesNew.jsx",
-                    lineNumber: 45,
+                    lineNumber: 54,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -26969,7 +26974,7 @@ const ActivitiesNew = ()=>{
             Object.keys(newActivity).length > 0 ? /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 __source: {
                     fileName: "src/components/ActivitiesNew.jsx",
-                    lineNumber: 47,
+                    lineNumber: 56,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -26977,7 +26982,7 @@ const ActivitiesNew = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/ActivitiesNew.jsx",
-                            lineNumber: 48,
+                            lineNumber: 57,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -26989,25 +26994,79 @@ const ActivitiesNew = ()=>{
                         ,
                         __source: {
                             fileName: "src/components/ActivitiesNew.jsx",
-                            lineNumber: 49,
+                            lineNumber: 58,
                             columnNumber: 11
                         },
                         __self: undefined,
                         children: "VIEW"
                     })
                 ]
-            }) : error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
+            }) : error && user && token ? /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 __source: {
                     fileName: "src/components/ActivitiesNew.jsx",
-                    lineNumber: 57,
+                    lineNumber: 66,
                     columnNumber: 9
                 },
                 __self: undefined,
-                children: error
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        __source: {
+                            fileName: "src/components/ActivitiesNew.jsx",
+                            lineNumber: 67,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: error
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "button",
+                        onClick: ()=>{
+                            setError(null);
+                        },
+                        __source: {
+                            fileName: "src/components/ActivitiesNew.jsx",
+                            lineNumber: 68,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "Try again"
+                    })
+                ]
+            }) : error ? /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                __source: {
+                    fileName: "src/components/ActivitiesNew.jsx",
+                    lineNumber: 78,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        __source: {
+                            fileName: "src/components/ActivitiesNew.jsx",
+                            lineNumber: 79,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: error
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "button",
+                        onClick: ()=>{
+                            navigate("/login");
+                        },
+                        __source: {
+                            fileName: "src/components/ActivitiesNew.jsx",
+                            lineNumber: 80,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "Go to Login"
+                    })
+                ]
             }) : /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 __source: {
                     fileName: "src/components/ActivitiesNew.jsx",
-                    lineNumber: 59,
+                    lineNumber: 90,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -27018,7 +27077,7 @@ const ActivitiesNew = ()=>{
                         ,
                         __source: {
                             fileName: "src/components/ActivitiesNew.jsx",
-                            lineNumber: 60,
+                            lineNumber: 91,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27033,7 +27092,7 @@ const ActivitiesNew = ()=>{
                         },
                         __source: {
                             fileName: "src/components/ActivitiesNew.jsx",
-                            lineNumber: 63,
+                            lineNumber: 94,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27041,7 +27100,7 @@ const ActivitiesNew = ()=>{
                             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                                 __source: {
                                     fileName: "src/components/ActivitiesNew.jsx",
-                                    lineNumber: 71,
+                                    lineNumber: 102,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -27057,7 +27116,7 @@ const ActivitiesNew = ()=>{
                                         ,
                                         __source: {
                                             fileName: "src/components/ActivitiesNew.jsx",
-                                            lineNumber: 73,
+                                            lineNumber: 104,
                                             columnNumber: 15
                                         },
                                         __self: undefined
@@ -27067,7 +27126,7 @@ const ActivitiesNew = ()=>{
                             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                                 __source: {
                                     fileName: "src/components/ActivitiesNew.jsx",
-                                    lineNumber: 82,
+                                    lineNumber: 113,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -27083,7 +27142,7 @@ const ActivitiesNew = ()=>{
                                         ,
                                         __source: {
                                             fileName: "src/components/ActivitiesNew.jsx",
-                                            lineNumber: 84,
+                                            lineNumber: 115,
                                             columnNumber: 15
                                         },
                                         __self: undefined
@@ -27094,7 +27153,7 @@ const ActivitiesNew = ()=>{
                                 type: "submit",
                                 __source: {
                                     fileName: "src/components/ActivitiesNew.jsx",
-                                    lineNumber: 93,
+                                    lineNumber: 124,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
