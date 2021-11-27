@@ -15,6 +15,18 @@ export async function getAllActivities() {
   }
 }
 
+export async function getActivityById(id) {
+  try {
+    const response = await axios.get(`${BASE_URL}/${id}`);
+    const activity = response.data;
+    return activity;
+  } catch (err) {
+    console.error(err);
+    const error = err.response.data;
+    throw error.message;
+  }
+}
+
 export async function createActivity(token, name, description) {
   try {
     let headers = setHeaders(token);

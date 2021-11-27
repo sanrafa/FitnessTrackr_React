@@ -26178,6 +26178,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getAllActivities", ()=>getAllActivities
 );
+parcelHelpers.export(exports, "getActivityById", ()=>getActivityById
+);
 parcelHelpers.export(exports, "createActivity", ()=>createActivity
 );
 var _ = require(".");
@@ -26188,6 +26190,17 @@ async function getAllActivities() {
         const response = await axios.get(`${BASE_URL}`);
         const activities = response.data;
         return activities;
+    } catch (err) {
+        console.error(err);
+        const error = err.response.data;
+        throw error.message;
+    }
+}
+async function getActivityById(id) {
+    try {
+        const response = await axios.get(`${BASE_URL}/${id}`);
+        const activity = response.data;
+        return activity;
     } catch (err) {
         console.error(err);
         const error = err.response.data;
@@ -26898,32 +26911,86 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
+//API
+var _api = require("../api");
 var _s = $RefreshSig$();
 const ActivitySingleView = ()=>{
     _s();
     const { activityId  } = _reactRouterDom.useParams();
+    const editPath = _reactRouterDom.generatePath("/activities/:activityId/edit", {
+        activityId: activityId
+    });
+    const [activity, setActivity] = _react.useState({
+    });
+    _react.useEffect(()=>{
+        async function fetchActivity() {
+            const selectedActivity = await _api.getActivityById(activityId);
+            setActivity(selectedActivity);
+        }
+        fetchActivity();
+    }, []);
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/ActivitySingleView.jsx",
-            lineNumber: 7,
+            lineNumber: 24,
             columnNumber: 5
         },
         __self: undefined,
         children: [
-            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+            activity ? /*#__PURE__*/ _jsxRuntime.jsxs("article", {
                 __source: {
                     fileName: "src/components/ActivitySingleView.jsx",
-                    lineNumber: 8,
-                    columnNumber: 7
+                    lineNumber: 26,
+                    columnNumber: 9
                 },
                 __self: undefined,
-                children: "This Activity"
-            }),
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: "/activities",
+                        __source: {
+                            fileName: "src/components/ActivitySingleView.jsx",
+                            lineNumber: 27,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "Back to all activities"
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                        __source: {
+                            fileName: "src/components/ActivitySingleView.jsx",
+                            lineNumber: 28,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: activity.name
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        __source: {
+                            fileName: "src/components/ActivitySingleView.jsx",
+                            lineNumber: 29,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: activity.description
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: editPath,
+                        __source: {
+                            fileName: "src/components/ActivitySingleView.jsx",
+                            lineNumber: 30,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "Edit this activity"
+                    })
+                ]
+            }) : null,
             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Outlet, {
                 __source: {
                     fileName: "src/components/ActivitySingleView.jsx",
-                    lineNumber: 9,
+                    lineNumber: 33,
                     columnNumber: 7
                 },
                 __self: undefined
@@ -26931,7 +26998,7 @@ const ActivitySingleView = ()=>{
         ]
     }));
 };
-_s(ActivitySingleView, "bOOki/MR9bgtoxNt1bo3etKJ+o0=", false, function() {
+_s(ActivitySingleView, "qYox9J5TT70OaKTXl+I/HgGnHvA=", false, function() {
     return [
         _reactRouterDom.useParams
     ];
@@ -26946,7 +27013,7 @@ $RefreshReg$(_c, "ActivitySingleView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP"}],"7dEKC":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP","react":"4mchR","../api":"l6gwE"}],"7dEKC":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$de28 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26956,17 +27023,48 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
+var _reactRouterDom = require("react-router-dom");
+var _s = $RefreshSig$();
 const ActivityEdit = ()=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsx("h1", {
+    _s();
+    let navigate = _reactRouterDom.useNavigate();
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("section", {
         __source: {
             fileName: "src/components/ActivityEdit.jsx",
-            lineNumber: 2,
-            columnNumber: 10
+            lineNumber: 7,
+            columnNumber: 5
         },
         __self: undefined,
-        children: "Edit Activity"
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                __source: {
+                    fileName: "src/components/ActivityEdit.jsx",
+                    lineNumber: 8,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "Edit Activity"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                type: "button",
+                onClick: ()=>navigate(-1)
+                ,
+                __source: {
+                    fileName: "src/components/ActivityEdit.jsx",
+                    lineNumber: 9,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "CANCEL"
+            })
+        ]
     }));
 };
+_s(ActivityEdit, "CzcTeTziyjMsSrAVmHuCCb6+Bfg=", false, function() {
+    return [
+        _reactRouterDom.useNavigate
+    ];
+});
 _c = ActivityEdit;
 exports.default = ActivityEdit;
 var _c;
@@ -26977,7 +27075,7 @@ $RefreshReg$(_c, "ActivityEdit");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"gF4vd":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP"}],"gF4vd":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8bac = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
