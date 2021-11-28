@@ -1,7 +1,5 @@
-import { useEffect, useState, Fragment } from "react";
+import { Fragment } from "react";
 import { Routes, Route } from "react-router";
-
-import { getAllActivities } from "../api";
 
 //COMPONENTS
 import ActivitiesAll from "./ActivitiesAll";
