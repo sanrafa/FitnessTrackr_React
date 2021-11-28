@@ -27,6 +27,18 @@ export async function getActivityById(id) {
   }
 }
 
+export async function getRoutinesByActivity(id) {
+  try {
+    const response = await axios.get(`${BASE_URL}/${id}/routines`);
+    const routines = response.data;
+    return routines;
+  } catch (err) {
+    console.error(err);
+    const error = err.response.data;
+    throw error.message;
+  }
+}
+
 export async function createActivity(token, name, description) {
   try {
     let headers = setHeaders(token);

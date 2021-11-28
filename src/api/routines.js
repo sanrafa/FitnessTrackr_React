@@ -7,8 +7,8 @@ export async function getAllRoutines() {
     const routines = response.data;
     return routines;
   } catch (err) {
-    const message = err.response.data;
-    console.log("Error is:", message);
-    return message;
+    console.error(err);
+    const error = err.response.data;
+    throw error.message;
   }
 }

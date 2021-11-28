@@ -6,6 +6,7 @@ import ActivitiesAll from "./ActivitiesAll";
 import ActivitiesNew from "./ActivitiesNew";
 import ActivitySingleView from "./ActivitySingleView";
 import ActivityEdit from "./ActivityEdit";
+import ActivityRoutines from "./ActivityRoutines";
 /* 
 * TODO:
 * Turn this into main activity route page,
@@ -26,6 +27,7 @@ const Activities = () => {
         </Route>
 
         <Route path="/:activityId" element={<ActivitySingleView />}>
+          <Route path="routines" element={<ActivityRoutines />} />
           <Route path="edit" element={<ActivityEdit />} />
         </Route>
       </Routes>

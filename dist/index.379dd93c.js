@@ -24609,9 +24609,9 @@ async function getAllRoutines() {
         const routines = response.data;
         return routines;
     } catch (err) {
-        const message = err.response.data;
-        console.log("Error is:", message);
-        return message;
+        console.error(err);
+        const error = err.response.data;
+        throw error.message;
     }
 }
 
@@ -26180,6 +26180,8 @@ parcelHelpers.export(exports, "getAllActivities", ()=>getAllActivities
 );
 parcelHelpers.export(exports, "getActivityById", ()=>getActivityById
 );
+parcelHelpers.export(exports, "getRoutinesByActivity", ()=>getRoutinesByActivity
+);
 parcelHelpers.export(exports, "createActivity", ()=>createActivity
 );
 parcelHelpers.export(exports, "editActivity", ()=>editActivity
@@ -26203,6 +26205,17 @@ async function getActivityById(id) {
         const response = await axios.get(`${BASE_URL}/${id}`);
         const activity = response.data;
         return activity;
+    } catch (err) {
+        console.error(err);
+        const error = err.response.data;
+        throw error.message;
+    }
+}
+async function getRoutinesByActivity(id) {
+    try {
+        const response = await axios.get(`${BASE_URL}/${id}/routines`);
+        const routines = response.data;
+        return routines;
     } catch (err) {
         console.error(err);
         const error = err.response.data;
@@ -26704,6 +26717,8 @@ var _activitySingleView = require("./ActivitySingleView");
 var _activitySingleViewDefault = parcelHelpers.interopDefault(_activitySingleView);
 var _activityEdit = require("./ActivityEdit");
 var _activityEditDefault = parcelHelpers.interopDefault(_activityEdit);
+var _activityRoutines = require("./ActivityRoutines");
+var _activityRoutinesDefault = parcelHelpers.interopDefault(_activityRoutines);
 /* 
 * TODO:
 * Turn this into main activity route page,
@@ -26717,14 +26732,14 @@ var _activityEditDefault = parcelHelpers.interopDefault(_activityEdit);
     return(/*#__PURE__*/ _jsxRuntime.jsx(_react.Fragment, {
         __source: {
             fileName: "src/components/Activities.jsx",
-            lineNumber: 22,
+            lineNumber: 23,
             columnNumber: 5
         },
         __self: undefined,
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouter.Routes, {
             __source: {
                 fileName: "src/components/Activities.jsx",
-                lineNumber: 23,
+                lineNumber: 24,
                 columnNumber: 7
             },
             __self: undefined,
@@ -26735,7 +26750,7 @@ var _activityEditDefault = parcelHelpers.interopDefault(_activityEdit);
                     }),
                     __source: {
                         fileName: "src/components/Activities.jsx",
-                        lineNumber: 24,
+                        lineNumber: 25,
                         columnNumber: 9
                     },
                     __self: undefined,
@@ -26745,33 +26760,46 @@ var _activityEditDefault = parcelHelpers.interopDefault(_activityEdit);
                         }),
                         __source: {
                             fileName: "src/components/Activities.jsx",
-                            lineNumber: 25,
+                            lineNumber: 26,
                             columnNumber: 11
                         },
                         __self: undefined
                     })
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouter.Route, {
+                /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouter.Route, {
                     path: "/:activityId",
                     element: /*#__PURE__*/ _jsxRuntime.jsx(_activitySingleViewDefault.default, {
                     }),
                     __source: {
                         fileName: "src/components/Activities.jsx",
-                        lineNumber: 28,
+                        lineNumber: 29,
                         columnNumber: 9
                     },
                     __self: undefined,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouter.Route, {
-                        path: "edit",
-                        element: /*#__PURE__*/ _jsxRuntime.jsx(_activityEditDefault.default, {
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouter.Route, {
+                            path: "routines",
+                            element: /*#__PURE__*/ _jsxRuntime.jsx(_activityRoutinesDefault.default, {
+                            }),
+                            __source: {
+                                fileName: "src/components/Activities.jsx",
+                                lineNumber: 30,
+                                columnNumber: 11
+                            },
+                            __self: undefined
                         }),
-                        __source: {
-                            fileName: "src/components/Activities.jsx",
-                            lineNumber: 29,
-                            columnNumber: 11
-                        },
-                        __self: undefined
-                    })
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouter.Route, {
+                            path: "edit",
+                            element: /*#__PURE__*/ _jsxRuntime.jsx(_activityEditDefault.default, {
+                            }),
+                            __source: {
+                                fileName: "src/components/Activities.jsx",
+                                lineNumber: 31,
+                                columnNumber: 11
+                            },
+                            __self: undefined
+                        })
+                    ]
                 })
             ]
         })
@@ -26787,7 +26815,7 @@ $RefreshReg$(_c, "Activities");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router":"g791w","./ActivitiesAll":"127vg","./ActivitiesNew":"6gSof","./ActivitySingleView":"5QGTD","./ActivityEdit":"7dEKC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"127vg":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router":"g791w","./ActivitiesAll":"127vg","./ActivitiesNew":"6gSof","./ActivitySingleView":"5QGTD","./ActivityEdit":"7dEKC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","./ActivityRoutines":"egEMd"}],"127vg":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$ca3f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27540,7 +27568,116 @@ $RefreshReg$(_c, "ActivityEdit");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"gF4vd":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"egEMd":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$5874 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5874.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactRouterDom = require("react-router-dom");
+// API
+var _api = require("../api");
+var _s = $RefreshSig$();
+const ActivityRoutines = ()=>{
+    _s();
+    const [routines, setRoutines] = _react.useState([]);
+    const { activityId  } = _reactRouterDom.useParams();
+    _react.useEffect(()=>{
+        async function fetchRoutines() {
+            const allRoutines = await _api.getRoutinesByActivity(activityId);
+            setRoutines(allRoutines);
+        }
+        fetchRoutines();
+    }, []);
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("section", {
+        __source: {
+            fileName: "src/components/ActivityRoutines.jsx",
+            lineNumber: 21,
+            columnNumber: 5
+        },
+        __self: undefined,
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("h3", {
+                __source: {
+                    fileName: "src/components/ActivityRoutines.jsx",
+                    lineNumber: 22,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "Featured in:"
+            }),
+            routines ? /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                __source: {
+                    fileName: "src/components/ActivityRoutines.jsx",
+                    lineNumber: 24,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: routines.map((routine)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                        __source: {
+                            fileName: "src/components/ActivityRoutines.jsx",
+                            lineNumber: 26,
+                            columnNumber: 13
+                        },
+                        __self: undefined,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                to: `/routines/${routine.id}`,
+                                __source: {
+                                    fileName: "src/components/ActivityRoutines.jsx",
+                                    lineNumber: 27,
+                                    columnNumber: 15
+                                },
+                                __self: undefined,
+                                children: routine.name
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                                __source: {
+                                    fileName: "src/components/ActivityRoutines.jsx",
+                                    lineNumber: 28,
+                                    columnNumber: 15
+                                },
+                                __self: undefined,
+                                children: routine.goal
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                to: `/users/${routine.creatorName}/routines`,
+                                __source: {
+                                    fileName: "src/components/ActivityRoutines.jsx",
+                                    lineNumber: 29,
+                                    columnNumber: 15
+                                },
+                                __self: undefined,
+                                children: routine.creatorName
+                            })
+                        ]
+                    }, routine.id)
+                )
+            }) : "No associated routines"
+        ]
+    }));
+};
+_s(ActivityRoutines, "4XudD11A/+dNJve8xaguENZa3Ug=", false, function() {
+    return [
+        _reactRouterDom.useParams
+    ];
+});
+_c = ActivityRoutines;
+exports.default = ActivityRoutines;
+var _c;
+$RefreshReg$(_c, "ActivityRoutines");
+
+  $parcel$ReactRefreshHelpers$5874.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","react/jsx-runtime":"6Ds2u"}],"gF4vd":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8bac = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27690,17 +27827,195 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactRouterDom = require("react-router-dom");
+//API
+var _api = require("../api");
+var _s = $RefreshSig$();
 const RoutinesAll = ()=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsx("h1", {
+    _s();
+    const [routines, setRoutines] = _react.useState([]);
+    const [isLoading, setIsLoading] = _react.useState(false);
+    const [error, setError] = _react.useState("");
+    _react.useEffect(()=>{
+        async function fetchRoutines() {
+            try {
+                setIsLoading(true);
+                const allRoutines = await _api.getAllRoutines();
+                setRoutines(allRoutines);
+                setError(null);
+            } catch (err) {
+                console.error(err);
+                setError("Unable to get routines. Please try again later.");
+            } finally{
+                setIsLoading(false);
+            }
+        }
+        fetchRoutines();
+    }, []);
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/RoutinesAll.jsx",
-            lineNumber: 2,
-            columnNumber: 10
+            lineNumber: 30,
+            columnNumber: 5
         },
         __self: undefined,
-        children: "All Routines"
+        children: [
+            isLoading ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                __source: {
+                    fileName: "src/components/RoutinesAll.jsx",
+                    lineNumber: 31,
+                    columnNumber: 20
+                },
+                __self: undefined,
+                children: "Loading..."
+            }) : null,
+            error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                __source: {
+                    fileName: "src/components/RoutinesAll.jsx",
+                    lineNumber: 33,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: error
+            }) : routines ? /*#__PURE__*/ _jsxRuntime.jsxs("article", {
+                __source: {
+                    fileName: "src/components/RoutinesAll.jsx",
+                    lineNumber: 35,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                        __source: {
+                            fileName: "src/components/RoutinesAll.jsx",
+                            lineNumber: 36,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "Routines"
+                    }),
+                    routines ? routines.map((routine)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                            __source: {
+                                fileName: "src/components/RoutinesAll.jsx",
+                                lineNumber: 39,
+                                columnNumber: 17
+                            },
+                            __self: undefined,
+                            children: [
+                                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                    to: `${routine.id}`,
+                                    __source: {
+                                        fileName: "src/components/RoutinesAll.jsx",
+                                        lineNumber: 40,
+                                        columnNumber: 19
+                                    },
+                                    __self: undefined,
+                                    children: routine.name
+                                }),
+                                /*#__PURE__*/ _jsxRuntime.jsxs("p", {
+                                    __source: {
+                                        fileName: "src/components/RoutinesAll.jsx",
+                                        lineNumber: 41,
+                                        columnNumber: 19
+                                    },
+                                    __self: undefined,
+                                    children: [
+                                        "Creator:",
+                                        " ",
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                            to: `/users/${routine.creatorName}/routines`,
+                                            __source: {
+                                                fileName: "src/components/RoutinesAll.jsx",
+                                                lineNumber: 43,
+                                                columnNumber: 21
+                                            },
+                                            __self: undefined,
+                                            children: routine.creatorName
+                                        })
+                                    ]
+                                }),
+                                /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                                    __source: {
+                                        fileName: "src/components/RoutinesAll.jsx",
+                                        lineNumber: 47,
+                                        columnNumber: 19
+                                    },
+                                    __self: undefined,
+                                    children: routine.goal
+                                }),
+                                routine.activities ? routine.activities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                                        __source: {
+                                            fileName: "src/components/RoutinesAll.jsx",
+                                            lineNumber: 50,
+                                            columnNumber: 23
+                                        },
+                                        __self: undefined,
+                                        children: [
+                                            /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                                                __source: {
+                                                    fileName: "src/components/RoutinesAll.jsx",
+                                                    lineNumber: 51,
+                                                    columnNumber: 25
+                                                },
+                                                __self: undefined,
+                                                children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                                    to: `/activities/${activity.id}/routines`,
+                                                    __source: {
+                                                        fileName: "src/components/RoutinesAll.jsx",
+                                                        lineNumber: 52,
+                                                        columnNumber: 27
+                                                    },
+                                                    __self: undefined,
+                                                    children: activity.name
+                                                })
+                                            }),
+                                            /*#__PURE__*/ _jsxRuntime.jsxs("span", {
+                                                __source: {
+                                                    fileName: "src/components/RoutinesAll.jsx",
+                                                    lineNumber: 56,
+                                                    columnNumber: 25
+                                                },
+                                                __self: undefined,
+                                                children: [
+                                                    "Duration: ",
+                                                    activity.duration,
+                                                    " minutes"
+                                                ]
+                                            }),
+                                            /*#__PURE__*/ _jsxRuntime.jsxs("span", {
+                                                __source: {
+                                                    fileName: "src/components/RoutinesAll.jsx",
+                                                    lineNumber: 57,
+                                                    columnNumber: 25
+                                                },
+                                                __self: undefined,
+                                                children: [
+                                                    "Count: ",
+                                                    activity.count,
+                                                    " reps"
+                                                ]
+                                            })
+                                        ]
+                                    }, activity.routineActivityId)
+                                ) : /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                                    __source: {
+                                        fileName: "src/components/RoutinesAll.jsx",
+                                        lineNumber: 61,
+                                        columnNumber: 21
+                                    },
+                                    __self: undefined,
+                                    children: "No associated activities"
+                                })
+                            ]
+                        }, routine.id)
+                    ) : null
+                ]
+            }) : null
+        ]
     }));
 };
+_s(RoutinesAll, "X4Ph8ySmPyUFw9syI381r0/dkKk=");
 _c = RoutinesAll;
 exports.default = RoutinesAll;
 var _c;
@@ -27711,7 +28026,7 @@ $RefreshReg$(_c, "RoutinesAll");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"ngsQD":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE"}],"ngsQD":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$f093 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
