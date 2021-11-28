@@ -39,9 +39,6 @@ const ActivitySingleView = () => {
           <Link to="/activities">Back to all activities</Link>
           <h1>{activity.name}</h1>
           <p>{activity.description}</p>
-          {/* <button type="button" onClick={() => navigate("routines")}>
-            View routines
-          </button> */}
           <NavLink
             to="routines"
             style={({ isActive }) =>
