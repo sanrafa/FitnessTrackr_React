@@ -49,3 +49,18 @@ export async function getUser(token) {
     return message;
   }
 }
+
+export async function getRoutinesByUser(token = null, username) {
+  try {
+    let headers = setHeaders(token);
+    const response = await axios.get(`${BASE_URL}/${username}/routines`, {
+      headers: headers,
+    });
+    const routines = response.data;
+    return routines;
+  } catch (err) {
+    const message = err.response.data;
+    console.log("Error is:", message);
+    return message;
+  }
+}

@@ -22779,21 +22779,21 @@ const App = ()=>{
         },
         __source: {
             fileName: "src/App.jsx",
-            lineNumber: 47,
+            lineNumber: 48,
             columnNumber: 5
         },
         __self: undefined,
         children: /*#__PURE__*/ _jsxRuntime.jsx(_react.Fragment, {
             __source: {
                 fileName: "src/App.jsx",
-                lineNumber: 48,
+                lineNumber: 49,
                 columnNumber: 7
             },
             __self: undefined,
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
                 __source: {
                     fileName: "src/App.jsx",
-                    lineNumber: 49,
+                    lineNumber: 50,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -22801,7 +22801,7 @@ const App = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx(_components.Header, {
                         __source: {
                             fileName: "src/App.jsx",
-                            lineNumber: 50,
+                            lineNumber: 51,
                             columnNumber: 11
                         },
                         __self: undefined
@@ -22809,7 +22809,7 @@ const App = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Routes, {
                         __source: {
                             fileName: "src/App.jsx",
-                            lineNumber: 51,
+                            lineNumber: 52,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -22821,7 +22821,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 52,
+                                    lineNumber: 53,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22832,7 +22832,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 53,
+                                    lineNumber: 54,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22843,7 +22843,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 54,
+                                    lineNumber: 55,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22854,7 +22854,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 55,
+                                    lineNumber: 56,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22865,7 +22865,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 56,
+                                    lineNumber: 57,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22876,7 +22876,7 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 57,
+                                    lineNumber: 58,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -22887,7 +22887,18 @@ const App = ()=>{
                                 }),
                                 __source: {
                                     fileName: "src/App.jsx",
-                                    lineNumber: 58,
+                                    lineNumber: 59,
+                                    columnNumber: 13
+                                },
+                                __self: undefined
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                                path: "/users/:username",
+                                element: /*#__PURE__*/ _jsxRuntime.jsx(_components.User, {
+                                }),
+                                __source: {
+                                    fileName: "src/App.jsx",
+                                    lineNumber: 60,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -26267,6 +26278,8 @@ parcelHelpers.export(exports, "loginUser", ()=>loginUser
 );
 parcelHelpers.export(exports, "getUser", ()=>getUser
 );
+parcelHelpers.export(exports, "getRoutinesByUser", ()=>getRoutinesByUser
+);
 var _ = require(".");
 const axios = require("axios").default;
 const BASE_URL = "https://fitnesstrackr-rafa.herokuapp.com/api/users";
@@ -26314,6 +26327,20 @@ async function getUser(token) {
         return message;
     }
 }
+async function getRoutinesByUser(token = null, username) {
+    try {
+        let headers = _.setHeaders(token);
+        const response = await axios.get(`${BASE_URL}/${username}/routines`, {
+            headers: headers
+        });
+        const routines = response.data;
+        return routines;
+    } catch (err) {
+        const message = err.response.data;
+        console.log("Error is:", message);
+        return message;
+    }
+}
 
 },{"axios":"1IeuP",".":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"iKUBW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -26335,6 +26362,8 @@ parcelHelpers.export(exports, "Register", ()=>_registerDefault.default
 );
 parcelHelpers.export(exports, "Logout", ()=>_logoutDefault.default
 );
+parcelHelpers.export(exports, "User", ()=>_userDefault.default
+);
 var _header = require("./Header");
 var _headerDefault = parcelHelpers.interopDefault(_header);
 var _home = require("./Home");
@@ -26351,8 +26380,10 @@ var _register = require("./Register");
 var _registerDefault = parcelHelpers.interopDefault(_register);
 var _logout = require("./Logout");
 var _logoutDefault = parcelHelpers.interopDefault(_logout);
+var _user = require("./User");
+var _userDefault = parcelHelpers.interopDefault(_user);
 
-},{"./Header":"a7Do7","./Home":"1tdUA","./Activities":"imhX8","./MyRoutines":"gF4vd","./Routines":"4kpDy","./Login":"2yGwA","./Register":"lPbZt","./Logout":"fhizP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"a7Do7":[function(require,module,exports) {
+},{"./Header":"a7Do7","./Home":"1tdUA","./Activities":"imhX8","./MyRoutines":"gF4vd","./Routines":"4kpDy","./Login":"2yGwA","./Register":"lPbZt","./Logout":"fhizP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./User":"f2gfn"}],"a7Do7":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$d49a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27226,6 +27257,7 @@ var _app = require("../App");
 var _s = $RefreshSig$();
 const ActivitySingleView = ()=>{
     _s();
+    let navigate = _reactRouterDom.useNavigate();
     const { activityId  } = _reactRouterDom.useParams();
     const editPath = _reactRouterDom.generatePath("/activities/:activityId/edit", {
         activityId: activityId
@@ -27243,7 +27275,7 @@ const ActivitySingleView = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/ActivitySingleView.jsx",
-            lineNumber: 27,
+            lineNumber: 36,
             columnNumber: 5
         },
         __self: undefined,
@@ -27251,7 +27283,7 @@ const ActivitySingleView = ()=>{
             activity ? /*#__PURE__*/ _jsxRuntime.jsxs("article", {
                 __source: {
                     fileName: "src/components/ActivitySingleView.jsx",
-                    lineNumber: 29,
+                    lineNumber: 38,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -27260,7 +27292,7 @@ const ActivitySingleView = ()=>{
                         to: "/activities",
                         __source: {
                             fileName: "src/components/ActivitySingleView.jsx",
-                            lineNumber: 30,
+                            lineNumber: 39,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27269,7 +27301,7 @@ const ActivitySingleView = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                         __source: {
                             fileName: "src/components/ActivitySingleView.jsx",
-                            lineNumber: 31,
+                            lineNumber: 40,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27278,17 +27310,31 @@ const ActivitySingleView = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/ActivitySingleView.jsx",
-                            lineNumber: 32,
+                            lineNumber: 41,
                             columnNumber: 11
                         },
                         __self: undefined,
                         children: activity.description
                     }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.NavLink, {
+                        to: "routines",
+                        style: ({ isActive  })=>isActive ? {
+                                display: "none"
+                            } : undefined
+                        ,
+                        __source: {
+                            fileName: "src/components/ActivitySingleView.jsx",
+                            lineNumber: 45,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "View Routines"
+                    }),
                     user && token ? /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                         to: editPath,
                         __source: {
                             fileName: "src/components/ActivitySingleView.jsx",
-                            lineNumber: 33,
+                            lineNumber: 53,
                             columnNumber: 28
                         },
                         __self: undefined,
@@ -27299,7 +27345,7 @@ const ActivitySingleView = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Outlet, {
                 __source: {
                     fileName: "src/components/ActivitySingleView.jsx",
-                    lineNumber: 36,
+                    lineNumber: 56,
                     columnNumber: 7
                 },
                 __self: undefined
@@ -27307,8 +27353,9 @@ const ActivitySingleView = ()=>{
         ]
     }));
 };
-_s(ActivitySingleView, "IK51ljRCRtY5Dtxy5ynjiuxD3wM=", false, function() {
+_s(ActivitySingleView, "fTue7JSK2TRE2lvKe+DCtnTxiNU=", false, function() {
     return [
+        _reactRouterDom.useNavigate,
         _reactRouterDom.useParams
     ];
 });
@@ -27585,6 +27632,7 @@ var _api = require("../api");
 var _s = $RefreshSig$();
 const ActivityRoutines = ()=>{
     _s();
+    let navigate = _reactRouterDom.useNavigate();
     const [routines, setRoutines] = _react.useState([]);
     const { activityId  } = _reactRouterDom.useParams();
     _react.useEffect(()=>{
@@ -27597,7 +27645,7 @@ const ActivityRoutines = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("section", {
         __source: {
             fileName: "src/components/ActivityRoutines.jsx",
-            lineNumber: 21,
+            lineNumber: 23,
             columnNumber: 5
         },
         __self: undefined,
@@ -27605,7 +27653,7 @@ const ActivityRoutines = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h3", {
                 __source: {
                     fileName: "src/components/ActivityRoutines.jsx",
-                    lineNumber: 22,
+                    lineNumber: 24,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27614,14 +27662,14 @@ const ActivityRoutines = ()=>{
             routines ? /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/ActivityRoutines.jsx",
-                    lineNumber: 24,
+                    lineNumber: 26,
                     columnNumber: 9
                 },
                 __self: undefined,
                 children: routines.map((routine)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
                         __source: {
                             fileName: "src/components/ActivityRoutines.jsx",
-                            lineNumber: 26,
+                            lineNumber: 28,
                             columnNumber: 13
                         },
                         __self: undefined,
@@ -27630,7 +27678,7 @@ const ActivityRoutines = ()=>{
                                 to: `/routines/${routine.id}`,
                                 __source: {
                                     fileName: "src/components/ActivityRoutines.jsx",
-                                    lineNumber: 27,
+                                    lineNumber: 29,
                                     columnNumber: 15
                                 },
                                 __self: undefined,
@@ -27639,17 +27687,17 @@ const ActivityRoutines = ()=>{
                             /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                 __source: {
                                     fileName: "src/components/ActivityRoutines.jsx",
-                                    lineNumber: 28,
+                                    lineNumber: 30,
                                     columnNumber: 15
                                 },
                                 __self: undefined,
                                 children: routine.goal
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                                to: `/users/${routine.creatorName}/routines`,
+                                to: `/users/${routine.creatorName}`,
                                 __source: {
                                     fileName: "src/components/ActivityRoutines.jsx",
-                                    lineNumber: 29,
+                                    lineNumber: 31,
                                     columnNumber: 15
                                 },
                                 __self: undefined,
@@ -27658,12 +27706,23 @@ const ActivityRoutines = ()=>{
                         ]
                     }, routine.id)
                 )
-            }) : "No associated routines"
+            }) : "No associated routines",
+            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                to: `/activities/${activityId}`,
+                __source: {
+                    fileName: "src/components/ActivityRoutines.jsx",
+                    lineNumber: 40,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "CLOSE"
+            })
         ]
     }));
 };
-_s(ActivityRoutines, "4XudD11A/+dNJve8xaguENZa3Ug=", false, function() {
+_s(ActivityRoutines, "aliroPf3H+BwumTEVPnCMF5o6F0=", false, function() {
     return [
+        _reactRouterDom.useNavigate,
         _reactRouterDom.useParams
     ];
 });
@@ -27924,7 +27983,7 @@ const RoutinesAll = ()=>{
                                         "Creator:",
                                         " ",
                                         /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                                            to: `/users/${routine.creatorName}/routines`,
+                                            to: `/users/${routine.creatorName}`,
                                             __source: {
                                                 fileName: "src/components/RoutinesAll.jsx",
                                                 lineNumber: 43,
@@ -28585,6 +28644,165 @@ $RefreshReg$(_c, "Logout");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}]},["emU3S","lBB98","hD4hw"], "hD4hw", "parcelRequirecf92")
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"f2gfn":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$4210 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$4210.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactRouterDom = require("react-router-dom");
+//API
+var _api = require("../api");
+var _app = require("../App");
+var _s = $RefreshSig$();
+const User = ()=>{
+    _s();
+    const { username  } = _reactRouterDom.useParams();
+    const { token  } = _react.useContext(_app.UserContext);
+    const [routines, setRoutines] = _react.useState([]);
+    _react.useEffect(()=>{
+        async function fetchRoutines() {
+            const userRoutines = await _api.getRoutinesByUser(token, username);
+            setRoutines(userRoutines);
+        }
+        fetchRoutines();
+    }, []);
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
+        __source: {
+            fileName: "src/components/User.jsx",
+            lineNumber: 24,
+            columnNumber: 5
+        },
+        __self: undefined,
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsxs("h1", {
+                __source: {
+                    fileName: "src/components/User.jsx",
+                    lineNumber: 25,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: [
+                    username,
+                    "'s Routines"
+                ]
+            }),
+            routines ? routines.map((routine)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    __source: {
+                        fileName: "src/components/User.jsx",
+                        lineNumber: 28,
+                        columnNumber: 11
+                    },
+                    __self: undefined,
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                            to: `/routines/${routine.id}`,
+                            __source: {
+                                fileName: "src/components/User.jsx",
+                                lineNumber: 29,
+                                columnNumber: 13
+                            },
+                            __self: undefined,
+                            children: routine.name
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                            __source: {
+                                fileName: "src/components/User.jsx",
+                                lineNumber: 30,
+                                columnNumber: 13
+                            },
+                            __self: undefined,
+                            children: routine.goal
+                        }),
+                        routine.activities ? routine.activities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                                __source: {
+                                    fileName: "src/components/User.jsx",
+                                    lineNumber: 33,
+                                    columnNumber: 19
+                                },
+                                __self: undefined,
+                                children: [
+                                    /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                                        __source: {
+                                            fileName: "src/components/User.jsx",
+                                            lineNumber: 34,
+                                            columnNumber: 21
+                                        },
+                                        __self: undefined,
+                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                            to: `/activities/${activity.id}`,
+                                            __source: {
+                                                fileName: "src/components/User.jsx",
+                                                lineNumber: 35,
+                                                columnNumber: 23
+                                            },
+                                            __self: undefined,
+                                            children: activity.name
+                                        })
+                                    }),
+                                    /*#__PURE__*/ _jsxRuntime.jsxs("span", {
+                                        __source: {
+                                            fileName: "src/components/User.jsx",
+                                            lineNumber: 39,
+                                            columnNumber: 21
+                                        },
+                                        __self: undefined,
+                                        children: [
+                                            "Duration: ",
+                                            activity.duration,
+                                            " minutes"
+                                        ]
+                                    }),
+                                    /*#__PURE__*/ _jsxRuntime.jsxs("span", {
+                                        __source: {
+                                            fileName: "src/components/User.jsx",
+                                            lineNumber: 40,
+                                            columnNumber: 21
+                                        },
+                                        __self: undefined,
+                                        children: [
+                                            "Count: ",
+                                            activity.count,
+                                            " reps"
+                                        ]
+                                    })
+                                ]
+                            }, activity.routineActivityId)
+                        ) : null
+                    ]
+                }, routine.id)
+            ) : /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                __source: {
+                    fileName: "src/components/User.jsx",
+                    lineNumber: 47,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: "This user doesn't have any routines yet."
+            })
+        ]
+    }));
+};
+_s(User, "nh3IxHx5fx2zLs46NgxXr02FCxw=", false, function() {
+    return [
+        _reactRouterDom.useParams
+    ];
+});
+_c = User;
+exports.default = User;
+var _c;
+$RefreshReg$(_c, "User");
+
+  $parcel$ReactRefreshHelpers$4210.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","../api":"l6gwE","react-router-dom":"16kZP","../App":"lL5iC"}]},["emU3S","lBB98","hD4hw"], "hD4hw", "parcelRequirecf92")
 
 //# sourceMappingURL=index.379dd93c.js.map

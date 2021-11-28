@@ -1,5 +1,12 @@
 import { useState, useEffect, useContext } from "react";
-import { Outlet, useParams, Link, generatePath } from "react-router-dom";
+import {
+  Outlet,
+  useParams,
+  Link,
+  generatePath,
+  NavLink,
+  useNavigate,
+} from "react-router-dom";
 
 //API
 import { getActivityById } from "../api";
@@ -7,6 +14,8 @@ import { getActivityById } from "../api";
 import { UserContext } from "../App";
 
 const ActivitySingleView = () => {
+  let navigate = useNavigate();
+
   const { activityId } = useParams();
   const editPath = generatePath("/activities/:activityId/edit", {
     activityId: activityId,
@@ -30,6 +39,17 @@ const ActivitySingleView = () => {
           <Link to="/activities">Back to all activities</Link>
           <h1>{activity.name}</h1>
           <p>{activity.description}</p>
+          {/* <button type="button" onClick={() => navigate("routines")}>
+            View routines
+          </button> */}
+          <NavLink
+            to="routines"
+            style={({ isActive }) =>
+              isActive ? { display: "none" } : undefined
+            }
+          >
+            View Routines
+          </NavLink>
           {user && token ? <Link to={editPath}>Edit this activity</Link> : null}
         </article>
       ) : null}

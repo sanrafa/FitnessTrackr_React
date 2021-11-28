@@ -40,7 +40,7 @@ const RoutinesAll = () => {
                   <Link to={`${routine.id}`}>{routine.name}</Link>
                   <p>
                     Creator:{" "}
-                    <Link to={`/users/${routine.creatorName}/routines`}>
+                    <Link to={`/users/${routine.creatorName}`}>
                       {routine.creatorName}
                     </Link>
                   </p>

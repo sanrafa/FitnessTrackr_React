@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 // API
 import { getRoutinesByActivity } from "../api";
 
 const ActivityRoutines = () => {
+  let navigate = useNavigate();
+
   const [routines, setRoutines] = useState([]);
 
   const { activityId } = useParams();
@@ -26,7 +28,7 @@ const ActivityRoutines = () => {
             <div key={routine.id}>
               <Link to={`/routines/${routine.id}`}>{routine.name}</Link>
               <p>{routine.goal}</p>
-              <Link to={`/users/${routine.creatorName}/routines`}>
+              <Link to={`/users/${routine.creatorName}`}>
                 {routine.creatorName}
               </Link>
             </div>
@@ -35,6 +37,7 @@ const ActivityRoutines = () => {
       ) : (
         "No associated routines"
       )}
+      <Link to={`/activities/${activityId}`}>CLOSE</Link>
     </section>
   );
 };

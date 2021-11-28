@@ -15,6 +15,7 @@ import {
   Activities,
   MyRoutines,
   Logout,
+  User,
 } from "./components";
 
 // Global context
@@ -56,6 +57,7 @@ export const App = () => {
             <Route path="/routines/*" element={<Routines />} />
             <Route path="/activities/*" element={<Activities />} />
             <Route path="/profile" element={<MyRoutines />} />
+            <Route path="/users/:username" element={<User />} />
           </Routes>
         </Router>
       </Fragment>
