@@ -44,6 +44,7 @@ export async function createRoutine(token, name, goal, isPublic = false) {
         headers: headers,
       }
     );
+    console.log(response);
     const newRoutine = response.data;
     return newRoutine;
   } catch (err) {

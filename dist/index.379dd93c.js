@@ -24597,6 +24597,8 @@ var _activities = require("./activities");
 parcelHelpers.exportAll(_activities, exports);
 var _users = require("./users");
 parcelHelpers.exportAll(_users, exports);
+var _routineActivities = require("./routine_activities");
+parcelHelpers.exportAll(_routineActivities, exports);
 function setHeaders(token) {
     if (token) return {
         "Content-Type": "application/json",
@@ -24607,12 +24609,20 @@ function setHeaders(token) {
     };
 }
 
-},{"./routines":"b0BJ3","./activities":"6DQLS","./users":"kFmvG","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"b0BJ3":[function(require,module,exports) {
+},{"./routines":"b0BJ3","./activities":"6DQLS","./users":"kFmvG","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./routine_activities":"gH8YL"}],"b0BJ3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getAllRoutines", ()=>getAllRoutines
 );
 parcelHelpers.export(exports, "getRoutineById", ()=>getRoutineById
+);
+parcelHelpers.export(exports, "createRoutine", ()=>createRoutine
+);
+parcelHelpers.export(exports, "addActivityToRoutine", ()=>addActivityToRoutine
+);
+parcelHelpers.export(exports, "deleteRoutine", ()=>deleteRoutine
+);
+parcelHelpers.export(exports, "updateRoutine", ()=>updateRoutine
 );
 var _index = require("./index");
 const axios = require("axios").default;
@@ -24636,6 +24646,75 @@ async function getRoutineById(id, token) {
         });
         const routine = response.data;
         return routine;
+    } catch (err) {
+        console.error(err);
+        const error = err.response.data;
+        throw error.message;
+    }
+}
+async function createRoutine(token, name, goal, isPublic = false) {
+    try {
+        let headers = _index.setHeaders(token);
+        const response = await axios.post(`${BASE_URL}`, {
+            name: name,
+            goal: goal,
+            isPublic: isPublic
+        }, {
+            headers: headers
+        });
+        console.log(response);
+        const newRoutine = response.data;
+        return newRoutine;
+    } catch (err) {
+        console.error(err);
+        const error = err.response.data;
+        throw error.message;
+    }
+}
+async function addActivityToRoutine(token, routineId, activityId, count, duration) {
+    try {
+        let headers = _index.setHeaders(token);
+        const response = await axios.post(`${BASE_URL}/${routineId}/activities`, {
+            activityId: activityId,
+            count: count,
+            duration: duration
+        }, {
+            headers: headers
+        });
+        const routineActivity = response.data;
+        return routineActivity;
+    } catch (err) {
+        console.error(err);
+        const error = err.response.data;
+        throw error.message;
+    }
+}
+async function deleteRoutine(token, routineId) {
+    try {
+        let headers = _index.setHeaders(token);
+        const response = await axios.delete(`${BASE_URL}/${routineId}`, {
+            headers: headers
+        });
+        const data = response.data;
+        return data;
+    } catch (err) {
+        console.error(err);
+        const error = err.response.data;
+        throw error.message;
+    }
+}
+async function updateRoutine(token, routineId, name, goal, isPublic) {
+    try {
+        let headers = _index.setHeaders(token);
+        const response = await axios.patch(`${BASE_URL}/${routineId}`, {
+            name: name,
+            goal: goal,
+            isPublic: isPublic
+        }, {
+            headers: headers
+        });
+        const updatedRoutine = response.data;
+        return updatedRoutine;
     } catch (err) {
         console.error(err);
         const error = err.response.data;
@@ -26352,6 +26431,48 @@ async function getRoutinesByUser(token = null, username) {
         });
         const routines = response.data;
         return routines;
+    } catch (err) {
+        console.error(err);
+        const error = err.response.data;
+        throw error.message;
+    }
+}
+
+},{"axios":"1IeuP",".":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"gH8YL":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "updateRoutineActivity", ()=>updateRoutineActivity
+);
+parcelHelpers.export(exports, "deleteRoutineActivity", ()=>deleteRoutineActivity
+);
+var _ = require(".");
+const axios = require("axios").default;
+const BASE_URL = "https://fitnesstrackr-rafa.herokuapp.com/api/routine_activities";
+async function updateRoutineActivity(token, routineActivityId, count, duration) {
+    try {
+        let headers = _.setHeaders(token);
+        const response = await axios.patch(`${BASE_URL}/${routineActivityId}`, {
+            count: count,
+            duration: duration
+        }, {
+            headers: headers
+        });
+        const routineActivity = response.data;
+        return routineActivity;
+    } catch (err) {
+        console.error(err);
+        const error = err.response.data;
+        throw error.message;
+    }
+}
+async function deleteRoutineActivity(token, routineActivityId) {
+    try {
+        let headers = _.setHeaders(token);
+        const response = await axios.delete(`${BASE_URL}/${routineActivityId}`, {
+            headers: headers
+        });
+        const data = response.data;
+        return data;
     } catch (err) {
         console.error(err);
         const error = err.response.data;
@@ -28251,23 +28372,256 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactRouterDom = require("react-router-dom");
+// API
+var _api = require("../api");
+var _app = require("../App");
+var _routineNewActivities = require("./RoutineNewActivities"); // use to add activities to routine
+var _routineNewActivitiesDefault = parcelHelpers.interopDefault(_routineNewActivities);
+var _s = $RefreshSig$();
 const RoutineNew = ()=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsx("h1", {
+    _s();
+    const { user , token  } = _react.useContext(_app.UserContext);
+    const [newRoutine, setNewRoutine] = _react.useState({
+    });
+    const [name, setName] = _react.useState("");
+    const [goal, setGoal] = _react.useState("");
+    const [isPublic, setIsPublic] = _react.useState(false);
+    const [error, setError] = _react.useState("");
+    const createNewRoutine = async ()=>{
+        try {
+            if (user && token) {
+                console.log("Creating routine!");
+                const routine = await _api.createRoutine(token, name, goal, isPublic);
+                if (routine === "") throw Error("That routine name is taken - please choose another.");
+                else {
+                    setNewRoutine(routine);
+                    setError(null);
+                }
+            }
+        } catch (err) {
+            if (typeof err === "object") err = err.message;
+            setError(err);
+        }
+    };
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/RoutineNew.jsx",
-            lineNumber: 2,
-            columnNumber: 10
+            lineNumber: 39,
+            columnNumber: 5
         },
         __self: undefined,
-        children: "Create a new routine"
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                __source: {
+                    fileName: "src/components/RoutineNew.jsx",
+                    lineNumber: 40,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "Create a new routine"
+            }),
+            error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                __source: {
+                    fileName: "src/components/RoutineNew.jsx",
+                    lineNumber: 41,
+                    columnNumber: 16
+                },
+                __self: undefined,
+                children: error
+            }) : null,
+            Object.keys(newRoutine).length === 0 ? /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                onSubmit: (e)=>{
+                    e.preventDefault();
+                    createNewRoutine();
+                },
+                __source: {
+                    fileName: "src/components/RoutineNew.jsx",
+                    lineNumber: 43,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/RoutineNew.jsx",
+                            lineNumber: 49,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: [
+                            "Name:",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "text",
+                                size: "60",
+                                required: true,
+                                onChange: (e)=>setName(e.target.value)
+                                ,
+                                value: name,
+                                __source: {
+                                    fileName: "src/components/RoutineNew.jsx",
+                                    lineNumber: 51,
+                                    columnNumber: 13
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/RoutineNew.jsx",
+                            lineNumber: 59,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: [
+                            "Goal:",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "text",
+                                size: "60",
+                                required: true,
+                                onChange: (e)=>setGoal(e.target.value)
+                                ,
+                                value: goal,
+                                __source: {
+                                    fileName: "src/components/RoutineNew.jsx",
+                                    lineNumber: 61,
+                                    columnNumber: 13
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/RoutineNew.jsx",
+                            lineNumber: 69,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: [
+                            "Make this routine public?",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "checkbox",
+                                onChange: ()=>setIsPublic(!isPublic)
+                                ,
+                                __source: {
+                                    fileName: "src/components/RoutineNew.jsx",
+                                    lineNumber: 71,
+                                    columnNumber: 13
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "submit",
+                        __source: {
+                            fileName: "src/components/RoutineNew.jsx",
+                            lineNumber: 76,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "ADD ACTIVITIES"
+                    })
+                ]
+            }) : /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                __source: {
+                    fileName: "src/components/RoutineNew.jsx",
+                    lineNumber: 79,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx("h2", {
+                        __source: {
+                            fileName: "src/components/RoutineNew.jsx",
+                            lineNumber: 80,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: newRoutine.name
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        __source: {
+                            fileName: "src/components/RoutineNew.jsx",
+                            lineNumber: 81,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: newRoutine.goal
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: `/routines/${newRoutine.id}`,
+                        __source: {
+                            fileName: "src/components/RoutineNew.jsx",
+                            lineNumber: 82,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "VIEW"
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        __source: {
+                            fileName: "src/components/RoutineNew.jsx",
+                            lineNumber: 83,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "Or continue adding activities below!"
+                    })
+                ]
+            }),
+            Object.keys(newRoutine).length > 0 ? /*#__PURE__*/ _jsxRuntime.jsx(_routineNewActivitiesDefault.default, {
+                __source: {
+                    fileName: "src/components/RoutineNew.jsx",
+                    lineNumber: 87,
+                    columnNumber: 45
+                },
+                __self: undefined
+            }) : null
+        ]
     }));
 };
+_s(RoutineNew, "USfhAgZUCoJrKpl7ItfeY5Bbh64=");
 _c = RoutineNew;
 exports.default = RoutineNew;
 var _c;
 $RefreshReg$(_c, "RoutineNew");
 
   $parcel$ReactRefreshHelpers$f093.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","./RoutineNewActivities":"2Gg6K"}],"2Gg6K":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$35e2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$35e2.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxRuntime = require("react/jsx-runtime");
+const RoutineNewActivities = ()=>{
+    return(/*#__PURE__*/ _jsxRuntime.jsx("h1", {
+        __source: {
+            fileName: "src/components/RoutineNewActivities.jsx",
+            lineNumber: 2,
+            columnNumber: 10
+        },
+        __self: undefined,
+        children: "Add activities"
+    }));
+};
+_c = RoutineNewActivities;
+exports.default = RoutineNewActivities;
+var _c;
+$RefreshReg$(_c, "RoutineNewActivities");
+
+  $parcel$ReactRefreshHelpers$35e2.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
