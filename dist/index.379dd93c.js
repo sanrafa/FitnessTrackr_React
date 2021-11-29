@@ -28574,10 +28574,11 @@ const RoutineNew = ()=>{
                 ]
             }),
             Object.keys(newRoutine).length > 0 ? /*#__PURE__*/ _jsxRuntime.jsx(_routineNewActivitiesDefault.default, {
+                routine: newRoutine,
                 __source: {
                     fileName: "src/components/RoutineNew.jsx",
-                    lineNumber: 87,
-                    columnNumber: 45
+                    lineNumber: 88,
+                    columnNumber: 9
                 },
                 __self: undefined
             }) : null
@@ -28605,17 +28606,226 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
-const RoutineNewActivities = ()=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsx("h1", {
+var _react = require("react");
+// API
+var _api = require("../api");
+var _app = require("../App");
+var _s = $RefreshSig$();
+const RoutineNewActivities = (props)=>{
+    _s();
+    const selectedRoutine = props.routine;
+    const { user , token  } = _react.useContext(_app.UserContext);
+    const [activitiesAdded, setActivitiesAdded] = _react.useState([]);
+    const [activityOptions, setActivityOptions] = _react.useState([]);
+    const [routineActivities, setRoutineActivities] = _react.useState([]);
+    const [activityToAdd, setActivityToAdd] = _react.useState(0); // activity ID
+    const [count, setCount] = _react.useState("");
+    const [duration, setDuration] = _react.useState("");
+    _react.useEffect(()=>{
+        async function fetchActivities() {
+            try {
+                let activities = await _api.getAllActivities();
+                setActivityOptions(activities);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        fetchActivities();
+    }, []);
+    _react.useEffect(()=>{
+        async function updateRoutineActivities() {
+            try {
+                const routineId = selectedRoutine.id;
+                const routine = await _api.getRoutineById(routineId, token);
+                if (routine.activities) setRoutineActivities(routine.activities);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    }, [
+        activitiesAdded
+    ]);
+    const handleSubmit = async ()=>{
+        try {
+            const routineActivity = await _api.addActivityToRoutine(token, selectedRoutine.id, activityToAdd, count, duration);
+            setActivitiesAdded([
+                ...activitiesAdded,
+                routineActivity
+            ]);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
         __source: {
             fileName: "src/components/RoutineNewActivities.jsx",
-            lineNumber: 2,
-            columnNumber: 10
+            lineNumber: 66,
+            columnNumber: 5
         },
         __self: undefined,
-        children: "Add activities"
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("h2", {
+                __source: {
+                    fileName: "src/components/RoutineNewActivities.jsx",
+                    lineNumber: 67,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "Add an activity"
+            }),
+            routineActivities ? routineActivities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    __source: {
+                        fileName: "src/components/RoutineNewActivities.jsx",
+                        lineNumber: 70,
+                        columnNumber: 13
+                    },
+                    __self: undefined,
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                            __source: {
+                                fileName: "src/components/RoutineNewActivities.jsx",
+                                lineNumber: 71,
+                                columnNumber: 15
+                            },
+                            __self: undefined,
+                            children: /*#__PURE__*/ _jsxRuntime.jsx("strong", {
+                                __source: {
+                                    fileName: "src/components/RoutineNewActivities.jsx",
+                                    lineNumber: 72,
+                                    columnNumber: 17
+                                },
+                                __self: undefined,
+                                children: activity.name
+                            })
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                            type: "button",
+                            __source: {
+                                fileName: "src/components/RoutineNewActivities.jsx",
+                                lineNumber: 74,
+                                columnNumber: 15
+                            },
+                            __self: undefined,
+                            children: "REMOVE"
+                        })
+                    ]
+                })
+            ) : null,
+            /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                onSubmit: (e)=>{
+                    e.preventDefault();
+                    handleSubmit().then(()=>{
+                        setCount("");
+                        setDuration("");
+                    });
+                },
+                __source: {
+                    fileName: "src/components/RoutineNewActivities.jsx",
+                    lineNumber: 78,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx("label", {
+                        __source: {
+                            fileName: "src/components/RoutineNewActivities.jsx",
+                            lineNumber: 87,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: "Select an activity:"
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("select", {
+                        name: "activity",
+                        id: "activity",
+                        value: activityToAdd,
+                        onChange: (e)=>{
+                            setActivityToAdd(e.target.value);
+                        },
+                        __source: {
+                            fileName: "src/components/RoutineNewActivities.jsx",
+                            lineNumber: 88,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: activityOptions.map((ele)=>/*#__PURE__*/ _jsxRuntime.jsx("option", {
+                                value: ele.id,
+                                __source: {
+                                    fileName: "src/components/RoutineNewActivities.jsx",
+                                    lineNumber: 97,
+                                    columnNumber: 13
+                                },
+                                __self: undefined,
+                                children: ele.name
+                            }, ele.id)
+                        )
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/RoutineNewActivities.jsx",
+                            lineNumber: 102,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: [
+                            "Count (# of reps):",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "number",
+                                min: "0",
+                                max: "100",
+                                value: count,
+                                onChange: (e)=>setCount(e.target.value)
+                                ,
+                                __source: {
+                                    fileName: "src/components/RoutineNewActivities.jsx",
+                                    lineNumber: 104,
+                                    columnNumber: 11
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/RoutineNewActivities.jsx",
+                            lineNumber: 112,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: [
+                            "Duration (in minutes):",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "number",
+                                min: "0",
+                                max: "120",
+                                value: duration,
+                                onChange: (e)=>setDuration(e.target.value)
+                                ,
+                                __source: {
+                                    fileName: "src/components/RoutineNewActivities.jsx",
+                                    lineNumber: 114,
+                                    columnNumber: 11
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "submit",
+                        __source: {
+                            fileName: "src/components/RoutineNewActivities.jsx",
+                            lineNumber: 123,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: "ADD"
+                    })
+                ]
+            })
+        ]
     }));
 };
+_s(RoutineNewActivities, "neaDHFH6I7ybfj6B0//VlwjdSq4=");
 _c = RoutineNewActivities;
 exports.default = RoutineNewActivities;
 var _c;
@@ -28626,7 +28836,7 @@ $RefreshReg$(_c, "RoutineNewActivities");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"9j3pn":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","../api":"l6gwE","../App":"lL5iC"}],"9j3pn":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$bd41 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

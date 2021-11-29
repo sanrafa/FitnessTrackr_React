@@ -84,7 +84,9 @@ const RoutineNew = () => {
         </div>
       )}
 
-      {Object.keys(newRoutine).length > 0 ? <RoutineNewActivities /> : null}
+      {Object.keys(newRoutine).length > 0 ? (
+        <RoutineNewActivities routine={newRoutine} />
+      ) : null}
     </main>
   );
 };
