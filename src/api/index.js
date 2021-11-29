@@ -15,3 +15,4 @@ export function setHeaders(token) {
 export * from "./routines";
 export * from "./activities";
 export * from "./users";
+export * from "./routine_activities";
