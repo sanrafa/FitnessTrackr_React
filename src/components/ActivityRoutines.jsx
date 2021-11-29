@@ -43,7 +43,7 @@ const ActivityRoutines = () => {
               ))}
             </div>
           ) : (
-            "No associated routines"
+            <p>No public routines found.</p>
           )}
         </Fragment>
       ) : (

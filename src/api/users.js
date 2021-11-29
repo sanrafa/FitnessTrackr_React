@@ -44,9 +44,9 @@ export async function getUser(token) {
     const data = response.data;
     return data;
   } catch (err) {
-    const message = err.response.data;
-    console.log("Error is:", message);
-    return message;
+    console.error(err);
+    const error = err.response.data;
+    throw error.message;
   }
 }
 
@@ -59,8 +59,8 @@ export async function getRoutinesByUser(token = null, username) {
     const routines = response.data;
     return routines;
   } catch (err) {
-    const message = err.response.data;
-    console.log("Error is:", message);
-    return message;
+    console.error(err);
+    const error = err.response.data;
+    throw error.message;
   }
 }

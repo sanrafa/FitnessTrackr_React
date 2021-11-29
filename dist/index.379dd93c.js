@@ -26339,9 +26339,9 @@ async function getUser(token) {
         const data = response.data;
         return data;
     } catch (err) {
-        const message = err.response.data;
-        console.log("Error is:", message);
-        return message;
+        console.error(err);
+        const error = err.response.data;
+        throw error.message;
     }
 }
 async function getRoutinesByUser(token = null, username) {
@@ -26353,9 +26353,9 @@ async function getRoutinesByUser(token = null, username) {
         const routines = response.data;
         return routines;
     } catch (err) {
-        const message = err.response.data;
-        console.log("Error is:", message);
-        return message;
+        console.error(err);
+        const error = err.response.data;
+        throw error.message;
     }
 }
 
@@ -27736,7 +27736,15 @@ const ActivityRoutines = ()=>{
                             ]
                         }, routine.id)
                     )
-                }) : "No associated routines"
+                }) : /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                    __source: {
+                        fileName: "src/components/ActivityRoutines.jsx",
+                        lineNumber: 46,
+                        columnNumber: 13
+                    },
+                    __self: undefined,
+                    children: "No public routines found."
+                })
             }) : /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/ActivityRoutines.jsx",
@@ -27785,25 +27793,134 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactRouterDom = require("react-router-dom");
+// API
+var _api = require("../api");
+var _app = require("../App");
+var _s = $RefreshSig$();
 const MyRoutines = ()=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+    _s();
+    const { user , token  } = _react.useContext(_app.UserContext);
+    const [routines, setRoutines] = _react.useState([]);
+    const [error, setError] = _react.useState("");
+    _react.useEffect(()=>{
+        async function getUserRoutines() {
+            if (!user || !token) {
+                setError("You must be logged in to view this page.");
+                return;
+            }
+            try {
+                let username = user.username;
+                const userRoutines = await _api.getRoutinesByUser(token, username);
+                setRoutines(userRoutines);
+                setError(null);
+            } catch (err) {
+                console.error(err);
+                setError(err);
+            }
+        }
+        getUserRoutines();
+    }, []);
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/MyRoutines.jsx",
-            lineNumber: 3,
+            lineNumber: 35,
             columnNumber: 5
         },
         __self: undefined,
-        children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
-            __source: {
-                fileName: "src/components/MyRoutines.jsx",
-                lineNumber: 4,
-                columnNumber: 7
-            },
-            __self: undefined,
-            children: "My Routines"
-        })
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                __source: {
+                    fileName: "src/components/MyRoutines.jsx",
+                    lineNumber: 36,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "My Routines"
+            }),
+            error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                __source: {
+                    fileName: "src/components/MyRoutines.jsx",
+                    lineNumber: 37,
+                    columnNumber: 16
+                },
+                __self: undefined,
+                children: error
+            }) : null,
+            routines.length > 0 ? routines.map((routine)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    __source: {
+                        fileName: "src/components/MyRoutines.jsx",
+                        lineNumber: 40,
+                        columnNumber: 11
+                    },
+                    __self: undefined,
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                            to: `/routines/${routine.id}`,
+                            __source: {
+                                fileName: "src/components/MyRoutines.jsx",
+                                lineNumber: 41,
+                                columnNumber: 13
+                            },
+                            __self: undefined,
+                            children: routine.name
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                            __source: {
+                                fileName: "src/components/MyRoutines.jsx",
+                                lineNumber: 42,
+                                columnNumber: 13
+                            },
+                            __self: undefined,
+                            children: routine.goal
+                        }),
+                        !routine.isPublic ? /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            __source: {
+                                fileName: "src/components/MyRoutines.jsx",
+                                lineNumber: 44,
+                                columnNumber: 15
+                            },
+                            __self: undefined,
+                            children: /*#__PURE__*/ _jsxRuntime.jsx("em", {
+                                __source: {
+                                    fileName: "src/components/MyRoutines.jsx",
+                                    lineNumber: 45,
+                                    columnNumber: 17
+                                },
+                                __self: undefined,
+                                children: " Private routine"
+                            })
+                        }) : null
+                    ]
+                }, routine.id)
+            ) : routines.length === 0 && user && token ? /*#__PURE__*/ _jsxRuntime.jsxs("p", {
+                __source: {
+                    fileName: "src/components/MyRoutines.jsx",
+                    lineNumber: 51,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: [
+                    "Looks like you haven't created a routine yet. Click",
+                    " ",
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: "/routines/new",
+                        __source: {
+                            fileName: "src/components/MyRoutines.jsx",
+                            lineNumber: 53,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "here"
+                    }),
+                    " to create a new routine!"
+                ]
+            }) : null
+        ]
     }));
 };
+_s(MyRoutines, "zfuLMQXiGSO11Z3OD74LK9loZf4=");
 _c = MyRoutines;
 exports.default = MyRoutines;
 var _c;
@@ -27814,7 +27931,7 @@ $RefreshReg$(_c, "MyRoutines");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"4kpDy":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC"}],"4kpDy":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$0755 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
