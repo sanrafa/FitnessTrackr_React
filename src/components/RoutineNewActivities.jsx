@@ -1,5 +1,13 @@
 import { useState, useContext, useEffect } from "react";
 
+/* TODO:
+  - activitiesAdded should populate with existing routine_activities (if any) on render
+  - *stretch goal* activityOptions should filter out existing routine_activities
+  - when "REMOVE" button clicked, routine_activity should be deleted from database 
+    AND from activitiesAdded, triggering re-render
+  - generalize component to be used with Edit Routine component
+*/
+
 // API
 import {
   addActivityToRoutine,
@@ -45,6 +53,8 @@ const RoutineNewActivities = (props) => {
         console.error(err);
       }
     }
+
+    updateRoutineActivities();
   }, [activitiesAdded]);
 
   const handleSubmit = async () => {

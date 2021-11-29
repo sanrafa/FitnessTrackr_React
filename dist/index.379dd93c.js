@@ -28642,6 +28642,7 @@ const RoutineNewActivities = (props)=>{
                 console.error(err);
             }
         }
+        updateRoutineActivities();
     }, [
         activitiesAdded
     ]);
@@ -28659,7 +28660,7 @@ const RoutineNewActivities = (props)=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
         __source: {
             fileName: "src/components/RoutineNewActivities.jsx",
-            lineNumber: 66,
+            lineNumber: 68,
             columnNumber: 5
         },
         __self: undefined,
@@ -28667,7 +28668,7 @@ const RoutineNewActivities = (props)=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h2", {
                 __source: {
                     fileName: "src/components/RoutineNewActivities.jsx",
-                    lineNumber: 67,
+                    lineNumber: 69,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -28676,7 +28677,7 @@ const RoutineNewActivities = (props)=>{
             routineActivities ? routineActivities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
                     __source: {
                         fileName: "src/components/RoutineNewActivities.jsx",
-                        lineNumber: 70,
+                        lineNumber: 72,
                         columnNumber: 13
                     },
                     __self: undefined,
@@ -28684,14 +28685,14 @@ const RoutineNewActivities = (props)=>{
                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                             __source: {
                                 fileName: "src/components/RoutineNewActivities.jsx",
-                                lineNumber: 71,
+                                lineNumber: 73,
                                 columnNumber: 15
                             },
                             __self: undefined,
                             children: /*#__PURE__*/ _jsxRuntime.jsx("strong", {
                                 __source: {
                                     fileName: "src/components/RoutineNewActivities.jsx",
-                                    lineNumber: 72,
+                                    lineNumber: 74,
                                     columnNumber: 17
                                 },
                                 __self: undefined,
@@ -28702,7 +28703,7 @@ const RoutineNewActivities = (props)=>{
                             type: "button",
                             __source: {
                                 fileName: "src/components/RoutineNewActivities.jsx",
-                                lineNumber: 74,
+                                lineNumber: 76,
                                 columnNumber: 15
                             },
                             __self: undefined,
@@ -28721,7 +28722,7 @@ const RoutineNewActivities = (props)=>{
                 },
                 __source: {
                     fileName: "src/components/RoutineNewActivities.jsx",
-                    lineNumber: 78,
+                    lineNumber: 80,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -28729,7 +28730,7 @@ const RoutineNewActivities = (props)=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("label", {
                         __source: {
                             fileName: "src/components/RoutineNewActivities.jsx",
-                            lineNumber: 87,
+                            lineNumber: 89,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28744,7 +28745,7 @@ const RoutineNewActivities = (props)=>{
                         },
                         __source: {
                             fileName: "src/components/RoutineNewActivities.jsx",
-                            lineNumber: 88,
+                            lineNumber: 90,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28752,7 +28753,7 @@ const RoutineNewActivities = (props)=>{
                                 value: ele.id,
                                 __source: {
                                     fileName: "src/components/RoutineNewActivities.jsx",
-                                    lineNumber: 97,
+                                    lineNumber: 99,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -28763,7 +28764,7 @@ const RoutineNewActivities = (props)=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/RoutineNewActivities.jsx",
-                            lineNumber: 102,
+                            lineNumber: 104,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28778,7 +28779,7 @@ const RoutineNewActivities = (props)=>{
                                 ,
                                 __source: {
                                     fileName: "src/components/RoutineNewActivities.jsx",
-                                    lineNumber: 104,
+                                    lineNumber: 106,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -28788,7 +28789,7 @@ const RoutineNewActivities = (props)=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/RoutineNewActivities.jsx",
-                            lineNumber: 112,
+                            lineNumber: 114,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28803,7 +28804,7 @@ const RoutineNewActivities = (props)=>{
                                 ,
                                 __source: {
                                     fileName: "src/components/RoutineNewActivities.jsx",
-                                    lineNumber: 114,
+                                    lineNumber: 116,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -28814,7 +28815,7 @@ const RoutineNewActivities = (props)=>{
                         type: "submit",
                         __source: {
                             fileName: "src/components/RoutineNewActivities.jsx",
-                            lineNumber: 123,
+                            lineNumber: 125,
                             columnNumber: 9
                         },
                         __self: undefined,
