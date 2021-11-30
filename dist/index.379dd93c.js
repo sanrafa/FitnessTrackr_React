@@ -26845,6 +26845,7 @@ const Home = ()=>{
         },
         __self: undefined,
         children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+            className: "text-red-50",
             __source: {
                 fileName: "src/components/Home.jsx",
                 lineNumber: 4,
