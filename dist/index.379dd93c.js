@@ -28377,8 +28377,8 @@ var _reactRouterDom = require("react-router-dom");
 // API
 var _api = require("../api");
 var _app = require("../App");
-var _routineNewActivities = require("./RoutineNewActivities"); // use to add activities to routine
-var _routineNewActivitiesDefault = parcelHelpers.interopDefault(_routineNewActivities);
+var _routineActivities = require("./RoutineActivities"); // use to add activities to routine
+var _routineActivitiesDefault = parcelHelpers.interopDefault(_routineActivities);
 var _s = $RefreshSig$();
 const RoutineNew = ()=>{
     _s();
@@ -28573,7 +28573,7 @@ const RoutineNew = ()=>{
                     })
                 ]
             }),
-            Object.keys(newRoutine).length > 0 ? /*#__PURE__*/ _jsxRuntime.jsx(_routineNewActivitiesDefault.default, {
+            Object.keys(newRoutine).length > 0 ? /*#__PURE__*/ _jsxRuntime.jsx(_routineActivitiesDefault.default, {
                 routine: newRoutine,
                 __source: {
                     fileName: "src/components/RoutineNew.jsx",
@@ -28596,22 +28596,28 @@ $RefreshReg$(_c, "RoutineNew");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","./RoutineNewActivities":"2Gg6K"}],"2Gg6K":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$35e2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","./RoutineActivities":"dUPlr"}],"dUPlr":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$16b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$35e2.prelude(module);
+$parcel$ReactRefreshHelpers$16b2.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
-// API
+/* TODO:
+  - activitiesAdded should populate with existing routine_activities (if any) on render
+  - *stretch goal* activityOptions should filter out existing routine_activities
+  - when "REMOVE" button clicked, routine_activity should be deleted from database 
+    AND from activitiesAdded, triggering re-render
+  - generalize component to be used with Edit Routine component
+*/ // API
 var _api = require("../api");
 var _app = require("../App");
 var _s = $RefreshSig$();
-const RoutineNewActivities = (props)=>{
+const RoutineActivities = (props)=>{
     _s();
     const selectedRoutine = props.routine;
     const { user , token  } = _react.useContext(_app.UserContext);
@@ -28659,40 +28665,40 @@ const RoutineNewActivities = (props)=>{
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
         __source: {
-            fileName: "src/components/RoutineNewActivities.jsx",
-            lineNumber: 68,
+            fileName: "src/components/RoutineActivities.jsx",
+            lineNumber: 76,
             columnNumber: 5
         },
         __self: undefined,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsx("h2", {
                 __source: {
-                    fileName: "src/components/RoutineNewActivities.jsx",
-                    lineNumber: 69,
+                    fileName: "src/components/RoutineActivities.jsx",
+                    lineNumber: 77,
                     columnNumber: 7
                 },
                 __self: undefined,
-                children: "Add an activity"
+                children: "Add or remove routine activities"
             }),
             routineActivities ? routineActivities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
                     __source: {
-                        fileName: "src/components/RoutineNewActivities.jsx",
-                        lineNumber: 72,
+                        fileName: "src/components/RoutineActivities.jsx",
+                        lineNumber: 80,
                         columnNumber: 13
                     },
                     __self: undefined,
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                             __source: {
-                                fileName: "src/components/RoutineNewActivities.jsx",
-                                lineNumber: 73,
+                                fileName: "src/components/RoutineActivities.jsx",
+                                lineNumber: 81,
                                 columnNumber: 15
                             },
                             __self: undefined,
                             children: /*#__PURE__*/ _jsxRuntime.jsx("strong", {
                                 __source: {
-                                    fileName: "src/components/RoutineNewActivities.jsx",
-                                    lineNumber: 74,
+                                    fileName: "src/components/RoutineActivities.jsx",
+                                    lineNumber: 82,
                                     columnNumber: 17
                                 },
                                 __self: undefined,
@@ -28702,8 +28708,8 @@ const RoutineNewActivities = (props)=>{
                         /*#__PURE__*/ _jsxRuntime.jsx("button", {
                             type: "button",
                             __source: {
-                                fileName: "src/components/RoutineNewActivities.jsx",
-                                lineNumber: 76,
+                                fileName: "src/components/RoutineActivities.jsx",
+                                lineNumber: 84,
                                 columnNumber: 15
                             },
                             __self: undefined,
@@ -28721,16 +28727,16 @@ const RoutineNewActivities = (props)=>{
                     });
                 },
                 __source: {
-                    fileName: "src/components/RoutineNewActivities.jsx",
-                    lineNumber: 80,
+                    fileName: "src/components/RoutineActivities.jsx",
+                    lineNumber: 88,
                     columnNumber: 7
                 },
                 __self: undefined,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx("label", {
                         __source: {
-                            fileName: "src/components/RoutineNewActivities.jsx",
-                            lineNumber: 89,
+                            fileName: "src/components/RoutineActivities.jsx",
+                            lineNumber: 97,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28744,16 +28750,16 @@ const RoutineNewActivities = (props)=>{
                             setActivityToAdd(e.target.value);
                         },
                         __source: {
-                            fileName: "src/components/RoutineNewActivities.jsx",
-                            lineNumber: 90,
+                            fileName: "src/components/RoutineActivities.jsx",
+                            lineNumber: 98,
                             columnNumber: 9
                         },
                         __self: undefined,
                         children: activityOptions.map((ele)=>/*#__PURE__*/ _jsxRuntime.jsx("option", {
                                 value: ele.id,
                                 __source: {
-                                    fileName: "src/components/RoutineNewActivities.jsx",
-                                    lineNumber: 99,
+                                    fileName: "src/components/RoutineActivities.jsx",
+                                    lineNumber: 107,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -28763,8 +28769,8 @@ const RoutineNewActivities = (props)=>{
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
-                            fileName: "src/components/RoutineNewActivities.jsx",
-                            lineNumber: 104,
+                            fileName: "src/components/RoutineActivities.jsx",
+                            lineNumber: 112,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28778,8 +28784,8 @@ const RoutineNewActivities = (props)=>{
                                 onChange: (e)=>setCount(e.target.value)
                                 ,
                                 __source: {
-                                    fileName: "src/components/RoutineNewActivities.jsx",
-                                    lineNumber: 106,
+                                    fileName: "src/components/RoutineActivities.jsx",
+                                    lineNumber: 114,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -28788,8 +28794,8 @@ const RoutineNewActivities = (props)=>{
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
-                            fileName: "src/components/RoutineNewActivities.jsx",
-                            lineNumber: 114,
+                            fileName: "src/components/RoutineActivities.jsx",
+                            lineNumber: 122,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28803,8 +28809,8 @@ const RoutineNewActivities = (props)=>{
                                 onChange: (e)=>setDuration(e.target.value)
                                 ,
                                 __source: {
-                                    fileName: "src/components/RoutineNewActivities.jsx",
-                                    lineNumber: 116,
+                                    fileName: "src/components/RoutineActivities.jsx",
+                                    lineNumber: 124,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -28814,8 +28820,8 @@ const RoutineNewActivities = (props)=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("button", {
                         type: "submit",
                         __source: {
-                            fileName: "src/components/RoutineNewActivities.jsx",
-                            lineNumber: 125,
+                            fileName: "src/components/RoutineActivities.jsx",
+                            lineNumber: 133,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28826,18 +28832,18 @@ const RoutineNewActivities = (props)=>{
         ]
     }));
 };
-_s(RoutineNewActivities, "neaDHFH6I7ybfj6B0//VlwjdSq4=");
-_c = RoutineNewActivities;
-exports.default = RoutineNewActivities;
+_s(RoutineActivities, "neaDHFH6I7ybfj6B0//VlwjdSq4=");
+_c = RoutineActivities;
+exports.default = RoutineActivities;
 var _c;
-$RefreshReg$(_c, "RoutineNewActivities");
+$RefreshReg$(_c, "RoutineActivities");
 
-  $parcel$ReactRefreshHelpers$35e2.postlude(module);
+  $parcel$ReactRefreshHelpers$16b2.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","../api":"l6gwE","../App":"lL5iC"}],"9j3pn":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","../api":"l6gwE","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"9j3pn":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$bd41 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28847,17 +28853,281 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactRouterDom = require("react-router-dom");
+var _api = require("../api");
+var _app = require("../App");
+var _routineActivities = require("./RoutineActivities");
+var _routineActivitiesDefault = parcelHelpers.interopDefault(_routineActivities);
+var _s = $RefreshSig$();
 const RoutineEdit = ()=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsx("h1", {
+    _s();
+    let navigate = _reactRouterDom.useNavigate();
+    const { routineId  } = _reactRouterDom.useParams();
+    const { user , token  } = _react.useContext(_app.UserContext);
+    const [toEdit, setToEdit] = _react.useState({
+    });
+    const [edited, setEdited] = _react.useState(false);
+    const [name, setName] = _react.useState("");
+    const [goal, setGoal] = _react.useState("");
+    const [isPublic, setIsPublic] = _react.useState(false);
+    const [routine1, setRoutine] = _react.useState({
+    });
+    const [error, setError] = _react.useState("");
+    _react.useEffect(()=>{
+        async function thisRoutine() {
+            try {
+                const routine = await _api.getRoutineById(routineId, token);
+                setToEdit(routine);
+                setIsPublic(routine.isPublic);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        thisRoutine();
+    }, []);
+    const handleSubmit = async ()=>{
+        try {
+            if (user && token) {
+                let updatedName, updatedGoal;
+                if (name === toEdit.name) updatedName = undefined;
+                if (goal === toEdit.goal) updatedGoal = undefined;
+                const updated = await _api.updateRoutine(token, routineId, updatedName, goal, isPublic);
+                setRoutine(updated);
+            } else throw Error("Please log in to complete this action.");
+        } catch (err) {
+            console.error(err);
+            if (typeof err === "object") err = err.message;
+            setError(err);
+        }
+    };
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/RoutineEdit.jsx",
-            lineNumber: 2,
-            columnNumber: 10
+            lineNumber: 61,
+            columnNumber: 5
         },
         __self: undefined,
-        children: "Edit routine"
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                __source: {
+                    fileName: "src/components/RoutineEdit.jsx",
+                    lineNumber: 62,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "Edit Routine"
+            }),
+            error ? /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                __source: {
+                    fileName: "src/components/RoutineEdit.jsx",
+                    lineNumber: 64,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        __source: {
+                            fileName: "src/components/RoutineEdit.jsx",
+                            lineNumber: 65,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: error
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "button",
+                        onClick: ()=>navigate(-1)
+                        ,
+                        __source: {
+                            fileName: "src/components/RoutineEdit.jsx",
+                            lineNumber: 66,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "GO BACK"
+                    })
+                ]
+            }) : !edited ? /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                __source: {
+                    fileName: "src/components/RoutineEdit.jsx",
+                    lineNumber: 71,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                        onSubmit: (e)=>{
+                            e.preventDefault();
+                            handleSubmit().then(setEdited(true));
+                        },
+                        __source: {
+                            fileName: "src/components/RoutineEdit.jsx",
+                            lineNumber: 72,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                                __source: {
+                                    fileName: "src/components/RoutineEdit.jsx",
+                                    lineNumber: 78,
+                                    columnNumber: 13
+                                },
+                                __self: undefined,
+                                children: [
+                                    "Name:",
+                                    /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                        type: "text",
+                                        defaultValue: toEdit ? toEdit.name : null,
+                                        size: "60",
+                                        onChange: (e)=>setName(e.target.value)
+                                        ,
+                                        __source: {
+                                            fileName: "src/components/RoutineEdit.jsx",
+                                            lineNumber: 80,
+                                            columnNumber: 15
+                                        },
+                                        __self: undefined
+                                    })
+                                ]
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                                __source: {
+                                    fileName: "src/components/RoutineEdit.jsx",
+                                    lineNumber: 87,
+                                    columnNumber: 13
+                                },
+                                __self: undefined,
+                                children: [
+                                    "Goal:",
+                                    /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                        type: "text",
+                                        defaultValue: toEdit ? toEdit.goal : null,
+                                        size: "60",
+                                        onChange: (e)=>setGoal(e.target.value)
+                                        ,
+                                        __source: {
+                                            fileName: "src/components/RoutineEdit.jsx",
+                                            lineNumber: 89,
+                                            columnNumber: 15
+                                        },
+                                        __self: undefined
+                                    })
+                                ]
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                                __source: {
+                                    fileName: "src/components/RoutineEdit.jsx",
+                                    lineNumber: 96,
+                                    columnNumber: 13
+                                },
+                                __self: undefined,
+                                children: [
+                                    "Public?:",
+                                    /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                        type: "checkbox",
+                                        defaultChecked: toEdit ? toEdit.isPublic : false,
+                                        onChange: ()=>setIsPublic(!isPublic)
+                                        ,
+                                        __source: {
+                                            fileName: "src/components/RoutineEdit.jsx",
+                                            lineNumber: 98,
+                                            columnNumber: 15
+                                        },
+                                        __self: undefined
+                                    })
+                                ]
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                                type: "submit",
+                                __source: {
+                                    fileName: "src/components/RoutineEdit.jsx",
+                                    lineNumber: 104,
+                                    columnNumber: 13
+                                },
+                                __self: undefined,
+                                children: "EDIT"
+                            })
+                        ]
+                    }),
+                    Object.keys(toEdit).length > 0 ? /*#__PURE__*/ _jsxRuntime.jsx(_routineActivitiesDefault.default, {
+                        routine: toEdit,
+                        __source: {
+                            fileName: "src/components/RoutineEdit.jsx",
+                            lineNumber: 107,
+                            columnNumber: 13
+                        },
+                        __self: undefined
+                    }) : null
+                ]
+            }) : /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                __source: {
+                    fileName: "src/components/RoutineEdit.jsx",
+                    lineNumber: 111,
+                    columnNumber: 9
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsxs("p", {
+                        __source: {
+                            fileName: "src/components/RoutineEdit.jsx",
+                            lineNumber: 112,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx("em", {
+                                __source: {
+                                    fileName: "src/components/RoutineEdit.jsx",
+                                    lineNumber: 113,
+                                    columnNumber: 13
+                                },
+                                __self: undefined,
+                                children: "This routine has been edited."
+                            }),
+                            " Continue editing its activities below, or click the link to view your edited rouitne."
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        __source: {
+                            fileName: "src/components/RoutineEdit.jsx",
+                            lineNumber: 116,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: routine1.name
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        __source: {
+                            fileName: "src/components/RoutineEdit.jsx",
+                            lineNumber: 117,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: routine1.goal
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: `/routines/${routine1.id}`,
+                        __source: {
+                            fileName: "src/components/RoutineEdit.jsx",
+                            lineNumber: 118,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "VIEW"
+                    })
+                ]
+            })
+        ]
     }));
 };
+_s(RoutineEdit, "/to5DgFoAxRbH00QJKhKmlfjlck=", false, function() {
+    return [
+        _reactRouterDom.useNavigate,
+        _reactRouterDom.useParams
+    ];
+});
 _c = RoutineEdit;
 exports.default = RoutineEdit;
 var _c;
@@ -28868,7 +29138,7 @@ $RefreshReg$(_c, "RoutineEdit");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"fGHod":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","./RoutineActivities":"dUPlr"}],"fGHod":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$949b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28929,10 +29199,20 @@ const RoutineSingleView = ()=>{
                 },
                 __self: undefined,
                 children: [
-                    /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                    routine.creatorId == user.id ? /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: "edit",
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
                             lineNumber: 34,
+                            columnNumber: 43
+                        },
+                        __self: undefined,
+                        children: "EDIT"
+                    }) : null,
+                    /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                        __source: {
+                            fileName: "src/components/RoutineSingleView.jsx",
+                            lineNumber: 35,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28942,7 +29222,7 @@ const RoutineSingleView = ()=>{
                         to: `/users/${routine.creatorName}`,
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 35,
+                            lineNumber: 36,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28951,7 +29231,7 @@ const RoutineSingleView = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 38,
+                            lineNumber: 39,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28960,7 +29240,7 @@ const RoutineSingleView = ()=>{
                     routine.activities ? /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 40,
+                            lineNumber: 41,
                             columnNumber: 13
                         },
                         __self: undefined,
@@ -28968,7 +29248,7 @@ const RoutineSingleView = ()=>{
                             /*#__PURE__*/ _jsxRuntime.jsx("h2", {
                                 __source: {
                                     fileName: "src/components/RoutineSingleView.jsx",
-                                    lineNumber: 41,
+                                    lineNumber: 42,
                                     columnNumber: 15
                                 },
                                 __self: undefined,
@@ -28977,7 +29257,7 @@ const RoutineSingleView = ()=>{
                             routine.activities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
                                     __source: {
                                         fileName: "src/components/RoutineSingleView.jsx",
-                                        lineNumber: 43,
+                                        lineNumber: 44,
                                         columnNumber: 17
                                     },
                                     __self: undefined,
@@ -28986,7 +29266,7 @@ const RoutineSingleView = ()=>{
                                             to: `/activities/${activity.id}`,
                                             __source: {
                                                 fileName: "src/components/RoutineSingleView.jsx",
-                                                lineNumber: 44,
+                                                lineNumber: 45,
                                                 columnNumber: 19
                                             },
                                             __self: undefined,
@@ -28995,7 +29275,7 @@ const RoutineSingleView = ()=>{
                                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                             __source: {
                                                 fileName: "src/components/RoutineSingleView.jsx",
-                                                lineNumber: 45,
+                                                lineNumber: 46,
                                                 columnNumber: 19
                                             },
                                             __self: undefined,
@@ -29004,7 +29284,7 @@ const RoutineSingleView = ()=>{
                                         /*#__PURE__*/ _jsxRuntime.jsxs("span", {
                                             __source: {
                                                 fileName: "src/components/RoutineSingleView.jsx",
-                                                lineNumber: 46,
+                                                lineNumber: 47,
                                                 columnNumber: 19
                                             },
                                             __self: undefined,
@@ -29017,7 +29297,7 @@ const RoutineSingleView = ()=>{
                                         /*#__PURE__*/ _jsxRuntime.jsxs("span", {
                                             __source: {
                                                 fileName: "src/components/RoutineSingleView.jsx",
-                                                lineNumber: 47,
+                                                lineNumber: 48,
                                                 columnNumber: 19
                                             },
                                             __self: undefined,

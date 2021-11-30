@@ -18,7 +18,7 @@ import {
 
 import { UserContext } from "../App";
 
-const RoutineNewActivities = (props) => {
+const RoutineActivities = (props) => {
   const selectedRoutine = props.routine;
   const { user, token } = useContext(UserContext);
 
@@ -74,7 +74,7 @@ const RoutineNewActivities = (props) => {
 
   return (
     <div>
-      <h2>Add an activity</h2>
+      <h2>Add or remove routine activities</h2>
       {routineActivities
         ? routineActivities.map((activity) => (
             <div>
@@ -136,4 +136,4 @@ const RoutineNewActivities = (props) => {
   );
 };
 
-export default RoutineNewActivities;
+export default RoutineActivities;

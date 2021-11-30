@@ -31,6 +31,7 @@ const RoutineSingleView = () => {
       {error ? <p>{error}</p> : null}
       {routine && !error ? (
         <Fragment>
+          {routine.creatorId == user.id ? <Link to="edit">EDIT</Link> : null}
           <h1>{routine.name}</h1>
           <Link to={`/users/${routine.creatorName}`}>
             {routine.creatorName}

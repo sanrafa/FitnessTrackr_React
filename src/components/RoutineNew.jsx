@@ -6,7 +6,7 @@ import { createRoutine } from "../api";
 
 import { UserContext } from "../App";
 
-import RoutineNewActivities from "./RoutineNewActivities"; // use to add activities to routine
+import RoutineActivities from "./RoutineActivities"; // use to add activities to routine
 
 const RoutineNew = () => {
   const { user, token } = useContext(UserContext);
@@ -85,7 +85,7 @@ const RoutineNew = () => {
       )}
 
       {Object.keys(newRoutine).length > 0 ? (
-        <RoutineNewActivities routine={newRoutine} />
+        <RoutineActivities routine={newRoutine} />
       ) : null}
     </main>
   );
