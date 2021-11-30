@@ -1,11 +1,13 @@
 import { useState, useEffect, useContext, Fragment } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 //API
-import { getRoutineById } from "../api";
+import { getRoutineById, deleteRoutine } from "../api";
 import { UserContext } from "../App";
 
 const RoutineSingleView = () => {
+  let navigate = useNavigate();
+
   const { user, token } = useContext(UserContext);
   const { routineId } = useParams();
 
@@ -32,6 +34,18 @@ const RoutineSingleView = () => {
       {routine && !error ? (
         <Fragment>
           {routine.creatorId == user.id ? <Link to="edit">EDIT</Link> : null}
+          {routine.creatorId == user.id ? (
+            <button
+              type="button"
+              onClick={() => {
+                deleteRoutine(token, routineId).then(() => {
+                  navigate("/profile");
+                });
+              }}
+            >
+              DELETE ROUTINE
+            </button>
+          ) : null}
           <h1>{routine.name}</h1>
           <Link to={`/users/${routine.creatorName}`}>
             {routine.creatorName}

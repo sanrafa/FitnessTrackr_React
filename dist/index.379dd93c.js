@@ -29161,6 +29161,7 @@ var _app = require("../App");
 var _s = $RefreshSig$();
 const RoutineSingleView = ()=>{
     _s();
+    let navigate = _reactRouterDom.useNavigate();
     const { user , token  } = _react.useContext(_app.UserContext);
     const { routineId  } = _reactRouterDom.useParams();
     const [routine, setRoutine] = _react.useState({
@@ -29182,7 +29183,7 @@ const RoutineSingleView = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/RoutineSingleView.jsx",
-            lineNumber: 30,
+            lineNumber: 32,
             columnNumber: 5
         },
         __self: undefined,
@@ -29190,7 +29191,7 @@ const RoutineSingleView = ()=>{
             error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/RoutineSingleView.jsx",
-                    lineNumber: 31,
+                    lineNumber: 33,
                     columnNumber: 16
                 },
                 __self: undefined,
@@ -29199,7 +29200,7 @@ const RoutineSingleView = ()=>{
             routine && !error ? /*#__PURE__*/ _jsxRuntime.jsxs(_react.Fragment, {
                 __source: {
                     fileName: "src/components/RoutineSingleView.jsx",
-                    lineNumber: 33,
+                    lineNumber: 35,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -29208,16 +29209,31 @@ const RoutineSingleView = ()=>{
                         to: "edit",
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 34,
+                            lineNumber: 36,
                             columnNumber: 43
                         },
                         __self: undefined,
                         children: "EDIT"
                     }) : null,
+                    routine.creatorId == user.id ? /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "button",
+                        onClick: ()=>{
+                            _api.deleteRoutine(token, routineId).then(()=>{
+                                navigate("/profile");
+                            });
+                        },
+                        __source: {
+                            fileName: "src/components/RoutineSingleView.jsx",
+                            lineNumber: 38,
+                            columnNumber: 13
+                        },
+                        __self: undefined,
+                        children: "DELETE ROUTINE"
+                    }) : null,
                     /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 35,
+                            lineNumber: 49,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -29227,7 +29243,7 @@ const RoutineSingleView = ()=>{
                         to: `/users/${routine.creatorName}`,
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 36,
+                            lineNumber: 50,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -29236,7 +29252,7 @@ const RoutineSingleView = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 39,
+                            lineNumber: 53,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -29245,7 +29261,7 @@ const RoutineSingleView = ()=>{
                     routine.activities ? /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 41,
+                            lineNumber: 55,
                             columnNumber: 13
                         },
                         __self: undefined,
@@ -29253,7 +29269,7 @@ const RoutineSingleView = ()=>{
                             /*#__PURE__*/ _jsxRuntime.jsx("h2", {
                                 __source: {
                                     fileName: "src/components/RoutineSingleView.jsx",
-                                    lineNumber: 42,
+                                    lineNumber: 56,
                                     columnNumber: 15
                                 },
                                 __self: undefined,
@@ -29262,7 +29278,7 @@ const RoutineSingleView = ()=>{
                             routine.activities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
                                     __source: {
                                         fileName: "src/components/RoutineSingleView.jsx",
-                                        lineNumber: 44,
+                                        lineNumber: 58,
                                         columnNumber: 17
                                     },
                                     __self: undefined,
@@ -29271,7 +29287,7 @@ const RoutineSingleView = ()=>{
                                             to: `/activities/${activity.id}`,
                                             __source: {
                                                 fileName: "src/components/RoutineSingleView.jsx",
-                                                lineNumber: 45,
+                                                lineNumber: 59,
                                                 columnNumber: 19
                                             },
                                             __self: undefined,
@@ -29280,7 +29296,7 @@ const RoutineSingleView = ()=>{
                                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                             __source: {
                                                 fileName: "src/components/RoutineSingleView.jsx",
-                                                lineNumber: 46,
+                                                lineNumber: 60,
                                                 columnNumber: 19
                                             },
                                             __self: undefined,
@@ -29289,7 +29305,7 @@ const RoutineSingleView = ()=>{
                                         /*#__PURE__*/ _jsxRuntime.jsxs("span", {
                                             __source: {
                                                 fileName: "src/components/RoutineSingleView.jsx",
-                                                lineNumber: 47,
+                                                lineNumber: 61,
                                                 columnNumber: 19
                                             },
                                             __self: undefined,
@@ -29302,7 +29318,7 @@ const RoutineSingleView = ()=>{
                                         /*#__PURE__*/ _jsxRuntime.jsxs("span", {
                                             __source: {
                                                 fileName: "src/components/RoutineSingleView.jsx",
-                                                lineNumber: 48,
+                                                lineNumber: 62,
                                                 columnNumber: 19
                                             },
                                             __self: undefined,
@@ -29322,8 +29338,9 @@ const RoutineSingleView = ()=>{
         ]
     }));
 };
-_s(RoutineSingleView, "FwuNwb7B1Ftx7k0uecI6M/qfii4=", false, function() {
+_s(RoutineSingleView, "espYcFzXrvbngf+f1zk4gLtFiRY=", false, function() {
     return [
+        _reactRouterDom.useNavigate,
         _reactRouterDom.useParams
     ];
 });
