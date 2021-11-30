@@ -26881,7 +26881,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
-var _reactRouter = require("react-router");
+var _reactRouterDom = require("react-router-dom");
 //COMPONENTS
 var _activitiesAll = require("./ActivitiesAll");
 var _activitiesAllDefault = parcelHelpers.interopDefault(_activitiesAll);
@@ -26910,7 +26910,7 @@ var _activityRoutinesDefault = parcelHelpers.interopDefault(_activityRoutines);
             columnNumber: 5
         },
         __self: undefined,
-        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouter.Routes, {
+        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Routes, {
             __source: {
                 fileName: "src/components/Activities.jsx",
                 lineNumber: 24,
@@ -26918,7 +26918,7 @@ var _activityRoutinesDefault = parcelHelpers.interopDefault(_activityRoutines);
             },
             __self: undefined,
             children: [
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouter.Route, {
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                     path: "/",
                     element: /*#__PURE__*/ _jsxRuntime.jsx(_activitiesAllDefault.default, {
                     }),
@@ -26928,7 +26928,7 @@ var _activityRoutinesDefault = parcelHelpers.interopDefault(_activityRoutines);
                         columnNumber: 9
                     },
                     __self: undefined,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouter.Route, {
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                         path: "new",
                         element: /*#__PURE__*/ _jsxRuntime.jsx(_activitiesNewDefault.default, {
                         }),
@@ -26940,7 +26940,7 @@ var _activityRoutinesDefault = parcelHelpers.interopDefault(_activityRoutines);
                         __self: undefined
                     })
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouter.Route, {
+                /*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.Route, {
                     path: "/:activityId",
                     element: /*#__PURE__*/ _jsxRuntime.jsx(_activitySingleViewDefault.default, {
                     }),
@@ -26951,7 +26951,7 @@ var _activityRoutinesDefault = parcelHelpers.interopDefault(_activityRoutines);
                     },
                     __self: undefined,
                     children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouter.Route, {
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                             path: "routines",
                             element: /*#__PURE__*/ _jsxRuntime.jsx(_activityRoutinesDefault.default, {
                             }),
@@ -26962,7 +26962,7 @@ var _activityRoutinesDefault = parcelHelpers.interopDefault(_activityRoutines);
                             },
                             __self: undefined
                         }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouter.Route, {
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
                             path: "edit",
                             element: /*#__PURE__*/ _jsxRuntime.jsx(_activityEditDefault.default, {
                             }),
@@ -26989,7 +26989,7 @@ $RefreshReg$(_c, "Activities");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router":"g791w","./ActivitiesAll":"127vg","./ActivitiesNew":"6gSof","./ActivitySingleView":"5QGTD","./ActivityEdit":"7dEKC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","./ActivityRoutines":"egEMd"}],"127vg":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","./ActivitiesAll":"127vg","./ActivitiesNew":"6gSof","./ActivitySingleView":"5QGTD","./ActivityEdit":"7dEKC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","./ActivityRoutines":"egEMd","react-router-dom":"16kZP"}],"127vg":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$ca3f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
