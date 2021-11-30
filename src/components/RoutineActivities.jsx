@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, Fragment } from "react";
 
 /* TODO:
   - *stretch goal* activityOptions should filter out existing routine_activities
@@ -8,11 +8,14 @@ import { useState, useContext, useEffect } from "react";
 import {
   addActivityToRoutine,
   deleteRoutineActivity,
+  updateRoutineActivity,
   getRoutineById,
   getAllActivities,
 } from "../api";
 
 import { UserContext } from "../App";
+
+import RoutineActivity from "./RoutineActivity";
 
 const RoutineActivities = (props) => {
   const selectedRoutine = props.routine;
@@ -80,20 +83,20 @@ const RoutineActivities = (props) => {
   return (
     <div>
       <h2>Add or remove routine activities</h2>
-      {routineActivities
-        ? routineActivities.map((activity) => (
-            <div>
-              <p>
-                <strong>{activity.name}</strong>
-              </p>
-              <button
-                type="button"
-                onClick={() => handleDelete(activity.routineActivityId)}
-              >
-                REMOVE
-              </button>
-            </div>
-          ))
+      {routineActivities // refactor into separate component?
+        ? routineActivities.map((activity) => {
+            return (
+              <Fragment key={activity.id}>
+                <RoutineActivity activity={activity} />
+                <button
+                  type="button"
+                  onClick={() => handleDelete(activity.routineActivityId)}
+                >
+                  DELETE
+                </button>
+              </Fragment>
+            );
+          })
         : null}
       <form
         onSubmit={(e) => {

@@ -26,7 +26,7 @@ const RoutineSingleView = () => {
       }
     }
     getRoutine();
-  }, []);
+  }, [user]);
 
   return (
     <main>

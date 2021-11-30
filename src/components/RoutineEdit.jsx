@@ -31,7 +31,7 @@ const RoutineEdit = () => {
       }
     }
     thisRoutine();
-  }, []);
+  }, [user]);
 
   const handleSubmit = async () => {
     try {

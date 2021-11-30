@@ -28612,6 +28612,8 @@ var _react = require("react");
 */ // API
 var _api = require("../api");
 var _app = require("../App");
+var _routineActivity = require("./RoutineActivity");
+var _routineActivityDefault = parcelHelpers.interopDefault(_routineActivity);
 var _s = $RefreshSig$();
 const RoutineActivities = (props)=>{
     _s();
@@ -28670,7 +28672,7 @@ const RoutineActivities = (props)=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
         __source: {
             fileName: "src/components/RoutineActivities.jsx",
-            lineNumber: 81,
+            lineNumber: 84,
             columnNumber: 5
         },
         __self: undefined,
@@ -28678,36 +28680,30 @@ const RoutineActivities = (props)=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h2", {
                 __source: {
                     fileName: "src/components/RoutineActivities.jsx",
-                    lineNumber: 82,
+                    lineNumber: 85,
                     columnNumber: 7
                 },
                 __self: undefined,
                 children: "Add or remove routine activities"
             }),
-            routineActivities ? routineActivities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+            routineActivities // refactor into separate component?
+             ? routineActivities.map((activity)=>{
+                return(/*#__PURE__*/ _jsxRuntime.jsxs(_react.Fragment, {
                     __source: {
                         fileName: "src/components/RoutineActivities.jsx",
-                        lineNumber: 85,
-                        columnNumber: 13
+                        lineNumber: 89,
+                        columnNumber: 15
                     },
                     __self: undefined,
                     children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        /*#__PURE__*/ _jsxRuntime.jsx(_routineActivityDefault.default, {
+                            activity: activity,
                             __source: {
                                 fileName: "src/components/RoutineActivities.jsx",
-                                lineNumber: 86,
-                                columnNumber: 15
+                                lineNumber: 90,
+                                columnNumber: 17
                             },
-                            __self: undefined,
-                            children: /*#__PURE__*/ _jsxRuntime.jsx("strong", {
-                                __source: {
-                                    fileName: "src/components/RoutineActivities.jsx",
-                                    lineNumber: 87,
-                                    columnNumber: 17
-                                },
-                                __self: undefined,
-                                children: activity.name
-                            })
+                            __self: undefined
                         }),
                         /*#__PURE__*/ _jsxRuntime.jsx("button", {
                             type: "button",
@@ -28715,15 +28711,15 @@ const RoutineActivities = (props)=>{
                             ,
                             __source: {
                                 fileName: "src/components/RoutineActivities.jsx",
-                                lineNumber: 89,
-                                columnNumber: 15
+                                lineNumber: 91,
+                                columnNumber: 17
                             },
                             __self: undefined,
-                            children: "REMOVE"
+                            children: "DELETE"
                         })
                     ]
-                })
-            ) : null,
+                }, activity.id));
+            }) : null,
             /*#__PURE__*/ _jsxRuntime.jsxs("form", {
                 onSubmit: (e)=>{
                     e.preventDefault();
@@ -28734,7 +28730,7 @@ const RoutineActivities = (props)=>{
                 },
                 __source: {
                     fileName: "src/components/RoutineActivities.jsx",
-                    lineNumber: 98,
+                    lineNumber: 101,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -28742,7 +28738,7 @@ const RoutineActivities = (props)=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("label", {
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 107,
+                            lineNumber: 110,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28757,7 +28753,7 @@ const RoutineActivities = (props)=>{
                         },
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 108,
+                            lineNumber: 111,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28765,7 +28761,7 @@ const RoutineActivities = (props)=>{
                                 value: ele.id,
                                 __source: {
                                     fileName: "src/components/RoutineActivities.jsx",
-                                    lineNumber: 117,
+                                    lineNumber: 120,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -28776,7 +28772,7 @@ const RoutineActivities = (props)=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 122,
+                            lineNumber: 125,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28791,7 +28787,7 @@ const RoutineActivities = (props)=>{
                                 ,
                                 __source: {
                                     fileName: "src/components/RoutineActivities.jsx",
-                                    lineNumber: 124,
+                                    lineNumber: 127,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -28801,7 +28797,7 @@ const RoutineActivities = (props)=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 132,
+                            lineNumber: 135,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28816,7 +28812,7 @@ const RoutineActivities = (props)=>{
                                 ,
                                 __source: {
                                     fileName: "src/components/RoutineActivities.jsx",
-                                    lineNumber: 134,
+                                    lineNumber: 137,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -28827,7 +28823,7 @@ const RoutineActivities = (props)=>{
                         type: "submit",
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 143,
+                            lineNumber: 146,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28845,6 +28841,166 @@ var _c;
 $RefreshReg$(_c, "RoutineActivities");
 
   $parcel$ReactRefreshHelpers$16b2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","../api":"l6gwE","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","./RoutineActivity":"1OWFc"}],"1OWFc":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$4b37 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$4b37.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _api = require("../api");
+var _app = require("../App");
+var _s = $RefreshSig$();
+const RoutineActivity = (props)=>{
+    _s();
+    const { token  } = _react.useContext(_app.UserContext);
+    const { activity  } = props;
+    const [count, setCount] = _react.useState("");
+    const [duration, setDuration] = _react.useState("");
+    const [updated, setUpdated] = _react.useState(false);
+    const [error, setError] = _react.useState(false);
+    const handleSubmit = async ()=>{
+        try {
+            let updatedCount, updatedDuration;
+            !count ? updatedCount = activity.count : updatedCount = count;
+            !duration ? updatedDuration = activity.duration : updatedDuration = duration;
+            await _api.updateRoutineActivity(token, activity.routineActivityId, updatedCount, updatedDuration);
+            setUpdated(true);
+            setError(null);
+        } catch (err) {
+            console.error(err);
+            setUpdated(false);
+            setError(true);
+        }
+    };
+    return(/*#__PURE__*/ _jsxRuntime.jsxs(_react.Fragment, {
+        __source: {
+            fileName: "src/components/RoutineActivity.jsx",
+            lineNumber: 39,
+            columnNumber: 5
+        },
+        __self: undefined,
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                __source: {
+                    fileName: "src/components/RoutineActivity.jsx",
+                    lineNumber: 40,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: activity.name
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                onSubmit: (e)=>{
+                    e.preventDefault();
+                    handleSubmit();
+                },
+                __source: {
+                    fileName: "src/components/RoutineActivity.jsx",
+                    lineNumber: 41,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/RoutineActivity.jsx",
+                            lineNumber: 47,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: [
+                            "Count:",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "number",
+                                min: "0",
+                                max: "100",
+                                defaultValue: activity.count,
+                                onChange: (e)=>setCount(e.target.value)
+                                ,
+                                __source: {
+                                    fileName: "src/components/RoutineActivity.jsx",
+                                    lineNumber: 49,
+                                    columnNumber: 11
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        __source: {
+                            fileName: "src/components/RoutineActivity.jsx",
+                            lineNumber: 57,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: [
+                            "Duration:",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                type: "number",
+                                min: "0",
+                                max: "120",
+                                defaultValue: activity.duration,
+                                onChange: (e)=>setDuration(e.target.value)
+                                ,
+                                __source: {
+                                    fileName: "src/components/RoutineActivity.jsx",
+                                    lineNumber: 59,
+                                    columnNumber: 11
+                                },
+                                __self: undefined
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                        type: "submit",
+                        __source: {
+                            fileName: "src/components/RoutineActivity.jsx",
+                            lineNumber: 67,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: "EDIT"
+                    }),
+                    " "
+                ]
+            }),
+            updated ? /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                __source: {
+                    fileName: "src/components/RoutineActivity.jsx",
+                    lineNumber: 70,
+                    columnNumber: 18
+                },
+                __self: undefined,
+                children: "Saved."
+            }) : null,
+            error ? /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                __source: {
+                    fileName: "src/components/RoutineActivity.jsx",
+                    lineNumber: 71,
+                    columnNumber: 16
+                },
+                __self: undefined,
+                children: "Error updating activity."
+            }) : null
+        ]
+    }));
+};
+_s(RoutineActivity, "cJ2A8o3tXouKBcTIJDvYI/4KDmU=");
+_c = RoutineActivity;
+exports.default = RoutineActivity;
+var _c;
+$RefreshReg$(_c, "RoutineActivity");
+
+  $parcel$ReactRefreshHelpers$4b37.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
@@ -28891,7 +29047,9 @@ const RoutineEdit = ()=>{
             }
         }
         thisRoutine();
-    }, []);
+    }, [
+        user
+    ]);
     const handleSubmit = async ()=>{
         try {
             if (user && token) {
@@ -29179,7 +29337,9 @@ const RoutineSingleView = ()=>{
             }
         }
         getRoutine();
-    }, []);
+    }, [
+        user
+    ]);
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/RoutineSingleView.jsx",
