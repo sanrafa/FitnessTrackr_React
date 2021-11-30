@@ -24609,7 +24609,7 @@ function setHeaders(token) {
     };
 }
 
-},{"./routines":"b0BJ3","./activities":"6DQLS","./users":"kFmvG","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./routine_activities":"gH8YL"}],"b0BJ3":[function(require,module,exports) {
+},{"./routines":"b0BJ3","./activities":"6DQLS","./users":"kFmvG","./routine_activities":"gH8YL","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"b0BJ3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getAllRoutines", ()=>getAllRoutines
@@ -24722,7 +24722,7 @@ async function updateRoutine(token, routineId, name, goal, isPublic) {
     }
 }
 
-},{"axios":"1IeuP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./index":"l6gwE"}],"1IeuP":[function(require,module,exports) {
+},{"axios":"1IeuP","./index":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"1IeuP":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"ePOwX"}],"ePOwX":[function(require,module,exports) {
@@ -26521,7 +26521,7 @@ var _logoutDefault = parcelHelpers.interopDefault(_logout);
 var _user = require("./User");
 var _userDefault = parcelHelpers.interopDefault(_user);
 
-},{"./Header":"a7Do7","./Home":"1tdUA","./Activities":"imhX8","./MyRoutines":"gF4vd","./Routines":"4kpDy","./Login":"2yGwA","./Register":"lPbZt","./Logout":"fhizP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./User":"f2gfn"}],"a7Do7":[function(require,module,exports) {
+},{"./Header":"a7Do7","./Home":"1tdUA","./Activities":"imhX8","./MyRoutines":"gF4vd","./Routines":"4kpDy","./Login":"2yGwA","./Register":"lPbZt","./Logout":"fhizP","./User":"f2gfn","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"a7Do7":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$d49a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26989,7 +26989,7 @@ $RefreshReg$(_c, "Activities");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","./ActivitiesAll":"127vg","./ActivitiesNew":"6gSof","./ActivitySingleView":"5QGTD","./ActivityEdit":"7dEKC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","./ActivityRoutines":"egEMd","react-router-dom":"16kZP"}],"127vg":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","./ActivitiesAll":"127vg","./ActivitiesNew":"6gSof","./ActivitySingleView":"5QGTD","./ActivityEdit":"7dEKC","./ActivityRoutines":"egEMd","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"127vg":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$ca3f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27110,7 +27110,7 @@ $RefreshReg$(_c, "ActivitiesAll");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","../App":"lL5iC"}],"6gSof":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"6gSof":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e1cc = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27530,7 +27530,7 @@ $RefreshReg$(_c, "ActivitySingleView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","../App":"lL5iC"}],"7dEKC":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"7dEKC":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$de28 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27943,7 +27943,7 @@ $RefreshReg$(_c, "ActivityRoutines");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","react/jsx-runtime":"6Ds2u"}],"gF4vd":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"gF4vd":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8bac = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28106,7 +28106,7 @@ $RefreshReg$(_c, "MyRoutines");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC"}],"4kpDy":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"4kpDy":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$0755 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28207,7 +28207,7 @@ $RefreshReg$(_c, "Routines");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"4mchR","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"16kZP","./RoutinesAll":"1hUJh","./RoutineNew":"ngsQD","./RoutineEdit":"9j3pn","./RoutineSingleView":"fGHod","react/jsx-runtime":"6Ds2u"}],"1hUJh":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","./RoutinesAll":"1hUJh","./RoutineNew":"ngsQD","./RoutineEdit":"9j3pn","./RoutineSingleView":"fGHod","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"1hUJh":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1a11 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28436,7 +28436,7 @@ $RefreshReg$(_c, "RoutinesAll");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC"}],"ngsQD":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"ngsQD":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$f093 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28684,7 +28684,7 @@ $RefreshReg$(_c, "RoutineNew");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","./RoutineActivities":"dUPlr"}],"dUPlr":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","./RoutineActivities":"dUPlr","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"dUPlr":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$16b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28944,7 +28944,7 @@ $RefreshReg$(_c, "RoutineActivities");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","../api":"l6gwE","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","./RoutineActivity":"1OWFc"}],"1OWFc":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","../api":"l6gwE","../App":"lL5iC","./RoutineActivity":"1OWFc","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"1OWFc":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4b37 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -29436,7 +29436,7 @@ $RefreshReg$(_c, "RoutineEdit");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","./RoutineActivities":"dUPlr"}],"fGHod":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","./RoutineActivities":"dUPlr","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"fGHod":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$949b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -29669,7 +29669,7 @@ $RefreshReg$(_c, "RoutineSingleView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC"}],"2yGwA":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}],"2yGwA":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$c0cb = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -30329,6 +30329,6 @@ $RefreshReg$(_c, "User");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","../api":"l6gwE","react-router-dom":"16kZP","../App":"lL5iC"}]},["emU3S","lBB98","hD4hw"], "hD4hw", "parcelRequirecf92")
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13"}]},["emU3S","lBB98","hD4hw"], "hD4hw", "parcelRequirecf92")
 
 //# sourceMappingURL=index.379dd93c.js.map

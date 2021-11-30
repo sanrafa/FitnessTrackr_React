@@ -2,7 +2,6 @@
   "name": "fitnesstrackr_react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "source": "src/index.html",
   "type": "module",
   "scripts": {
