@@ -38,7 +38,6 @@ const RoutineEdit = () => {
       if (user && token) {
         let updatedName, updatedGoal;
         if (name === toEdit.name) updatedName = undefined;
-        if (goal === toEdit.goal) updatedGoal = undefined;
         const updated = await updateRoutine(
           token,
           routineId,
@@ -98,7 +97,7 @@ const RoutineEdit = () => {
               <input
                 type="checkbox"
                 defaultChecked={toEdit ? toEdit.isPublic : false}
-                onChange={() => setIsPublic(!isPublic)}
+                onClick={() => setIsPublic(!isPublic)}
               ></input>
             </label>
             <button type="submit">EDIT</button>

@@ -28608,11 +28608,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 /* TODO:
-  - activitiesAdded should populate with existing routine_activities (if any) on render
   - *stretch goal* activityOptions should filter out existing routine_activities
-  - when "REMOVE" button clicked, routine_activity should be deleted from database 
-    AND from activitiesAdded, triggering re-render
-  - generalize component to be used with Edit Routine component
 */ // API
 var _api = require("../api");
 var _app = require("../App");
@@ -28621,7 +28617,7 @@ const RoutineActivities = (props)=>{
     _s();
     const selectedRoutine = props.routine;
     const { user , token  } = _react.useContext(_app.UserContext);
-    const [activitiesAdded, setActivitiesAdded] = _react.useState([]);
+    const [activitiesChanged, setActivitiesChanged] = _react.useState([]);
     const [activityOptions, setActivityOptions] = _react.useState([]);
     const [routineActivities, setRoutineActivities] = _react.useState([]);
     const [activityToAdd, setActivityToAdd] = _react.useState(0); // activity ID
@@ -28650,15 +28646,23 @@ const RoutineActivities = (props)=>{
         }
         updateRoutineActivities();
     }, [
-        activitiesAdded
+        activitiesChanged
     ]);
     const handleSubmit = async ()=>{
         try {
             const routineActivity = await _api.addActivityToRoutine(token, selectedRoutine.id, activityToAdd, count, duration);
-            setActivitiesAdded([
-                ...activitiesAdded,
+            setActivitiesChanged([
+                ...activitiesChanged,
                 routineActivity
             ]);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    const handleDelete = async (id)=>{
+        try {
+            const deletedActivity = await _api.deleteRoutineActivity(token, id);
+            setActivitiesChanged(deletedActivity);
         } catch (err) {
             console.error(err);
         }
@@ -28666,7 +28670,7 @@ const RoutineActivities = (props)=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
         __source: {
             fileName: "src/components/RoutineActivities.jsx",
-            lineNumber: 76,
+            lineNumber: 81,
             columnNumber: 5
         },
         __self: undefined,
@@ -28674,7 +28678,7 @@ const RoutineActivities = (props)=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h2", {
                 __source: {
                     fileName: "src/components/RoutineActivities.jsx",
-                    lineNumber: 77,
+                    lineNumber: 82,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -28683,7 +28687,7 @@ const RoutineActivities = (props)=>{
             routineActivities ? routineActivities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
                     __source: {
                         fileName: "src/components/RoutineActivities.jsx",
-                        lineNumber: 80,
+                        lineNumber: 85,
                         columnNumber: 13
                     },
                     __self: undefined,
@@ -28691,14 +28695,14 @@ const RoutineActivities = (props)=>{
                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                             __source: {
                                 fileName: "src/components/RoutineActivities.jsx",
-                                lineNumber: 81,
+                                lineNumber: 86,
                                 columnNumber: 15
                             },
                             __self: undefined,
                             children: /*#__PURE__*/ _jsxRuntime.jsx("strong", {
                                 __source: {
                                     fileName: "src/components/RoutineActivities.jsx",
-                                    lineNumber: 82,
+                                    lineNumber: 87,
                                     columnNumber: 17
                                 },
                                 __self: undefined,
@@ -28707,9 +28711,11 @@ const RoutineActivities = (props)=>{
                         }),
                         /*#__PURE__*/ _jsxRuntime.jsx("button", {
                             type: "button",
+                            onClick: ()=>handleDelete(activity.routineActivityId)
+                            ,
                             __source: {
                                 fileName: "src/components/RoutineActivities.jsx",
-                                lineNumber: 84,
+                                lineNumber: 89,
                                 columnNumber: 15
                             },
                             __self: undefined,
@@ -28728,7 +28734,7 @@ const RoutineActivities = (props)=>{
                 },
                 __source: {
                     fileName: "src/components/RoutineActivities.jsx",
-                    lineNumber: 88,
+                    lineNumber: 98,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -28736,7 +28742,7 @@ const RoutineActivities = (props)=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("label", {
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 97,
+                            lineNumber: 107,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28751,7 +28757,7 @@ const RoutineActivities = (props)=>{
                         },
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 98,
+                            lineNumber: 108,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28759,7 +28765,7 @@ const RoutineActivities = (props)=>{
                                 value: ele.id,
                                 __source: {
                                     fileName: "src/components/RoutineActivities.jsx",
-                                    lineNumber: 107,
+                                    lineNumber: 117,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -28770,7 +28776,7 @@ const RoutineActivities = (props)=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 112,
+                            lineNumber: 122,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28785,7 +28791,7 @@ const RoutineActivities = (props)=>{
                                 ,
                                 __source: {
                                     fileName: "src/components/RoutineActivities.jsx",
-                                    lineNumber: 114,
+                                    lineNumber: 124,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -28795,7 +28801,7 @@ const RoutineActivities = (props)=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 122,
+                            lineNumber: 132,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28810,7 +28816,7 @@ const RoutineActivities = (props)=>{
                                 ,
                                 __source: {
                                     fileName: "src/components/RoutineActivities.jsx",
-                                    lineNumber: 124,
+                                    lineNumber: 134,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -28821,7 +28827,7 @@ const RoutineActivities = (props)=>{
                         type: "submit",
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 133,
+                            lineNumber: 143,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28832,7 +28838,7 @@ const RoutineActivities = (props)=>{
         ]
     }));
 };
-_s(RoutineActivities, "neaDHFH6I7ybfj6B0//VlwjdSq4=");
+_s(RoutineActivities, "ovrr6Qq0a84UsAgLEjWk4xUwoj8=");
 _c = RoutineActivities;
 exports.default = RoutineActivities;
 var _c;
@@ -28891,7 +28897,6 @@ const RoutineEdit = ()=>{
             if (user && token) {
                 let updatedName, updatedGoal;
                 if (name === toEdit.name) updatedName = undefined;
-                if (goal === toEdit.goal) updatedGoal = undefined;
                 const updated = await _api.updateRoutine(token, routineId, updatedName, goal, isPublic);
                 setRoutine(updated);
             } else throw Error("Please log in to complete this action.");
@@ -28904,7 +28909,7 @@ const RoutineEdit = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/RoutineEdit.jsx",
-            lineNumber: 61,
+            lineNumber: 60,
             columnNumber: 5
         },
         __self: undefined,
@@ -28912,7 +28917,7 @@ const RoutineEdit = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/RoutineEdit.jsx",
-                    lineNumber: 62,
+                    lineNumber: 61,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -28921,7 +28926,7 @@ const RoutineEdit = ()=>{
             error ? /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 __source: {
                     fileName: "src/components/RoutineEdit.jsx",
-                    lineNumber: 64,
+                    lineNumber: 63,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -28929,7 +28934,7 @@ const RoutineEdit = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/RoutineEdit.jsx",
-                            lineNumber: 65,
+                            lineNumber: 64,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28941,7 +28946,7 @@ const RoutineEdit = ()=>{
                         ,
                         __source: {
                             fileName: "src/components/RoutineEdit.jsx",
-                            lineNumber: 66,
+                            lineNumber: 65,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28951,7 +28956,7 @@ const RoutineEdit = ()=>{
             }) : !edited ? /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 __source: {
                     fileName: "src/components/RoutineEdit.jsx",
-                    lineNumber: 71,
+                    lineNumber: 70,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -28963,7 +28968,7 @@ const RoutineEdit = ()=>{
                         },
                         __source: {
                             fileName: "src/components/RoutineEdit.jsx",
-                            lineNumber: 72,
+                            lineNumber: 71,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28971,7 +28976,7 @@ const RoutineEdit = ()=>{
                             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                                 __source: {
                                     fileName: "src/components/RoutineEdit.jsx",
-                                    lineNumber: 78,
+                                    lineNumber: 77,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -28985,7 +28990,7 @@ const RoutineEdit = ()=>{
                                         ,
                                         __source: {
                                             fileName: "src/components/RoutineEdit.jsx",
-                                            lineNumber: 80,
+                                            lineNumber: 79,
                                             columnNumber: 15
                                         },
                                         __self: undefined
@@ -28995,7 +29000,7 @@ const RoutineEdit = ()=>{
                             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                                 __source: {
                                     fileName: "src/components/RoutineEdit.jsx",
-                                    lineNumber: 87,
+                                    lineNumber: 86,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -29009,7 +29014,7 @@ const RoutineEdit = ()=>{
                                         ,
                                         __source: {
                                             fileName: "src/components/RoutineEdit.jsx",
-                                            lineNumber: 89,
+                                            lineNumber: 88,
                                             columnNumber: 15
                                         },
                                         __self: undefined
@@ -29019,7 +29024,7 @@ const RoutineEdit = ()=>{
                             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                                 __source: {
                                     fileName: "src/components/RoutineEdit.jsx",
-                                    lineNumber: 96,
+                                    lineNumber: 95,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -29028,11 +29033,11 @@ const RoutineEdit = ()=>{
                                     /*#__PURE__*/ _jsxRuntime.jsx("input", {
                                         type: "checkbox",
                                         defaultChecked: toEdit ? toEdit.isPublic : false,
-                                        onChange: ()=>setIsPublic(!isPublic)
+                                        onClick: ()=>setIsPublic(!isPublic)
                                         ,
                                         __source: {
                                             fileName: "src/components/RoutineEdit.jsx",
-                                            lineNumber: 98,
+                                            lineNumber: 97,
                                             columnNumber: 15
                                         },
                                         __self: undefined
@@ -29043,7 +29048,7 @@ const RoutineEdit = ()=>{
                                 type: "submit",
                                 __source: {
                                     fileName: "src/components/RoutineEdit.jsx",
-                                    lineNumber: 104,
+                                    lineNumber: 103,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -29055,7 +29060,7 @@ const RoutineEdit = ()=>{
                         routine: toEdit,
                         __source: {
                             fileName: "src/components/RoutineEdit.jsx",
-                            lineNumber: 107,
+                            lineNumber: 106,
                             columnNumber: 13
                         },
                         __self: undefined
@@ -29064,7 +29069,7 @@ const RoutineEdit = ()=>{
             }) : /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 __source: {
                     fileName: "src/components/RoutineEdit.jsx",
-                    lineNumber: 111,
+                    lineNumber: 110,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -29072,7 +29077,7 @@ const RoutineEdit = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("p", {
                         __source: {
                             fileName: "src/components/RoutineEdit.jsx",
-                            lineNumber: 112,
+                            lineNumber: 111,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -29080,7 +29085,7 @@ const RoutineEdit = ()=>{
                             /*#__PURE__*/ _jsxRuntime.jsx("em", {
                                 __source: {
                                     fileName: "src/components/RoutineEdit.jsx",
-                                    lineNumber: 113,
+                                    lineNumber: 112,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -29092,7 +29097,7 @@ const RoutineEdit = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/RoutineEdit.jsx",
-                            lineNumber: 116,
+                            lineNumber: 115,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -29101,7 +29106,7 @@ const RoutineEdit = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/RoutineEdit.jsx",
-                            lineNumber: 117,
+                            lineNumber: 116,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -29111,7 +29116,7 @@ const RoutineEdit = ()=>{
                         to: `/routines/${routine1.id}`,
                         __source: {
                             fileName: "src/components/RoutineEdit.jsx",
-                            lineNumber: 118,
+                            lineNumber: 117,
                             columnNumber: 11
                         },
                         __self: undefined,

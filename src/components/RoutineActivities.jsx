@@ -1,11 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 
 /* TODO:
-  - activitiesAdded should populate with existing routine_activities (if any) on render
   - *stretch goal* activityOptions should filter out existing routine_activities
-  - when "REMOVE" button clicked, routine_activity should be deleted from database 
-    AND from activitiesAdded, triggering re-render
-  - generalize component to be used with Edit Routine component
 */
 
 // API
@@ -22,7 +18,7 @@ const RoutineActivities = (props) => {
   const selectedRoutine = props.routine;
   const { user, token } = useContext(UserContext);
 
-  const [activitiesAdded, setActivitiesAdded] = useState([]);
+  const [activitiesChanged, setActivitiesChanged] = useState([]);
   const [activityOptions, setActivityOptions] = useState([]);
   const [routineActivities, setRoutineActivities] = useState([]);
   const [activityToAdd, setActivityToAdd] = useState(0); // activity ID
@@ -55,7 +51,7 @@ const RoutineActivities = (props) => {
     }
 
     updateRoutineActivities();
-  }, [activitiesAdded]);
+  }, [activitiesChanged]);
 
   const handleSubmit = async () => {
     try {
@@ -66,7 +62,16 @@ const RoutineActivities = (props) => {
         count,
         duration
       );
-      setActivitiesAdded([...activitiesAdded, routineActivity]);
+      setActivitiesChanged([...activitiesChanged, routineActivity]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const deletedActivity = await deleteRoutineActivity(token, id);
+      setActivitiesChanged(deletedActivity);
     } catch (err) {
       console.error(err);
     }
@@ -81,7 +86,12 @@ const RoutineActivities = (props) => {
               <p>
                 <strong>{activity.name}</strong>
               </p>
-              <button type="button">REMOVE</button>
+              <button
+                type="button"
+                onClick={() => handleDelete(activity.routineActivityId)}
+              >
+                REMOVE
+              </button>
             </div>
           ))
         : null}
