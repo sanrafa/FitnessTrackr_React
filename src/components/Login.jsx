@@ -49,16 +49,19 @@ const Login = () => {
   };
 
   return (
-    <main>
-      <h1>Login</h1>
-      <Link to="/register">New user?</Link>
+    <main className="text-center p-4">
+      <h1 className="text-4xl font-bold">Login</h1>
+      <Link to="/register" className="font-semibold text-blue-600">
+        New user?
+      </Link>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
         }}
+        className="p-6 flex flex-col space-y-4"
       >
-        <label>
+        <label className="font-medium">
           Username:
           <input
             type="text"
@@ -69,9 +72,10 @@ const Login = () => {
               setUsername(e.target.value);
             }}
             minLength="5"
+            className="ml-4 border-solid border-2 border-gray-400"
           ></input>
         </label>
-        <label>
+        <label className="font-medium">
           Password:
           <input
             type="password"
@@ -82,9 +86,10 @@ const Login = () => {
               setPassword(e.target.value);
             }}
             minLength="8"
+            className="ml-4 border-solid border-2 border-gray-400"
           ></input>
         </label>
-        <label>
+        <label className="mr-2">
           Remember this browser:
           <input
             type="checkbox"
@@ -92,10 +97,13 @@ const Login = () => {
             onChange={(e) => {
               setSaveToken(!saveToken);
             }}
+            className="ml-2"
           ></input>
         </label>
 
-        <button type="submit">LOGIN</button>
+        <button type="submit" className="bg-blue-300 text-white">
+          LOGIN
+        </button>
       </form>
       {error ? <p>{error}</p> : null}
     </main>

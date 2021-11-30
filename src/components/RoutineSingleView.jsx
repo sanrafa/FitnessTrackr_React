@@ -29,14 +29,19 @@ const RoutineSingleView = () => {
   }, [user]);
 
   return (
-    <main>
+    <main className="text-center">
       {error ? <p>{error}</p> : null}
       {routine && !error ? (
         <Fragment>
-          {routine.creatorId == user.id ? <Link to="edit">EDIT</Link> : null}
+          {routine.creatorId == user.id ? (
+            <Link to="edit" className="mr-4">
+              EDIT
+            </Link>
+          ) : null}
           {routine.creatorId == user.id ? (
             <button
               type="button"
+              className="text-red-700"
               onClick={() => {
                 deleteRoutine(token, routineId).then(() => {
                   navigate("/profile");
@@ -46,17 +51,25 @@ const RoutineSingleView = () => {
               DELETE ROUTINE
             </button>
           ) : null}
-          <h1>{routine.name}</h1>
-          <Link to={`/users/${routine.creatorName}`}>
+          <h1 className="text-3xl">{routine.name}</h1>
+          <Link to={`/users/${routine.creatorName}`} className="text-blue-400">
             {routine.creatorName}
           </Link>
           <p>{routine.goal}</p>
           {routine.activities ? (
-            <div>
-              <h2>Activities</h2>
+            <div className="p-4">
+              <h2 className="font-bold text-xl">Activities</h2>
               {routine.activities.map((activity) => (
-                <div key={activity.routineActivityId}>
-                  <Link to={`/activities/${activity.id}`}>{activity.name}</Link>
+                <div
+                  key={activity.routineActivityId}
+                  className="flex flex-col p-2"
+                >
+                  <Link
+                    to={`/activities/${activity.id}`}
+                    className="font-semibold"
+                  >
+                    {activity.name}
+                  </Link>
                   <p>{activity.description}</p>
                   <span>Duration: {activity.duration} minutes</span>
                   <span>Count: {activity.count} reps</span>
@@ -64,6 +77,9 @@ const RoutineSingleView = () => {
               ))}
             </div>
           ) : null}
+          <Link to="/routines" className="text-blue-200">
+            Back to all routines
+          </Link>
         </Fragment>
       ) : null}
     </main>

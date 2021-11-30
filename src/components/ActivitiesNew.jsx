@@ -51,12 +51,13 @@ const ActivitiesNew = () => {
 
   return (
     <section>
-      <h3>Create a new activity</h3>
+      <h3 className="font-bold text-center">Create a new activity</h3>
       {Object.keys(newActivity).length > 0 ? (
         <div>
-          <p>Your activity has been created.</p>
+          <p className="italic">Your activity has been created.</p>
           <button
             type="button"
+            className="text-blue-300 bg-blue-600 p-1"
             onClick={() => navigate(`/activities/${newActivity.id}`)}
           >
             VIEW
@@ -87,11 +88,16 @@ const ActivitiesNew = () => {
           </button>
         </div>
       ) : (
-        <div>
-          <button type="button" onClick={() => navigate(-1)}>
+        <div className="flex flex-col">
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="text-red-800"
+          >
             CANCEL
           </button>
           <form
+            className="flex flex-col items-center space-y-2"
             onSubmit={(e) => {
               e.preventDefault();
               handleSubmit();
@@ -99,7 +105,7 @@ const ActivitiesNew = () => {
               setDescription("");
             }}
           >
-            <label>
+            <label className="font-medium">
               Name:
               <input
                 type="text"
@@ -107,13 +113,15 @@ const ActivitiesNew = () => {
                 size="60"
                 value={name}
                 placeholder="What is this activity called?"
+                className="ml-4 border border-black p-0.5"
                 onChange={(e) => setName(e.target.value)}
               ></input>
             </label>
-            <label>
+            <label className="font-medium">
               Description:
               <input
                 type="text"
+                className="ml-4 border border-black p-0.5"
                 required={true}
                 size="60"
                 value={description}
@@ -121,7 +129,12 @@ const ActivitiesNew = () => {
                 onChange={(e) => setDescription(e.target.value)}
               ></input>
             </label>
-            <button type="submit">SUBMIT</button>
+            <button
+              type="submit"
+              className="font-bold text-white bg-blue-800 p-1"
+            >
+              SUBMIT
+            </button>
           </form>
         </div>
       )}

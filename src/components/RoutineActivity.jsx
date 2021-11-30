@@ -28,6 +28,9 @@ const RoutineActivity = (props) => {
       );
       setUpdated(true);
       setError(null);
+      setTimeout(() => {
+        setUpdated(false);
+      }, 5000);
     } catch (err) {
       console.error(err);
       setUpdated(false);
@@ -37,12 +40,13 @@ const RoutineActivity = (props) => {
 
   return (
     <Fragment>
-      <p>{activity.name}</p>
+      <p className="italic">{activity.name}</p>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
         }}
+        className="space-x-4"
       >
         <label>
           Count:
@@ -50,6 +54,7 @@ const RoutineActivity = (props) => {
             type="number"
             min="0"
             max="100"
+            className="ml-4 border-gray-500 border-2 p-0.5"
             defaultValue={activity.count}
             onChange={(e) => setCount(e.target.value)}
           ></input>
@@ -60,11 +65,14 @@ const RoutineActivity = (props) => {
             type="number"
             min="0"
             max="120"
+            className="ml-4 border-gray-500 border-2 p-0.5"
             defaultValue={activity.duration}
             onChange={(e) => setDuration(e.target.value)}
           ></input>
         </label>
-        <button type="submit">EDIT</button>{" "}
+        <button type="submit" className="bg-green-500 text-white p-0.5">
+          EDIT
+        </button>{" "}
         {/* DELETE is handled by parent component */}
       </form>
       {updated ? <span>Saved.</span> : null}

@@ -14,8 +14,6 @@ import { getActivityById } from "../api";
 import { UserContext } from "../App";
 
 const ActivitySingleView = () => {
-  let navigate = useNavigate();
-
   const { activityId } = useParams();
   const editPath = generatePath("/activities/:activityId/edit", {
     activityId: activityId,
@@ -35,19 +33,26 @@ const ActivitySingleView = () => {
   return (
     <main>
       {activity ? (
-        <article>
-          <Link to="/activities">Back to all activities</Link>
-          <h1>{activity.name}</h1>
-          <p>{activity.description}</p>
+        <article className="text-center">
+          <Link to="/activities" className="text-blue-300">
+            Back to all activities
+          </Link>
+          <h1 className="text-3xl">{activity.name}</h1>
+          <p className="text-lg">{activity.description}</p>
           <NavLink
             to="routines"
             style={({ isActive }) =>
               isActive ? { display: "none" } : undefined
             }
+            className="mr-4 text-blue-500"
           >
             View Routines
           </NavLink>
-          {user && token ? <Link to={editPath}>Edit this activity</Link> : null}
+          {user && token ? (
+            <Link to={editPath} className="text-blue-700">
+              Edit this activity
+            </Link>
+          ) : null}
         </article>
       ) : null}
       <Outlet />

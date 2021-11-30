@@ -26555,6 +26555,7 @@ const Header = ()=>{
         __self: undefined,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsxs("ul", {
+                className: "flex justify-evenly",
                 __source: {
                     fileName: "src/components/Header.jsx",
                     lineNumber: 21,
@@ -26672,6 +26673,7 @@ const Header = ()=>{
                 ]
             }),
             isLoggedIn ? /*#__PURE__*/ _jsxRuntime.jsxs("p", {
+                className: "text-center",
                 __source: {
                     fileName: "src/components/Header.jsx",
                     lineNumber: 47,
@@ -26679,13 +26681,15 @@ const Header = ()=>{
                 },
                 __self: undefined,
                 children: [
-                    "Hello, ",
+                    "Hello,",
+                    " ",
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                         to: "/profile",
+                        className: "text-blue-600",
                         __source: {
                             fileName: "src/components/Header.jsx",
-                            lineNumber: 48,
-                            columnNumber: 18
+                            lineNumber: 49,
+                            columnNumber: 11
                         },
                         __self: undefined,
                         children: user.username
@@ -26845,7 +26849,7 @@ const Home = ()=>{
         },
         __self: undefined,
         children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
-            className: "text-red-50",
+            className: "text-blue-700 text-4xl text-center",
             __source: {
                 fileName: "src/components/Home.jsx",
                 lineNumber: 4,
@@ -27033,6 +27037,7 @@ const ActivitiesAll = ()=>{
                 children: "Loading..."
             }) : null,
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                className: "text-4xl",
                 __source: {
                     fileName: "src/components/ActivitiesAll.jsx",
                     lineNumber: 27,
@@ -27060,6 +27065,7 @@ const ActivitiesAll = ()=>{
                 __self: undefined
             }),
             activities ? activities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    className: "p-4",
                     __source: {
                         fileName: "src/components/ActivitiesAll.jsx",
                         lineNumber: 32,
@@ -27069,6 +27075,7 @@ const ActivitiesAll = ()=>{
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                             to: `${activity.id}`,
+                            className: "text-blue-500 font-bold text-2xl",
                             __source: {
                                 fileName: "src/components/ActivitiesAll.jsx",
                                 lineNumber: 33,
@@ -27080,7 +27087,7 @@ const ActivitiesAll = ()=>{
                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                             __source: {
                                 fileName: "src/components/ActivitiesAll.jsx",
-                                lineNumber: 34,
+                                lineNumber: 39,
                                 columnNumber: 15
                             },
                             __self: undefined,
@@ -27160,6 +27167,7 @@ const ActivitiesNew = ()=>{
         __self: undefined,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsx("h3", {
+                className: "font-bold text-center",
                 __source: {
                     fileName: "src/components/ActivitiesNew.jsx",
                     lineNumber: 54,
@@ -27177,6 +27185,7 @@ const ActivitiesNew = ()=>{
                 __self: undefined,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        className: "italic",
                         __source: {
                             fileName: "src/components/ActivitiesNew.jsx",
                             lineNumber: 57,
@@ -27187,6 +27196,7 @@ const ActivitiesNew = ()=>{
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("button", {
                         type: "button",
+                        className: "text-blue-300 bg-blue-600 p-1",
                         onClick: ()=>navigate(`/activities/${newActivity.id}`)
                         ,
                         __source: {
@@ -27201,7 +27211,7 @@ const ActivitiesNew = ()=>{
             }) : error && user && token ? /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 __source: {
                     fileName: "src/components/ActivitiesNew.jsx",
-                    lineNumber: 66,
+                    lineNumber: 67,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -27209,7 +27219,7 @@ const ActivitiesNew = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/ActivitiesNew.jsx",
-                            lineNumber: 67,
+                            lineNumber: 68,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27222,7 +27232,7 @@ const ActivitiesNew = ()=>{
                         },
                         __source: {
                             fileName: "src/components/ActivitiesNew.jsx",
-                            lineNumber: 68,
+                            lineNumber: 69,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27232,7 +27242,7 @@ const ActivitiesNew = ()=>{
             }) : error ? /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 __source: {
                     fileName: "src/components/ActivitiesNew.jsx",
-                    lineNumber: 78,
+                    lineNumber: 79,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -27240,7 +27250,7 @@ const ActivitiesNew = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/ActivitiesNew.jsx",
-                            lineNumber: 79,
+                            lineNumber: 80,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27253,7 +27263,7 @@ const ActivitiesNew = ()=>{
                         },
                         __source: {
                             fileName: "src/components/ActivitiesNew.jsx",
-                            lineNumber: 80,
+                            lineNumber: 81,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27261,9 +27271,10 @@ const ActivitiesNew = ()=>{
                     })
                 ]
             }) : /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                className: "flex flex-col",
                 __source: {
                     fileName: "src/components/ActivitiesNew.jsx",
-                    lineNumber: 90,
+                    lineNumber: 91,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -27272,15 +27283,17 @@ const ActivitiesNew = ()=>{
                         type: "button",
                         onClick: ()=>navigate(-1)
                         ,
+                        className: "text-red-800",
                         __source: {
                             fileName: "src/components/ActivitiesNew.jsx",
-                            lineNumber: 91,
+                            lineNumber: 92,
                             columnNumber: 11
                         },
                         __self: undefined,
                         children: "CANCEL"
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                        className: "flex flex-col items-center space-y-2",
                         onSubmit: (e)=>{
                             e.preventDefault();
                             handleSubmit();
@@ -27289,15 +27302,16 @@ const ActivitiesNew = ()=>{
                         },
                         __source: {
                             fileName: "src/components/ActivitiesNew.jsx",
-                            lineNumber: 94,
+                            lineNumber: 99,
                             columnNumber: 11
                         },
                         __self: undefined,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                                className: "font-medium",
                                 __source: {
                                     fileName: "src/components/ActivitiesNew.jsx",
-                                    lineNumber: 102,
+                                    lineNumber: 108,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -27309,11 +27323,12 @@ const ActivitiesNew = ()=>{
                                         size: "60",
                                         value: name,
                                         placeholder: "What is this activity called?",
+                                        className: "ml-4 border border-black p-0.5",
                                         onChange: (e)=>setName(e.target.value)
                                         ,
                                         __source: {
                                             fileName: "src/components/ActivitiesNew.jsx",
-                                            lineNumber: 104,
+                                            lineNumber: 110,
                                             columnNumber: 15
                                         },
                                         __self: undefined
@@ -27321,9 +27336,10 @@ const ActivitiesNew = ()=>{
                                 ]
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                                className: "font-medium",
                                 __source: {
                                     fileName: "src/components/ActivitiesNew.jsx",
-                                    lineNumber: 113,
+                                    lineNumber: 120,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -27331,6 +27347,7 @@ const ActivitiesNew = ()=>{
                                     "Description:",
                                     /*#__PURE__*/ _jsxRuntime.jsx("input", {
                                         type: "text",
+                                        className: "ml-4 border border-black p-0.5",
                                         required: true,
                                         size: "60",
                                         value: description,
@@ -27339,7 +27356,7 @@ const ActivitiesNew = ()=>{
                                         ,
                                         __source: {
                                             fileName: "src/components/ActivitiesNew.jsx",
-                                            lineNumber: 115,
+                                            lineNumber: 122,
                                             columnNumber: 15
                                         },
                                         __self: undefined
@@ -27348,9 +27365,10 @@ const ActivitiesNew = ()=>{
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsx("button", {
                                 type: "submit",
+                                className: "font-bold text-white bg-blue-800 p-1",
                                 __source: {
                                     fileName: "src/components/ActivitiesNew.jsx",
-                                    lineNumber: 124,
+                                    lineNumber: 132,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -27396,7 +27414,6 @@ var _app = require("../App");
 var _s = $RefreshSig$();
 const ActivitySingleView = ()=>{
     _s();
-    let navigate = _reactRouterDom.useNavigate();
     const { activityId  } = _reactRouterDom.useParams();
     const editPath = _reactRouterDom.generatePath("/activities/:activityId/edit", {
         activityId: activityId
@@ -27414,30 +27431,33 @@ const ActivitySingleView = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/ActivitySingleView.jsx",
-            lineNumber: 36,
+            lineNumber: 34,
             columnNumber: 5
         },
         __self: undefined,
         children: [
             activity ? /*#__PURE__*/ _jsxRuntime.jsxs("article", {
+                className: "text-center",
                 __source: {
                     fileName: "src/components/ActivitySingleView.jsx",
-                    lineNumber: 38,
+                    lineNumber: 36,
                     columnNumber: 9
                 },
                 __self: undefined,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                         to: "/activities",
+                        className: "text-blue-300",
                         __source: {
                             fileName: "src/components/ActivitySingleView.jsx",
-                            lineNumber: 39,
+                            lineNumber: 37,
                             columnNumber: 11
                         },
                         __self: undefined,
                         children: "Back to all activities"
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                        className: "text-3xl",
                         __source: {
                             fileName: "src/components/ActivitySingleView.jsx",
                             lineNumber: 40,
@@ -27447,6 +27467,7 @@ const ActivitySingleView = ()=>{
                         children: activity.name
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        className: "text-lg",
                         __source: {
                             fileName: "src/components/ActivitySingleView.jsx",
                             lineNumber: 41,
@@ -27461,6 +27482,7 @@ const ActivitySingleView = ()=>{
                                 display: "none"
                             } : undefined
                         ,
+                        className: "mr-4 text-blue-500",
                         __source: {
                             fileName: "src/components/ActivitySingleView.jsx",
                             lineNumber: 42,
@@ -27471,10 +27493,11 @@ const ActivitySingleView = ()=>{
                     }),
                     user && token ? /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                         to: editPath,
+                        className: "text-blue-700",
                         __source: {
                             fileName: "src/components/ActivitySingleView.jsx",
-                            lineNumber: 50,
-                            columnNumber: 28
+                            lineNumber: 52,
+                            columnNumber: 13
                         },
                         __self: undefined,
                         children: "Edit this activity"
@@ -27484,7 +27507,7 @@ const ActivitySingleView = ()=>{
             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Outlet, {
                 __source: {
                     fileName: "src/components/ActivitySingleView.jsx",
-                    lineNumber: 53,
+                    lineNumber: 58,
                     columnNumber: 7
                 },
                 __self: undefined
@@ -27492,9 +27515,8 @@ const ActivitySingleView = ()=>{
         ]
     }));
 };
-_s(ActivitySingleView, "fTue7JSK2TRE2lvKe+DCtnTxiNU=", false, function() {
+_s(ActivitySingleView, "IK51ljRCRtY5Dtxy5ynjiuxD3wM=", false, function() {
     return [
-        _reactRouterDom.useNavigate,
         _reactRouterDom.useParams
     ];
 });
@@ -27579,6 +27601,7 @@ const ActivityEdit = ()=>{
         __self: undefined,
         children: [
             !edited ? /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                className: "text-2xl",
                 __source: {
                     fileName: "src/components/ActivityEdit.jsx",
                     lineNumber: 66,
@@ -27600,6 +27623,7 @@ const ActivityEdit = ()=>{
                     e.preventDefault();
                     handleSubmit();
                 },
+                className: "flex flex-col p-4 space-y-4",
                 __source: {
                     fileName: "src/components/ActivityEdit.jsx",
                     lineNumber: 71,
@@ -27608,9 +27632,10 @@ const ActivityEdit = ()=>{
                 __self: undefined,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        className: "font-medium",
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 77,
+                            lineNumber: 78,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27618,13 +27643,14 @@ const ActivityEdit = ()=>{
                             "Activity name:",
                             /*#__PURE__*/ _jsxRuntime.jsx("input", {
                                 type: "text",
+                                className: "ml-4 border-blue-100 border-2 p-2",
                                 defaultValue: toEdit ? toEdit.name : null,
                                 size: "60",
                                 onChange: (e)=>setName(e.target.value)
                                 ,
                                 __source: {
                                     fileName: "src/components/ActivityEdit.jsx",
-                                    lineNumber: 79,
+                                    lineNumber: 80,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -27632,9 +27658,10 @@ const ActivityEdit = ()=>{
                         ]
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        className: "font-medium",
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 86,
+                            lineNumber: 88,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27642,13 +27669,14 @@ const ActivityEdit = ()=>{
                             "Description:",
                             /*#__PURE__*/ _jsxRuntime.jsx("input", {
                                 type: "text",
+                                className: "ml-4 border-blue-100 border-2 p-2",
                                 defaultValue: toEdit ? toEdit.description : null,
                                 size: "60",
                                 onChange: (e)=>setDescription(e.target.value)
                                 ,
                                 __source: {
                                     fileName: "src/components/ActivityEdit.jsx",
-                                    lineNumber: 88,
+                                    lineNumber: 90,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -27657,9 +27685,10 @@ const ActivityEdit = ()=>{
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("button", {
                         type: "submit",
+                        className: "bg-blue-500 text-white",
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 95,
+                            lineNumber: 98,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27669,9 +27698,10 @@ const ActivityEdit = ()=>{
                         type: "button",
                         onClick: ()=>navigate(-1)
                         ,
+                        className: "text-red-700",
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 96,
+                            lineNumber: 101,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27679,9 +27709,10 @@ const ActivityEdit = ()=>{
                     })
                 ]
             }) : /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                className: "flex flex-col items-center",
                 __source: {
                     fileName: "src/components/ActivityEdit.jsx",
-                    lineNumber: 101,
+                    lineNumber: 110,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -27689,14 +27720,14 @@ const ActivityEdit = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 102,
+                            lineNumber: 111,
                             columnNumber: 11
                         },
                         __self: undefined,
                         children: /*#__PURE__*/ _jsxRuntime.jsx("em", {
                             __source: {
                                 fileName: "src/components/ActivityEdit.jsx",
-                                lineNumber: 103,
+                                lineNumber: 112,
                                 columnNumber: 13
                             },
                             __self: undefined,
@@ -27704,9 +27735,10 @@ const ActivityEdit = ()=>{
                         })
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        className: "font-bold",
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 105,
+                            lineNumber: 114,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27715,7 +27747,7 @@ const ActivityEdit = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 106,
+                            lineNumber: 115,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27727,7 +27759,7 @@ const ActivityEdit = ()=>{
                         ,
                         __source: {
                             fileName: "src/components/ActivityEdit.jsx",
-                            lineNumber: 107,
+                            lineNumber: 116,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -27788,6 +27820,7 @@ const ActivityRoutines = ()=>{
         fetchRoutines();
     }, []);
     return(/*#__PURE__*/ _jsxRuntime.jsxs("section", {
+        className: "text-center p-2",
         __source: {
             fileName: "src/components/ActivityRoutines.jsx",
             lineNumber: 29,
@@ -27796,6 +27829,7 @@ const ActivityRoutines = ()=>{
         __self: undefined,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsx("h3", {
+                className: "font-semibold",
                 __source: {
                     fileName: "src/components/ActivityRoutines.jsx",
                     lineNumber: 30,
@@ -27812,6 +27846,7 @@ const ActivityRoutines = ()=>{
                 },
                 __self: undefined,
                 children: routines ? /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                    className: "p-4",
                     __source: {
                         fileName: "src/components/ActivityRoutines.jsx",
                         lineNumber: 34,
@@ -27828,6 +27863,7 @@ const ActivityRoutines = ()=>{
                             children: [
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                     to: `/routines/${routine.id}`,
+                                    className: "font-bold",
                                     __source: {
                                         fileName: "src/components/ActivityRoutines.jsx",
                                         lineNumber: 37,
@@ -27839,7 +27875,7 @@ const ActivityRoutines = ()=>{
                                 /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                     __source: {
                                         fileName: "src/components/ActivityRoutines.jsx",
-                                        lineNumber: 38,
+                                        lineNumber: 40,
                                         columnNumber: 19
                                     },
                                     __self: undefined,
@@ -27847,9 +27883,10 @@ const ActivityRoutines = ()=>{
                                 }),
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                     to: `/users/${routine.creatorName}`,
+                                    className: "text-blue-400",
                                     __source: {
                                         fileName: "src/components/ActivityRoutines.jsx",
-                                        lineNumber: 39,
+                                        lineNumber: 41,
                                         columnNumber: 19
                                     },
                                     __self: undefined,
@@ -27861,7 +27898,7 @@ const ActivityRoutines = ()=>{
                 }) : /*#__PURE__*/ _jsxRuntime.jsx("p", {
                     __source: {
                         fileName: "src/components/ActivityRoutines.jsx",
-                        lineNumber: 46,
+                        lineNumber: 51,
                         columnNumber: 13
                     },
                     __self: undefined,
@@ -27870,7 +27907,7 @@ const ActivityRoutines = ()=>{
             }) : /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/ActivityRoutines.jsx",
-                    lineNumber: 50,
+                    lineNumber: 55,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -27878,9 +27915,10 @@ const ActivityRoutines = ()=>{
             }),
             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                 to: `/activities/${activityId}`,
+                className: "border-2 border-solid border-black p-2",
                 __source: {
                     fileName: "src/components/ActivityRoutines.jsx",
-                    lineNumber: 53,
+                    lineNumber: 58,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -27945,6 +27983,7 @@ const MyRoutines = ()=>{
         getUserRoutines();
     }, []);
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
+        className: "text-center",
         __source: {
             fileName: "src/components/MyRoutines.jsx",
             lineNumber: 35,
@@ -27953,6 +27992,7 @@ const MyRoutines = ()=>{
         __self: undefined,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                className: "text-4xl",
                 __source: {
                     fileName: "src/components/MyRoutines.jsx",
                     lineNumber: 36,
@@ -27961,28 +28001,41 @@ const MyRoutines = ()=>{
                 __self: undefined,
                 children: "My Routines"
             }),
-            error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
+            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                to: "new",
+                className: "text-blue-600",
                 __source: {
                     fileName: "src/components/MyRoutines.jsx",
                     lineNumber: 37,
+                    columnNumber: 7
+                },
+                __self: undefined,
+                children: "Create a new routine"
+            }),
+            error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                __source: {
+                    fileName: "src/components/MyRoutines.jsx",
+                    lineNumber: 40,
                     columnNumber: 16
                 },
                 __self: undefined,
                 children: error
             }) : null,
             routines.length > 0 ? routines.map((routine)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    className: "p-4",
                     __source: {
                         fileName: "src/components/MyRoutines.jsx",
-                        lineNumber: 40,
+                        lineNumber: 43,
                         columnNumber: 11
                     },
                     __self: undefined,
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                             to: `/routines/${routine.id}`,
+                            className: "text-xl text-blue-700 font-semibold",
                             __source: {
                                 fileName: "src/components/MyRoutines.jsx",
-                                lineNumber: 41,
+                                lineNumber: 44,
                                 columnNumber: 13
                             },
                             __self: undefined,
@@ -27991,7 +28044,7 @@ const MyRoutines = ()=>{
                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                             __source: {
                                 fileName: "src/components/MyRoutines.jsx",
-                                lineNumber: 42,
+                                lineNumber: 50,
                                 columnNumber: 13
                             },
                             __self: undefined,
@@ -28000,14 +28053,14 @@ const MyRoutines = ()=>{
                         !routine.isPublic ? /*#__PURE__*/ _jsxRuntime.jsx("span", {
                             __source: {
                                 fileName: "src/components/MyRoutines.jsx",
-                                lineNumber: 44,
+                                lineNumber: 52,
                                 columnNumber: 15
                             },
                             __self: undefined,
                             children: /*#__PURE__*/ _jsxRuntime.jsx("em", {
                                 __source: {
                                     fileName: "src/components/MyRoutines.jsx",
-                                    lineNumber: 45,
+                                    lineNumber: 53,
                                     columnNumber: 17
                                 },
                                 __self: undefined,
@@ -28019,7 +28072,7 @@ const MyRoutines = ()=>{
             ) : routines.length === 0 && user && token ? /*#__PURE__*/ _jsxRuntime.jsxs("p", {
                 __source: {
                     fileName: "src/components/MyRoutines.jsx",
-                    lineNumber: 51,
+                    lineNumber: 59,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -28030,7 +28083,7 @@ const MyRoutines = ()=>{
                         to: "/routines/new",
                         __source: {
                             fileName: "src/components/MyRoutines.jsx",
-                            lineNumber: 53,
+                            lineNumber: 61,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28168,9 +28221,11 @@ var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
 //API
 var _api = require("../api");
+var _app = require("../App");
 var _s = $RefreshSig$();
 const RoutinesAll = ()=>{
     _s();
+    const { user  } = _react.useContext(_app.UserContext);
     const [routines, setRoutines] = _react.useState([]);
     const [isLoading, setIsLoading] = _react.useState(false);
     const [error, setError] = _react.useState("");
@@ -28193,7 +28248,7 @@ const RoutinesAll = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
         __source: {
             fileName: "src/components/RoutinesAll.jsx",
-            lineNumber: 30,
+            lineNumber: 34,
             columnNumber: 5
         },
         __self: undefined,
@@ -28201,7 +28256,7 @@ const RoutinesAll = ()=>{
             isLoading ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/RoutinesAll.jsx",
-                    lineNumber: 31,
+                    lineNumber: 35,
                     columnNumber: 20
                 },
                 __self: undefined,
@@ -28210,7 +28265,7 @@ const RoutinesAll = ()=>{
             error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/RoutinesAll.jsx",
-                    lineNumber: 33,
+                    lineNumber: 37,
                     columnNumber: 9
                 },
                 __self: undefined,
@@ -28218,33 +28273,47 @@ const RoutinesAll = ()=>{
             }) : routines ? /*#__PURE__*/ _jsxRuntime.jsxs("article", {
                 __source: {
                     fileName: "src/components/RoutinesAll.jsx",
-                    lineNumber: 35,
+                    lineNumber: 39,
                     columnNumber: 9
                 },
                 __self: undefined,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                        className: "text-4xl",
                         __source: {
                             fileName: "src/components/RoutinesAll.jsx",
-                            lineNumber: 36,
+                            lineNumber: 40,
                             columnNumber: 11
                         },
                         __self: undefined,
                         children: "Routines"
                     }),
+                    user.id ? /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: "new",
+                        className: "text-blue-600",
+                        __source: {
+                            fileName: "src/components/RoutinesAll.jsx",
+                            lineNumber: 42,
+                            columnNumber: 13
+                        },
+                        __self: undefined,
+                        children: "Create a new routine"
+                    }) : null,
                     routines ? routines.map((routine)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                            className: "p-4",
                             __source: {
                                 fileName: "src/components/RoutinesAll.jsx",
-                                lineNumber: 39,
+                                lineNumber: 48,
                                 columnNumber: 17
                             },
                             __self: undefined,
                             children: [
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                     to: `${routine.id}`,
+                                    className: "text-blue-500 font-bold text-2xl",
                                     __source: {
                                         fileName: "src/components/RoutinesAll.jsx",
-                                        lineNumber: 40,
+                                        lineNumber: 49,
                                         columnNumber: 19
                                     },
                                     __self: undefined,
@@ -28253,7 +28322,7 @@ const RoutinesAll = ()=>{
                                 /*#__PURE__*/ _jsxRuntime.jsxs("p", {
                                     __source: {
                                         fileName: "src/components/RoutinesAll.jsx",
-                                        lineNumber: 41,
+                                        lineNumber: 55,
                                         columnNumber: 19
                                     },
                                     __self: undefined,
@@ -28262,9 +28331,10 @@ const RoutinesAll = ()=>{
                                         " ",
                                         /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                             to: `/users/${routine.creatorName}`,
+                                            className: "text-blue-400",
                                             __source: {
                                                 fileName: "src/components/RoutinesAll.jsx",
-                                                lineNumber: 43,
+                                                lineNumber: 57,
                                                 columnNumber: 21
                                             },
                                             __self: undefined,
@@ -28273,44 +28343,47 @@ const RoutinesAll = ()=>{
                                     ]
                                 }),
                                 /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                                    className: "text-xl",
                                     __source: {
                                         fileName: "src/components/RoutinesAll.jsx",
-                                        lineNumber: 47,
+                                        lineNumber: 64,
                                         columnNumber: 19
                                     },
                                     __self: undefined,
                                     children: routine.goal
                                 }),
                                 routine.activities ? routine.activities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                                        className: "flex-col p-4",
                                         __source: {
                                             fileName: "src/components/RoutinesAll.jsx",
-                                            lineNumber: 50,
+                                            lineNumber: 67,
                                             columnNumber: 23
                                         },
                                         __self: undefined,
                                         children: [
-                                            /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                                            /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                                 __source: {
                                                     fileName: "src/components/RoutinesAll.jsx",
-                                                    lineNumber: 51,
+                                                    lineNumber: 71,
                                                     columnNumber: 25
                                                 },
                                                 __self: undefined,
                                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                                     to: `/activities/${activity.id}/routines`,
+                                                    className: "font-semibold",
                                                     __source: {
                                                         fileName: "src/components/RoutinesAll.jsx",
-                                                        lineNumber: 52,
+                                                        lineNumber: 72,
                                                         columnNumber: 27
                                                     },
                                                     __self: undefined,
                                                     children: activity.name
                                                 })
                                             }),
-                                            /*#__PURE__*/ _jsxRuntime.jsxs("span", {
+                                            /*#__PURE__*/ _jsxRuntime.jsxs("p", {
                                                 __source: {
                                                     fileName: "src/components/RoutinesAll.jsx",
-                                                    lineNumber: 56,
+                                                    lineNumber: 79,
                                                     columnNumber: 25
                                                 },
                                                 __self: undefined,
@@ -28320,10 +28393,10 @@ const RoutinesAll = ()=>{
                                                     " minutes"
                                                 ]
                                             }),
-                                            /*#__PURE__*/ _jsxRuntime.jsxs("span", {
+                                            /*#__PURE__*/ _jsxRuntime.jsxs("p", {
                                                 __source: {
                                                     fileName: "src/components/RoutinesAll.jsx",
-                                                    lineNumber: 57,
+                                                    lineNumber: 80,
                                                     columnNumber: 25
                                                 },
                                                 __self: undefined,
@@ -28338,7 +28411,7 @@ const RoutinesAll = ()=>{
                                 ) : /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                     __source: {
                                         fileName: "src/components/RoutinesAll.jsx",
-                                        lineNumber: 61,
+                                        lineNumber: 84,
                                         columnNumber: 21
                                     },
                                     __self: undefined,
@@ -28352,7 +28425,7 @@ const RoutinesAll = ()=>{
         ]
     }));
 };
-_s(RoutinesAll, "X4Ph8ySmPyUFw9syI381r0/dkKk=");
+_s(RoutinesAll, "4AR34QhuJCClJv3FOijIpplSk6c=");
 _c = RoutinesAll;
 exports.default = RoutinesAll;
 var _c;
@@ -28363,7 +28436,7 @@ $RefreshReg$(_c, "RoutinesAll");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE"}],"ngsQD":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react":"4mchR","react-router-dom":"16kZP","../api":"l6gwE","../App":"lL5iC"}],"ngsQD":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$f093 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28407,6 +28480,7 @@ const RoutineNew = ()=>{
         }
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
+        className: "text-center",
         __source: {
             fileName: "src/components/RoutineNew.jsx",
             lineNumber: 39,
@@ -28415,6 +28489,7 @@ const RoutineNew = ()=>{
         __self: undefined,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                className: "text-4xl",
                 __source: {
                     fileName: "src/components/RoutineNew.jsx",
                     lineNumber: 40,
@@ -28437,6 +28512,7 @@ const RoutineNew = ()=>{
                     e.preventDefault();
                     createNewRoutine();
                 },
+                className: "flex flex-col p-4 space-y-4",
                 __source: {
                     fileName: "src/components/RoutineNew.jsx",
                     lineNumber: 43,
@@ -28445,9 +28521,10 @@ const RoutineNew = ()=>{
                 __self: undefined,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        className: "font-medium",
                         __source: {
                             fileName: "src/components/RoutineNew.jsx",
-                            lineNumber: 49,
+                            lineNumber: 50,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28455,6 +28532,7 @@ const RoutineNew = ()=>{
                             "Name:",
                             /*#__PURE__*/ _jsxRuntime.jsx("input", {
                                 type: "text",
+                                className: "ml-4 border-blue-100 border-2 p-2",
                                 size: "60",
                                 required: true,
                                 onChange: (e)=>setName(e.target.value)
@@ -28462,7 +28540,7 @@ const RoutineNew = ()=>{
                                 value: name,
                                 __source: {
                                     fileName: "src/components/RoutineNew.jsx",
-                                    lineNumber: 51,
+                                    lineNumber: 52,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -28470,9 +28548,10 @@ const RoutineNew = ()=>{
                         ]
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        className: "font-medium",
                         __source: {
                             fileName: "src/components/RoutineNew.jsx",
-                            lineNumber: 59,
+                            lineNumber: 61,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28480,6 +28559,7 @@ const RoutineNew = ()=>{
                             "Goal:",
                             /*#__PURE__*/ _jsxRuntime.jsx("input", {
                                 type: "text",
+                                className: "ml-4 border-blue-100 border-2 p-2",
                                 size: "60",
                                 required: true,
                                 onChange: (e)=>setGoal(e.target.value)
@@ -28487,7 +28567,7 @@ const RoutineNew = ()=>{
                                 value: goal,
                                 __source: {
                                     fileName: "src/components/RoutineNew.jsx",
-                                    lineNumber: 61,
+                                    lineNumber: 63,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -28495,9 +28575,10 @@ const RoutineNew = ()=>{
                         ]
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        className: "font-medium",
                         __source: {
                             fileName: "src/components/RoutineNew.jsx",
-                            lineNumber: 69,
+                            lineNumber: 72,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28505,11 +28586,12 @@ const RoutineNew = ()=>{
                             "Make this routine public?",
                             /*#__PURE__*/ _jsxRuntime.jsx("input", {
                                 type: "checkbox",
+                                className: "ml-2",
                                 onChange: ()=>setIsPublic(!isPublic)
                                 ,
                                 __source: {
                                     fileName: "src/components/RoutineNew.jsx",
-                                    lineNumber: 71,
+                                    lineNumber: 74,
                                     columnNumber: 13
                                 },
                                 __self: undefined
@@ -28518,9 +28600,10 @@ const RoutineNew = ()=>{
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("button", {
                         type: "submit",
+                        className: "bg-blue-500 text-white",
                         __source: {
                             fileName: "src/components/RoutineNew.jsx",
-                            lineNumber: 76,
+                            lineNumber: 80,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28528,26 +28611,29 @@ const RoutineNew = ()=>{
                     })
                 ]
             }) : /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                className: "space-y-2",
                 __source: {
                     fileName: "src/components/RoutineNew.jsx",
-                    lineNumber: 79,
+                    lineNumber: 85,
                     columnNumber: 9
                 },
                 __self: undefined,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx("h2", {
+                        className: "font-bold text-xl",
                         __source: {
                             fileName: "src/components/RoutineNew.jsx",
-                            lineNumber: 80,
+                            lineNumber: 86,
                             columnNumber: 11
                         },
                         __self: undefined,
                         children: newRoutine.name
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        className: "p-2",
                         __source: {
                             fileName: "src/components/RoutineNew.jsx",
-                            lineNumber: 81,
+                            lineNumber: 87,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28555,9 +28641,10 @@ const RoutineNew = ()=>{
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                         to: `/routines/${newRoutine.id}`,
+                        className: "text-blue-300 bg-blue-600 p-1",
                         __source: {
                             fileName: "src/components/RoutineNew.jsx",
-                            lineNumber: 82,
+                            lineNumber: 88,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28566,7 +28653,7 @@ const RoutineNew = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/RoutineNew.jsx",
-                            lineNumber: 83,
+                            lineNumber: 94,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -28578,7 +28665,7 @@ const RoutineNew = ()=>{
                 routine: newRoutine,
                 __source: {
                     fileName: "src/components/RoutineNew.jsx",
-                    lineNumber: 88,
+                    lineNumber: 99,
                     columnNumber: 9
                 },
                 __self: undefined
@@ -28671,6 +28758,7 @@ const RoutineActivities = (props)=>{
         }
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+        className: "p-4 space-y-4",
         __source: {
             fileName: "src/components/RoutineActivities.jsx",
             lineNumber: 84,
@@ -28679,6 +28767,7 @@ const RoutineActivities = (props)=>{
         __self: undefined,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsx("h2", {
+                className: "font-semibold text-lg",
                 __source: {
                     fileName: "src/components/RoutineActivities.jsx",
                     lineNumber: 85,
@@ -28687,41 +28776,8 @@ const RoutineActivities = (props)=>{
                 __self: undefined,
                 children: "Add or remove routine activities"
             }),
-            routineActivities // refactor into separate component?
-             ? routineActivities.map((activity)=>{
-                return(/*#__PURE__*/ _jsxRuntime.jsxs(_react.Fragment, {
-                    __source: {
-                        fileName: "src/components/RoutineActivities.jsx",
-                        lineNumber: 89,
-                        columnNumber: 15
-                    },
-                    __self: undefined,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx(_routineActivityDefault.default, {
-                            activity: activity,
-                            __source: {
-                                fileName: "src/components/RoutineActivities.jsx",
-                                lineNumber: 90,
-                                columnNumber: 17
-                            },
-                            __self: undefined
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                            type: "button",
-                            onClick: ()=>handleDelete(activity.routineActivityId)
-                            ,
-                            __source: {
-                                fileName: "src/components/RoutineActivities.jsx",
-                                lineNumber: 91,
-                                columnNumber: 17
-                            },
-                            __self: undefined,
-                            children: "DELETE"
-                        })
-                    ]
-                }, activity.id));
-            }) : null,
             /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                className: "flex flex-col",
                 onSubmit: (e)=>{
                     e.preventDefault();
                     handleSubmit().then(()=>{
@@ -28731,21 +28787,23 @@ const RoutineActivities = (props)=>{
                 },
                 __source: {
                     fileName: "src/components/RoutineActivities.jsx",
-                    lineNumber: 101,
+                    lineNumber: 88,
                     columnNumber: 7
                 },
                 __self: undefined,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx("label", {
+                        className: "font-medium",
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 110,
+                            lineNumber: 98,
                             columnNumber: 9
                         },
                         __self: undefined,
                         children: "Select an activity:"
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("select", {
+                        className: "w-3/5 self-center",
                         name: "activity",
                         id: "activity",
                         value: activityToAdd,
@@ -28754,7 +28812,7 @@ const RoutineActivities = (props)=>{
                         },
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 111,
+                            lineNumber: 99,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28762,7 +28820,7 @@ const RoutineActivities = (props)=>{
                                 value: ele.id,
                                 __source: {
                                     fileName: "src/components/RoutineActivities.jsx",
-                                    lineNumber: 120,
+                                    lineNumber: 109,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -28771,9 +28829,10 @@ const RoutineActivities = (props)=>{
                         )
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        className: "mt-2 font-medium",
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 125,
+                            lineNumber: 114,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28784,11 +28843,12 @@ const RoutineActivities = (props)=>{
                                 min: "0",
                                 max: "100",
                                 value: count,
+                                className: "ml-4 border-gray-500 border-2",
                                 onChange: (e)=>setCount(e.target.value)
                                 ,
                                 __source: {
                                     fileName: "src/components/RoutineActivities.jsx",
-                                    lineNumber: 127,
+                                    lineNumber: 116,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -28796,9 +28856,10 @@ const RoutineActivities = (props)=>{
                         ]
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        className: "mt-2 font-medium",
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 135,
+                            lineNumber: 125,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28809,11 +28870,12 @@ const RoutineActivities = (props)=>{
                                 min: "0",
                                 max: "120",
                                 value: duration,
+                                className: "ml-4 border-gray-500 border-2",
                                 onChange: (e)=>setDuration(e.target.value)
                                 ,
                                 __source: {
                                     fileName: "src/components/RoutineActivities.jsx",
-                                    lineNumber: 137,
+                                    lineNumber: 127,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -28822,16 +28884,52 @@ const RoutineActivities = (props)=>{
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("button", {
                         type: "submit",
+                        className: "bg-blue-500 text-white w-28 self-center mt-4",
                         __source: {
                             fileName: "src/components/RoutineActivities.jsx",
-                            lineNumber: 146,
+                            lineNumber: 137,
                             columnNumber: 9
                         },
                         __self: undefined,
                         children: "ADD"
                     })
                 ]
-            })
+            }),
+            routineActivities // refactor into separate component?
+             ? routineActivities.map((activity)=>{
+                return(/*#__PURE__*/ _jsxRuntime.jsxs(_react.Fragment, {
+                    __source: {
+                        fileName: "src/components/RoutineActivities.jsx",
+                        lineNumber: 147,
+                        columnNumber: 15
+                    },
+                    __self: undefined,
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx(_routineActivityDefault.default, {
+                            activity: activity,
+                            __source: {
+                                fileName: "src/components/RoutineActivities.jsx",
+                                lineNumber: 148,
+                                columnNumber: 17
+                            },
+                            __self: undefined
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                            type: "button",
+                            className: "bg-red-600 text-red-900 p-1",
+                            onClick: ()=>handleDelete(activity.routineActivityId)
+                            ,
+                            __source: {
+                                fileName: "src/components/RoutineActivities.jsx",
+                                lineNumber: 149,
+                                columnNumber: 17
+                            },
+                            __self: undefined,
+                            children: "DELETE"
+                        })
+                    ]
+                }, activity.id));
+            }) : null
         ]
     }));
 };
@@ -28876,6 +28974,9 @@ const RoutineActivity = (props)=>{
             await _api.updateRoutineActivity(token, activity.routineActivityId, updatedCount, updatedDuration);
             setUpdated(true);
             setError(null);
+            setTimeout(()=>{
+                setUpdated(false);
+            }, 5000);
         } catch (err) {
             console.error(err);
             setUpdated(false);
@@ -28885,15 +28986,16 @@ const RoutineActivity = (props)=>{
     return(/*#__PURE__*/ _jsxRuntime.jsxs(_react.Fragment, {
         __source: {
             fileName: "src/components/RoutineActivity.jsx",
-            lineNumber: 39,
+            lineNumber: 42,
             columnNumber: 5
         },
         __self: undefined,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                className: "italic",
                 __source: {
                     fileName: "src/components/RoutineActivity.jsx",
-                    lineNumber: 40,
+                    lineNumber: 43,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -28904,9 +29006,10 @@ const RoutineActivity = (props)=>{
                     e.preventDefault();
                     handleSubmit();
                 },
+                className: "space-x-4",
                 __source: {
                     fileName: "src/components/RoutineActivity.jsx",
-                    lineNumber: 41,
+                    lineNumber: 44,
                     columnNumber: 7
                 },
                 __self: undefined,
@@ -28914,7 +29017,7 @@ const RoutineActivity = (props)=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/RoutineActivity.jsx",
-                            lineNumber: 47,
+                            lineNumber: 51,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28924,12 +29027,13 @@ const RoutineActivity = (props)=>{
                                 type: "number",
                                 min: "0",
                                 max: "100",
+                                className: "ml-4 border-gray-500 border-2 p-0.5",
                                 defaultValue: activity.count,
                                 onChange: (e)=>setCount(e.target.value)
                                 ,
                                 __source: {
                                     fileName: "src/components/RoutineActivity.jsx",
-                                    lineNumber: 49,
+                                    lineNumber: 53,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -28939,7 +29043,7 @@ const RoutineActivity = (props)=>{
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                         __source: {
                             fileName: "src/components/RoutineActivity.jsx",
-                            lineNumber: 57,
+                            lineNumber: 62,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28949,12 +29053,13 @@ const RoutineActivity = (props)=>{
                                 type: "number",
                                 min: "0",
                                 max: "120",
+                                className: "ml-4 border-gray-500 border-2 p-0.5",
                                 defaultValue: activity.duration,
                                 onChange: (e)=>setDuration(e.target.value)
                                 ,
                                 __source: {
                                     fileName: "src/components/RoutineActivity.jsx",
-                                    lineNumber: 59,
+                                    lineNumber: 64,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -28963,9 +29068,10 @@ const RoutineActivity = (props)=>{
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("button", {
                         type: "submit",
+                        className: "bg-green-500 text-white p-0.5",
                         __source: {
                             fileName: "src/components/RoutineActivity.jsx",
-                            lineNumber: 67,
+                            lineNumber: 73,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -28977,7 +29083,7 @@ const RoutineActivity = (props)=>{
             updated ? /*#__PURE__*/ _jsxRuntime.jsx("span", {
                 __source: {
                     fileName: "src/components/RoutineActivity.jsx",
-                    lineNumber: 70,
+                    lineNumber: 78,
                     columnNumber: 18
                 },
                 __self: undefined,
@@ -28986,7 +29092,7 @@ const RoutineActivity = (props)=>{
             error ? /*#__PURE__*/ _jsxRuntime.jsx("span", {
                 __source: {
                     fileName: "src/components/RoutineActivity.jsx",
-                    lineNumber: 71,
+                    lineNumber: 79,
                     columnNumber: 16
                 },
                 __self: undefined,
@@ -29066,6 +29172,7 @@ const RoutineEdit = ()=>{
         }
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
+        className: "text-center",
         __source: {
             fileName: "src/components/RoutineEdit.jsx",
             lineNumber: 60,
@@ -29074,6 +29181,7 @@ const RoutineEdit = ()=>{
         __self: undefined,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                className: "text-4xl",
                 __source: {
                     fileName: "src/components/RoutineEdit.jsx",
                     lineNumber: 61,
@@ -29121,6 +29229,7 @@ const RoutineEdit = ()=>{
                 __self: undefined,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                        className: "flex flex-col p-4 space-y-4",
                         onSubmit: (e)=>{
                             e.preventDefault();
                             handleSubmit().then(setEdited(true));
@@ -29133,9 +29242,10 @@ const RoutineEdit = ()=>{
                         __self: undefined,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                                className: "font-medium",
                                 __source: {
                                     fileName: "src/components/RoutineEdit.jsx",
-                                    lineNumber: 77,
+                                    lineNumber: 78,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -29143,13 +29253,14 @@ const RoutineEdit = ()=>{
                                     "Name:",
                                     /*#__PURE__*/ _jsxRuntime.jsx("input", {
                                         type: "text",
+                                        className: "ml-4 border-blue-100 border-2 p-2",
                                         defaultValue: toEdit ? toEdit.name : null,
                                         size: "60",
                                         onChange: (e)=>setName(e.target.value)
                                         ,
                                         __source: {
                                             fileName: "src/components/RoutineEdit.jsx",
-                                            lineNumber: 79,
+                                            lineNumber: 80,
                                             columnNumber: 15
                                         },
                                         __self: undefined
@@ -29157,9 +29268,10 @@ const RoutineEdit = ()=>{
                                 ]
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                                className: "font-medium",
                                 __source: {
                                     fileName: "src/components/RoutineEdit.jsx",
-                                    lineNumber: 86,
+                                    lineNumber: 88,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -29167,13 +29279,14 @@ const RoutineEdit = ()=>{
                                     "Goal:",
                                     /*#__PURE__*/ _jsxRuntime.jsx("input", {
                                         type: "text",
+                                        className: "ml-4 border-blue-100 border-2 p-2",
                                         defaultValue: toEdit ? toEdit.goal : null,
                                         size: "60",
                                         onChange: (e)=>setGoal(e.target.value)
                                         ,
                                         __source: {
                                             fileName: "src/components/RoutineEdit.jsx",
-                                            lineNumber: 88,
+                                            lineNumber: 90,
                                             columnNumber: 15
                                         },
                                         __self: undefined
@@ -29181,9 +29294,10 @@ const RoutineEdit = ()=>{
                                 ]
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                                className: "font-medium",
                                 __source: {
                                     fileName: "src/components/RoutineEdit.jsx",
-                                    lineNumber: 95,
+                                    lineNumber: 98,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -29191,12 +29305,13 @@ const RoutineEdit = ()=>{
                                     "Public?:",
                                     /*#__PURE__*/ _jsxRuntime.jsx("input", {
                                         type: "checkbox",
+                                        className: "ml-2",
                                         defaultChecked: toEdit ? toEdit.isPublic : false,
                                         onClick: ()=>setIsPublic(!isPublic)
                                         ,
                                         __source: {
                                             fileName: "src/components/RoutineEdit.jsx",
-                                            lineNumber: 97,
+                                            lineNumber: 100,
                                             columnNumber: 15
                                         },
                                         __self: undefined
@@ -29205,9 +29320,10 @@ const RoutineEdit = ()=>{
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsx("button", {
                                 type: "submit",
+                                className: "bg-blue-500 text-white",
                                 __source: {
                                     fileName: "src/components/RoutineEdit.jsx",
-                                    lineNumber: 103,
+                                    lineNumber: 107,
                                     columnNumber: 13
                                 },
                                 __self: undefined,
@@ -29219,44 +29335,52 @@ const RoutineEdit = ()=>{
                         routine: toEdit,
                         __source: {
                             fileName: "src/components/RoutineEdit.jsx",
-                            lineNumber: 106,
+                            lineNumber: 112,
                             columnNumber: 13
                         },
                         __self: undefined
                     }) : null
                 ]
             }) : /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                className: "flex flex-col p-4 space-y-4",
                 __source: {
                     fileName: "src/components/RoutineEdit.jsx",
-                    lineNumber: 110,
+                    lineNumber: 116,
                     columnNumber: 9
                 },
                 __self: undefined,
                 children: [
-                    /*#__PURE__*/ _jsxRuntime.jsxs("p", {
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/RoutineEdit.jsx",
-                            lineNumber: 111,
+                            lineNumber: 117,
                             columnNumber: 11
                         },
                         __self: undefined,
-                        children: [
-                            /*#__PURE__*/ _jsxRuntime.jsx("em", {
-                                __source: {
-                                    fileName: "src/components/RoutineEdit.jsx",
-                                    lineNumber: 112,
-                                    columnNumber: 13
-                                },
-                                __self: undefined,
-                                children: "This routine has been edited."
-                            }),
-                            " Continue editing its activities below, or click the link to view your edited rouitne."
-                        ]
+                        children: /*#__PURE__*/ _jsxRuntime.jsx("em", {
+                            __source: {
+                                fileName: "src/components/RoutineEdit.jsx",
+                                lineNumber: 118,
+                                columnNumber: 13
+                            },
+                            __self: undefined,
+                            children: "This routine has been edited."
+                        })
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/RoutineEdit.jsx",
-                            lineNumber: 115,
+                            lineNumber: 120,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "Continue editing its activities below, or click the link to view your edited rouitne."
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                        className: "font-bold text-xl",
+                        __source: {
+                            fileName: "src/components/RoutineEdit.jsx",
+                            lineNumber: 124,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -29265,7 +29389,7 @@ const RoutineEdit = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/RoutineEdit.jsx",
-                            lineNumber: 116,
+                            lineNumber: 125,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -29273,14 +29397,24 @@ const RoutineEdit = ()=>{
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                         to: `/routines/${routine1.id}`,
+                        className: "text-blue-300 bg-blue-600",
                         __source: {
                             fileName: "src/components/RoutineEdit.jsx",
-                            lineNumber: 117,
+                            lineNumber: 126,
                             columnNumber: 11
                         },
                         __self: undefined,
                         children: "VIEW"
-                    })
+                    }),
+                    Object.keys(toEdit).length > 0 ? /*#__PURE__*/ _jsxRuntime.jsx(_routineActivitiesDefault.default, {
+                        routine: toEdit,
+                        __source: {
+                            fileName: "src/components/RoutineEdit.jsx",
+                            lineNumber: 133,
+                            columnNumber: 13
+                        },
+                        __self: undefined
+                    }) : null
                 ]
             })
         ]
@@ -29342,6 +29476,7 @@ const RoutineSingleView = ()=>{
         user
     ]);
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
+        className: "text-center",
         __source: {
             fileName: "src/components/RoutineSingleView.jsx",
             lineNumber: 32,
@@ -29368,16 +29503,18 @@ const RoutineSingleView = ()=>{
                 children: [
                     routine.creatorId == user.id ? /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                         to: "edit",
+                        className: "mr-4",
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 36,
-                            columnNumber: 43
+                            lineNumber: 37,
+                            columnNumber: 13
                         },
                         __self: undefined,
                         children: "EDIT"
                     }) : null,
                     routine.creatorId == user.id ? /*#__PURE__*/ _jsxRuntime.jsx("button", {
                         type: "button",
+                        className: "text-red-700",
                         onClick: ()=>{
                             _api.deleteRoutine(token, routineId).then(()=>{
                                 navigate("/profile");
@@ -29385,16 +29522,17 @@ const RoutineSingleView = ()=>{
                         },
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 38,
+                            lineNumber: 42,
                             columnNumber: 13
                         },
                         __self: undefined,
                         children: "DELETE ROUTINE"
                     }) : null,
                     /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                        className: "text-3xl",
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 49,
+                            lineNumber: 54,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -29402,9 +29540,10 @@ const RoutineSingleView = ()=>{
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                         to: `/users/${routine.creatorName}`,
+                        className: "text-blue-400",
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 50,
+                            lineNumber: 55,
                             columnNumber: 11
                         },
                         __self: undefined,
@@ -29413,42 +29552,46 @@ const RoutineSingleView = ()=>{
                     /*#__PURE__*/ _jsxRuntime.jsx("p", {
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 53,
+                            lineNumber: 58,
                             columnNumber: 11
                         },
                         __self: undefined,
                         children: routine.goal
                     }),
                     routine.activities ? /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                        className: "p-4",
                         __source: {
                             fileName: "src/components/RoutineSingleView.jsx",
-                            lineNumber: 55,
+                            lineNumber: 60,
                             columnNumber: 13
                         },
                         __self: undefined,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx("h2", {
+                                className: "font-bold text-xl",
                                 __source: {
                                     fileName: "src/components/RoutineSingleView.jsx",
-                                    lineNumber: 56,
+                                    lineNumber: 61,
                                     columnNumber: 15
                                 },
                                 __self: undefined,
                                 children: "Activities"
                             }),
                             routine.activities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                                    className: "flex flex-col p-2",
                                     __source: {
                                         fileName: "src/components/RoutineSingleView.jsx",
-                                        lineNumber: 58,
+                                        lineNumber: 63,
                                         columnNumber: 17
                                     },
                                     __self: undefined,
                                     children: [
                                         /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                             to: `/activities/${activity.id}`,
+                                            className: "font-semibold",
                                             __source: {
                                                 fileName: "src/components/RoutineSingleView.jsx",
-                                                lineNumber: 59,
+                                                lineNumber: 67,
                                                 columnNumber: 19
                                             },
                                             __self: undefined,
@@ -29457,7 +29600,7 @@ const RoutineSingleView = ()=>{
                                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                             __source: {
                                                 fileName: "src/components/RoutineSingleView.jsx",
-                                                lineNumber: 60,
+                                                lineNumber: 73,
                                                 columnNumber: 19
                                             },
                                             __self: undefined,
@@ -29466,7 +29609,7 @@ const RoutineSingleView = ()=>{
                                         /*#__PURE__*/ _jsxRuntime.jsxs("span", {
                                             __source: {
                                                 fileName: "src/components/RoutineSingleView.jsx",
-                                                lineNumber: 61,
+                                                lineNumber: 74,
                                                 columnNumber: 19
                                             },
                                             __self: undefined,
@@ -29479,7 +29622,7 @@ const RoutineSingleView = ()=>{
                                         /*#__PURE__*/ _jsxRuntime.jsxs("span", {
                                             __source: {
                                                 fileName: "src/components/RoutineSingleView.jsx",
-                                                lineNumber: 62,
+                                                lineNumber: 75,
                                                 columnNumber: 19
                                             },
                                             __self: undefined,
@@ -29493,7 +29636,18 @@ const RoutineSingleView = ()=>{
                                 }, activity.routineActivityId)
                             )
                         ]
-                    }) : null
+                    }) : null,
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: "/routines",
+                        className: "text-blue-200",
+                        __source: {
+                            fileName: "src/components/RoutineSingleView.jsx",
+                            lineNumber: 80,
+                            columnNumber: 11
+                        },
+                        __self: undefined,
+                        children: "Back to all routines"
+                    })
                 ]
             }) : null
         ]
@@ -29573,6 +29727,7 @@ const Login = ()=>{
         }
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
+        className: "text-center p-4",
         __source: {
             fileName: "src/components/Login.jsx",
             lineNumber: 52,
@@ -29581,6 +29736,7 @@ const Login = ()=>{
         __self: undefined,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                className: "text-4xl font-bold",
                 __source: {
                     fileName: "src/components/Login.jsx",
                     lineNumber: 53,
@@ -29591,6 +29747,7 @@ const Login = ()=>{
             }),
             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                 to: "/register",
+                className: "font-semibold text-blue-600",
                 __source: {
                     fileName: "src/components/Login.jsx",
                     lineNumber: 54,
@@ -29604,17 +29761,19 @@ const Login = ()=>{
                     e.preventDefault();
                     handleSubmit();
                 },
+                className: "p-6 flex flex-col space-y-4",
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 55,
+                    lineNumber: 57,
                     columnNumber: 7
                 },
                 __self: undefined,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        className: "font-medium",
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 61,
+                            lineNumber: 64,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -29629,9 +29788,10 @@ const Login = ()=>{
                                     setUsername(e.target.value);
                                 },
                                 minLength: "5",
+                                className: "ml-4 border-solid border-2 border-gray-400",
                                 __source: {
                                     fileName: "src/components/Login.jsx",
-                                    lineNumber: 63,
+                                    lineNumber: 66,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -29639,9 +29799,10 @@ const Login = ()=>{
                         ]
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        className: "font-medium",
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 74,
+                            lineNumber: 78,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -29656,9 +29817,10 @@ const Login = ()=>{
                                     setPassword(e.target.value);
                                 },
                                 minLength: "8",
+                                className: "ml-4 border-solid border-2 border-gray-400",
                                 __source: {
                                     fileName: "src/components/Login.jsx",
-                                    lineNumber: 76,
+                                    lineNumber: 80,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -29666,9 +29828,10 @@ const Login = ()=>{
                         ]
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        className: "mr-2",
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 87,
+                            lineNumber: 92,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -29680,9 +29843,10 @@ const Login = ()=>{
                                 onChange: (e)=>{
                                     setSaveToken(!saveToken);
                                 },
+                                className: "ml-2",
                                 __source: {
                                     fileName: "src/components/Login.jsx",
-                                    lineNumber: 89,
+                                    lineNumber: 94,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -29691,9 +29855,10 @@ const Login = ()=>{
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("button", {
                         type: "submit",
+                        className: "bg-blue-300 text-white",
                         __source: {
                             fileName: "src/components/Login.jsx",
-                            lineNumber: 98,
+                            lineNumber: 104,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -29704,7 +29869,7 @@ const Login = ()=>{
             error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/Login.jsx",
-                    lineNumber: 100,
+                    lineNumber: 108,
                     columnNumber: 16
                 },
                 __self: undefined,
@@ -29786,6 +29951,7 @@ const Register = ()=>{
           SAVE USER TO GLOBAL CONTEXT
           REDIRECT TO /PROFILE
       */ /*#__PURE__*/ _jsxRuntime.jsxs("main", {
+        className: "text-center p-4",
         __source: {
             fileName: "src/components/Register.jsx",
             lineNumber: 51,
@@ -29794,6 +29960,7 @@ const Register = ()=>{
         __self: undefined,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                className: "text-4xl font-bold",
                 __source: {
                     fileName: "src/components/Register.jsx",
                     lineNumber: 52,
@@ -29804,6 +29971,7 @@ const Register = ()=>{
             }),
             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                 to: "/login",
+                className: "font-semibold text-blue-600",
                 __source: {
                     fileName: "src/components/Register.jsx",
                     lineNumber: 53,
@@ -29817,17 +29985,19 @@ const Register = ()=>{
                     e.preventDefault();
                     handleSubmit();
                 },
+                className: "p-6 flex flex-col space-y-4",
                 __source: {
                     fileName: "src/components/Register.jsx",
-                    lineNumber: 54,
+                    lineNumber: 56,
                     columnNumber: 7
                 },
                 __self: undefined,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        className: "font-medium",
                         __source: {
                             fileName: "src/components/Register.jsx",
-                            lineNumber: 60,
+                            lineNumber: 63,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -29842,9 +30012,10 @@ const Register = ()=>{
                                     setUsername(e.target.value);
                                 },
                                 minLength: "5",
+                                className: "ml-4 border-solid border-2 border-gray-400",
                                 __source: {
                                     fileName: "src/components/Register.jsx",
-                                    lineNumber: 62,
+                                    lineNumber: 65,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -29852,9 +30023,10 @@ const Register = ()=>{
                         ]
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        className: "font-medium",
                         __source: {
                             fileName: "src/components/Register.jsx",
-                            lineNumber: 73,
+                            lineNumber: 77,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -29869,9 +30041,10 @@ const Register = ()=>{
                                     setPassword(e.target.value);
                                 },
                                 minLength: "8",
+                                className: "ml-4 border-solid border-2 border-gray-400",
                                 __source: {
                                     fileName: "src/components/Register.jsx",
-                                    lineNumber: 75,
+                                    lineNumber: 79,
                                     columnNumber: 11
                                 },
                                 __self: undefined
@@ -29880,9 +30053,10 @@ const Register = ()=>{
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx("button", {
                         type: "submit",
+                        className: "bg-blue-300 text-white",
                         __source: {
                             fileName: "src/components/Register.jsx",
-                            lineNumber: 87,
+                            lineNumber: 92,
                             columnNumber: 9
                         },
                         __self: undefined,
@@ -29893,7 +30067,7 @@ const Register = ()=>{
             error ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/Register.jsx",
-                    lineNumber: 89,
+                    lineNumber: 96,
                     columnNumber: 16
                 },
                 __self: undefined,
@@ -30010,6 +30184,7 @@ const User = ()=>{
         fetchRoutines();
     }, []);
     return(/*#__PURE__*/ _jsxRuntime.jsxs("main", {
+        className: "text-center",
         __source: {
             fileName: "src/components/User.jsx",
             lineNumber: 24,
@@ -30018,6 +30193,7 @@ const User = ()=>{
         __self: undefined,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsxs("h1", {
+                className: "text-4xl",
                 __source: {
                     fileName: "src/components/User.jsx",
                     lineNumber: 25,
@@ -30025,23 +30201,34 @@ const User = ()=>{
                 },
                 __self: undefined,
                 children: [
-                    username,
+                    /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                        className: "text-blue-500",
+                        __source: {
+                            fileName: "src/components/User.jsx",
+                            lineNumber: 26,
+                            columnNumber: 9
+                        },
+                        __self: undefined,
+                        children: username
+                    }),
                     "'s Routines"
                 ]
             }),
             routines ? routines.map((routine)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    className: "p-4",
                     __source: {
                         fileName: "src/components/User.jsx",
-                        lineNumber: 28,
+                        lineNumber: 30,
                         columnNumber: 11
                     },
                     __self: undefined,
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                             to: `/routines/${routine.id}`,
+                            className: "text-xl text-blue-600",
                             __source: {
                                 fileName: "src/components/User.jsx",
-                                lineNumber: 29,
+                                lineNumber: 31,
                                 columnNumber: 13
                             },
                             __self: undefined,
@@ -30050,24 +30237,26 @@ const User = ()=>{
                         /*#__PURE__*/ _jsxRuntime.jsx("p", {
                             __source: {
                                 fileName: "src/components/User.jsx",
-                                lineNumber: 30,
+                                lineNumber: 37,
                                 columnNumber: 13
                             },
                             __self: undefined,
                             children: routine.goal
                         }),
                         routine.activities ? routine.activities.map((activity)=>/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                                className: "flex flex-col p-4",
                                 __source: {
                                     fileName: "src/components/User.jsx",
-                                    lineNumber: 33,
+                                    lineNumber: 40,
                                     columnNumber: 19
                                 },
                                 __self: undefined,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                                        className: "text-blue-700 text-lg",
                                         __source: {
                                             fileName: "src/components/User.jsx",
-                                            lineNumber: 34,
+                                            lineNumber: 44,
                                             columnNumber: 21
                                         },
                                         __self: undefined,
@@ -30075,7 +30264,7 @@ const User = ()=>{
                                             to: `/activities/${activity.id}`,
                                             __source: {
                                                 fileName: "src/components/User.jsx",
-                                                lineNumber: 35,
+                                                lineNumber: 45,
                                                 columnNumber: 23
                                             },
                                             __self: undefined,
@@ -30085,7 +30274,7 @@ const User = ()=>{
                                     /*#__PURE__*/ _jsxRuntime.jsxs("span", {
                                         __source: {
                                             fileName: "src/components/User.jsx",
-                                            lineNumber: 39,
+                                            lineNumber: 49,
                                             columnNumber: 21
                                         },
                                         __self: undefined,
@@ -30098,7 +30287,7 @@ const User = ()=>{
                                     /*#__PURE__*/ _jsxRuntime.jsxs("span", {
                                         __source: {
                                             fileName: "src/components/User.jsx",
-                                            lineNumber: 40,
+                                            lineNumber: 50,
                                             columnNumber: 21
                                         },
                                         __self: undefined,
@@ -30116,7 +30305,7 @@ const User = ()=>{
             ) : /*#__PURE__*/ _jsxRuntime.jsx("p", {
                 __source: {
                     fileName: "src/components/User.jsx",
-                    lineNumber: 47,
+                    lineNumber: 57,
                     columnNumber: 9
                 },
                 __self: undefined,

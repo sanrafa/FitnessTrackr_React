@@ -81,24 +81,12 @@ const RoutineActivities = (props) => {
   };
 
   return (
-    <div>
-      <h2>Add or remove routine activities</h2>
-      {routineActivities // refactor into separate component?
-        ? routineActivities.map((activity) => {
-            return (
-              <Fragment key={activity.id}>
-                <RoutineActivity activity={activity} />
-                <button
-                  type="button"
-                  onClick={() => handleDelete(activity.routineActivityId)}
-                >
-                  DELETE
-                </button>
-              </Fragment>
-            );
-          })
-        : null}
+    <div className="p-4 space-y-4">
+      <h2 className="font-semibold text-lg">
+        Add or remove routine activities
+      </h2>
       <form
+        className="flex flex-col"
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit().then(() => {
@@ -107,8 +95,9 @@ const RoutineActivities = (props) => {
           });
         }}
       >
-        <label>Select an activity:</label>
+        <label className="font-medium">Select an activity:</label>
         <select
+          className="w-3/5 self-center"
           name="activity"
           id="activity"
           value={activityToAdd}
@@ -122,29 +111,52 @@ const RoutineActivities = (props) => {
             </option>
           ))}
         </select>
-        <label>
+        <label className="mt-2 font-medium">
           Count (# of reps):
           <input
             type="number"
             min="0"
             max="100"
             value={count}
+            className="ml-4 border-gray-500 border-2"
             onChange={(e) => setCount(e.target.value)}
           ></input>
         </label>
-        <label>
+        <label className="mt-2 font-medium">
           Duration (in minutes):
           <input
             type="number"
             min="0"
             max="120"
             value={duration}
+            className="ml-4 border-gray-500 border-2"
             onChange={(e) => setDuration(e.target.value)}
           ></input>
         </label>
 
-        <button type="submit">ADD</button>
+        <button
+          type="submit"
+          className="bg-blue-500 text-white w-28 self-center mt-4"
+        >
+          ADD
+        </button>
       </form>
+      {routineActivities // refactor into separate component?
+        ? routineActivities.map((activity) => {
+            return (
+              <Fragment key={activity.id}>
+                <RoutineActivity activity={activity} />
+                <button
+                  type="button"
+                  className="bg-red-600 text-red-900 p-1"
+                  onClick={() => handleDelete(activity.routineActivityId)}
+                >
+                  DELETE
+                </button>
+              </Fragment>
+            );
+          })
+        : null}
     </div>
   );
 };

@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <nav>
-      <ul>
+      <ul className="flex justify-evenly">
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -44,8 +44,11 @@ const Header = () => {
         )}
       </ul>
       {isLoggedIn ? (
-        <p>
-          Hello, <Link to="/profile">{user.username}</Link>
+        <p className="text-center">
+          Hello,{" "}
+          <Link to="/profile" className="text-blue-600">
+            {user.username}
+          </Link>
         </p>
       ) : null}
     </nav>

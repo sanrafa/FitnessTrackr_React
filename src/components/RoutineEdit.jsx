@@ -57,8 +57,8 @@ const RoutineEdit = () => {
   };
 
   return (
-    <main>
-      <h1>Edit Routine</h1>
+    <main className="text-center">
+      <h1 className="text-4xl">Edit Routine</h1>
       {error ? (
         <div>
           <p>{error}</p>
@@ -69,52 +69,69 @@ const RoutineEdit = () => {
       ) : !edited ? (
         <div>
           <form
+            className="flex flex-col p-4 space-y-4"
             onSubmit={(e) => {
               e.preventDefault();
               handleSubmit().then(setEdited(true));
             }}
           >
-            <label>
+            <label className="font-medium">
               Name:
               <input
                 type="text"
+                className="ml-4 border-blue-100 border-2 p-2"
                 defaultValue={toEdit ? toEdit.name : null}
                 size="60"
                 onChange={(e) => setName(e.target.value)}
               ></input>
             </label>
-            <label>
+            <label className="font-medium">
               Goal:
               <input
                 type="text"
+                className="ml-4 border-blue-100 border-2 p-2"
                 defaultValue={toEdit ? toEdit.goal : null}
                 size="60"
                 onChange={(e) => setGoal(e.target.value)}
               ></input>
             </label>
-            <label>
+            <label className="font-medium">
               Public?:
               <input
                 type="checkbox"
+                className="ml-2"
                 defaultChecked={toEdit ? toEdit.isPublic : false}
                 onClick={() => setIsPublic(!isPublic)}
               ></input>
             </label>
-            <button type="submit">EDIT</button>
+            <button type="submit" className="bg-blue-500 text-white">
+              EDIT
+            </button>
           </form>
           {Object.keys(toEdit).length > 0 ? (
             <RoutineActivities routine={toEdit} />
           ) : null}
         </div>
       ) : (
-        <div>
+        <div className="flex flex-col p-4 space-y-4">
           <p>
-            <em>This routine has been edited.</em> Continue editing its
-            activities below, or click the link to view your edited rouitne.
+            <em>This routine has been edited.</em>
           </p>
-          <p>{routine.name}</p>
+          <p>
+            Continue editing its activities below, or click the link to view
+            your edited rouitne.
+          </p>
+          <p className="font-bold text-xl">{routine.name}</p>
           <p>{routine.goal}</p>
-          <Link to={`/routines/${routine.id}`}>VIEW</Link>
+          <Link
+            to={`/routines/${routine.id}`}
+            className="text-blue-300 bg-blue-600"
+          >
+            VIEW
+          </Link>
+          {Object.keys(toEdit).length > 0 ? (
+            <RoutineActivities routine={toEdit} />
+          ) : null}
         </div>
       )}
     </main>

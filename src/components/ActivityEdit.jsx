@@ -63,7 +63,7 @@ const ActivityEdit = () => {
 
   return (
     <section>
-      {!edited ? <h1>Edit Activity</h1> : null}
+      {!edited ? <h1 className="text-2xl">Edit Activity</h1> : null}
 
       {error ? (
         <p>{error}</p>
@@ -73,36 +73,45 @@ const ActivityEdit = () => {
             e.preventDefault();
             handleSubmit();
           }}
+          className="flex flex-col p-4 space-y-4"
         >
-          <label>
+          <label className="font-medium">
             Activity name:
             <input
               type="text"
+              className="ml-4 border-blue-100 border-2 p-2"
               defaultValue={toEdit ? toEdit.name : null}
               size="60"
               onChange={(e) => setName(e.target.value)}
             ></input>
           </label>
-          <label>
+          <label className="font-medium">
             Description:
             <input
               type="text"
+              className="ml-4 border-blue-100 border-2 p-2"
               defaultValue={toEdit ? toEdit.description : null}
               size="60"
               onChange={(e) => setDescription(e.target.value)}
             ></input>
           </label>
-          <button type="submit">EDIT</button>
-          <button type="button" onClick={() => navigate(-1)}>
+          <button type="submit" className="bg-blue-500 text-white">
+            EDIT
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="text-red-700"
+          >
             CANCEL
           </button>
         </form>
       ) : (
-        <div>
+        <div className="flex flex-col items-center">
           <p>
             <em>This activity has been edited</em>
           </p>
-          <p>{activity.name}</p>
+          <p className="font-bold">{activity.name}</p>
           <p>{activity.description}</p>
           <button type="button" onClick={() => navigate("/activities")}>
             EXIT

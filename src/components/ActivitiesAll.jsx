@@ -24,13 +24,18 @@ const ActivitiesAll = () => {
   return (
     <main>
       {isLoading ? <p>Loading...</p> : null}
-      <h1>Activities</h1>
+      <h1 className="text-4xl">Activities</h1>
       {user && token ? <Link to="new">Add an activity</Link> : null}
       <Outlet />
       {activities
         ? activities.map((activity) => (
-            <div key={activity.id}>
-              <Link to={`${activity.id}`}>{activity.name}</Link>
+            <div key={activity.id} className="p-4">
+              <Link
+                to={`${activity.id}`}
+                className="text-blue-500 font-bold text-2xl"
+              >
+                {activity.name}
+              </Link>
               <p>{activity.description}</p>
             </div>
           ))

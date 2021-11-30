@@ -26,17 +26,22 @@ const ActivityRoutines = () => {
   }, []);
 
   return (
-    <section>
-      <h3>Featured in:</h3>
+    <section className="text-center p-2">
+      <h3 className="font-semibold">Featured in:</h3>
       {!error ? (
         <Fragment>
           {routines ? (
-            <div>
+            <div className="p-4">
               {routines.map((routine) => (
                 <div key={routine.id}>
-                  <Link to={`/routines/${routine.id}`}>{routine.name}</Link>
+                  <Link to={`/routines/${routine.id}`} className="font-bold">
+                    {routine.name}
+                  </Link>
                   <p>{routine.goal}</p>
-                  <Link to={`/users/${routine.creatorName}`}>
+                  <Link
+                    to={`/users/${routine.creatorName}`}
+                    className="text-blue-400"
+                  >
                     {routine.creatorName}
                   </Link>
                 </div>
@@ -50,7 +55,12 @@ const ActivityRoutines = () => {
         <p>{error}</p>
       )}
 
-      <Link to={`/activities/${activityId}`}>CLOSE</Link>
+      <Link
+        to={`/activities/${activityId}`}
+        className="border-2 border-solid border-black p-2"
+      >
+        CLOSE
+      </Link>
     </section>
   );
 };

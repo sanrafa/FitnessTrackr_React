@@ -21,17 +21,27 @@ const User = () => {
   }, []);
 
   return (
-    <main>
-      <h1>{username}'s Routines</h1>
+    <main className="text-center">
+      <h1 className="text-4xl">
+        <span className="text-blue-500">{username}</span>'s Routines
+      </h1>
       {routines ? (
         routines.map((routine) => (
-          <div key={routine.id}>
-            <Link to={`/routines/${routine.id}`}>{routine.name}</Link>
+          <div key={routine.id} className="p-4">
+            <Link
+              to={`/routines/${routine.id}`}
+              className="text-xl text-blue-600"
+            >
+              {routine.name}
+            </Link>
             <p>{routine.goal}</p>
             {routine.activities
               ? routine.activities.map((activity) => (
-                  <div key={activity.routineActivityId}>
-                    <span>
+                  <div
+                    key={activity.routineActivityId}
+                    className="flex flex-col p-4"
+                  >
+                    <span className="text-blue-700 text-lg">
                       <Link to={`/activities/${activity.id}`}>
                         {activity.name}
                       </Link>

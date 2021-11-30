@@ -32,13 +32,21 @@ const MyRoutines = () => {
   }, []);
 
   return (
-    <main>
-      <h1>My Routines</h1>
+    <main className="text-center">
+      <h1 className="text-4xl">My Routines</h1>
+      <Link to="new" className="text-blue-600">
+        Create a new routine
+      </Link>
       {error ? <p>{error}</p> : null}
       {routines.length > 0 ? (
         routines.map((routine) => (
-          <div key={routine.id}>
-            <Link to={`/routines/${routine.id}`}>{routine.name}</Link>
+          <div key={routine.id} className="p-4">
+            <Link
+              to={`/routines/${routine.id}`}
+              className="text-xl text-blue-700 font-semibold"
+            >
+              {routine.name}
+            </Link>
             <p>{routine.goal}</p>
             {!routine.isPublic ? (
               <span>

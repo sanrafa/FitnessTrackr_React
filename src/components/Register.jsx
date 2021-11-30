@@ -48,16 +48,19 @@ const Register = () => {
           SAVE USER TO GLOBAL CONTEXT
           REDIRECT TO /PROFILE
       */
-    <main>
-      <h1>Create a new account</h1>
-      <Link to="/login">Existing user?</Link>
+    <main className="text-center p-4">
+      <h1 className="text-4xl font-bold">Create a new account</h1>
+      <Link to="/login" className="font-semibold text-blue-600">
+        Existing user?
+      </Link>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
         }}
+        className="p-6 flex flex-col space-y-4"
       >
-        <label>
+        <label className="font-medium">
           Username:
           <input
             type="text"
@@ -68,9 +71,10 @@ const Register = () => {
               setUsername(e.target.value);
             }}
             minLength="5"
+            className="ml-4 border-solid border-2 border-gray-400"
           ></input>
         </label>
-        <label>
+        <label className="font-medium">
           Password:
           <input
             type="password"
@@ -81,10 +85,13 @@ const Register = () => {
               setPassword(e.target.value);
             }}
             minLength="8"
+            className="ml-4 border-solid border-2 border-gray-400"
           ></input>
         </label>
 
-        <button type="submit">REGISTER</button>
+        <button type="submit" className="bg-blue-300 text-white">
+          REGISTER
+        </button>
       </form>
       {error ? <p>{error}</p> : null}
     </main>

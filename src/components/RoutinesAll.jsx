@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 //API
 import { getAllRoutines } from "../api";
 
+import { UserContext } from "../App";
+
 const RoutinesAll = () => {
+  const { user } = useContext(UserContext);
+
   const [routines, setRoutines] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -33,28 +37,47 @@ const RoutinesAll = () => {
         <p>{error}</p>
       ) : routines ? (
         <article>
-          <h1>Routines</h1>
+          <h1 className="text-4xl">Routines</h1>
+          {user.id ? (
+            <Link to="new" className="text-blue-600">
+              Create a new routine
+            </Link>
+          ) : null}
           {routines
             ? routines.map((routine) => (
-                <div key={routine.id}>
-                  <Link to={`${routine.id}`}>{routine.name}</Link>
+                <div key={routine.id} className="p-4">
+                  <Link
+                    to={`${routine.id}`}
+                    className="text-blue-500 font-bold text-2xl"
+                  >
+                    {routine.name}
+                  </Link>
                   <p>
                     Creator:{" "}
-                    <Link to={`/users/${routine.creatorName}`}>
+                    <Link
+                      to={`/users/${routine.creatorName}`}
+                      className="text-blue-400"
+                    >
                       {routine.creatorName}
                     </Link>
                   </p>
-                  <p>{routine.goal}</p>
+                  <p className="text-xl">{routine.goal}</p>
                   {routine.activities ? (
                     routine.activities.map((activity) => (
-                      <div key={activity.routineActivityId}>
-                        <span>
-                          <Link to={`/activities/${activity.id}/routines`}>
+                      <div
+                        key={activity.routineActivityId}
+                        className="flex-col p-4"
+                      >
+                        <p>
+                          <Link
+                            to={`/activities/${activity.id}/routines`}
+                            className="font-semibold"
+                          >
                             {activity.name}
                           </Link>
-                        </span>
-                        <span>Duration: {activity.duration} minutes</span>
-                        <span>Count: {activity.count} reps</span>
+                        </p>
+                        <p>Duration: {activity.duration} minutes</p>
+                        <p>Count: {activity.count} reps</p>
                       </div>
                     ))
                   ) : (
